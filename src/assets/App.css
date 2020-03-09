@@ -618,7 +618,7 @@ width: 70%;
 }
 
 .jaw-bone-background .image-rotator {
-  background-image: url("https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZvZegT3jKaEgnNwG4VdYg49ekxnwUYaY1x9tzXP0ilbvMXGb7tcn1gZAv8ETLkDR_AuuIFkrAViSIsPjNK8tpe2uQ0x.jpg?r=ded");
+  background-image: url("https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbjjL2qGJzMOn4ll2z_7FUhCpubFddwRSN6LWNoJaRPmP0MQOWOkHy93CT7F8XRvWkBzU9LeQtDmholuBEABQTWJPc5k.jpg?r=1dc");
 z-index: 2;
 opacity: 1;
 transition-duration: 750ms;
@@ -634,4 +634,147 @@ right: 0;
 
 background-size: cover;
 
+}
+
+/* JAWBONE INFORMATION */
+
+.jaw-bone-common .metadata {
+  position: relative;
+z-index: 2;
+color:#fff;
+display: flex;
+flex-wrap: nowrap;
+align-items: center;
+font-size: 1.1vw;
+height: 1.1vw;
+min-height: 1.1vw;
+line-height: 1.1vw;
+}
+
+
+.jaw-bone-common .metadata > span {
+ font-weight: bold;
+ margin-right: 0.5em;
+margin-bottom: 0.3vw;
+}
+
+.metadata .maturity-rating {
+  text-transform: uppercase;
+border: solid 1px
+rgba(255, 255, 255, 0.4);
+padding: 0 0.4em;
+unicode-bidi: normal;
+-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+}
+
+.metadata .score {
+  color: #46D369;
+}
+
+.jaw-bone-common .synopsis {
+  margin: .8em 0 0 0;
+  width: 45rem;
+  color:#999;
+  line-height: 1.3;
+}
+
+.jaw-bone-common .actions {
+  margin: .8em 0;
+  display: flex;
+  align-items: center;
+}
+
+.jaw-bone-common .meta-lists {
+  margin: 20px 0 0 0;
+  width: 45rem;
+}
+
+.meta-lists .inline-list {
+  font-size: .9em;
+color:
+#828282;
+margin: 2px 0 0 0;
+}
+
+.meta-lists .inline-list span {
+  color:
+#828282;
+font-weight: bold;
+margin-right: 5px;
+}
+
+.jaw-bone-container .close-button {
+  border: 0;
+position: absolute;
+right: 0;
+top: 0;
+font-size: 1.3vw;
+padding: 20px 20px 40px 40px;
+z-index: 12;
+cursor: pointer;
+color:
+#fff;
+
+transform-origin: 60% 35%;
+background: radial-gradient(ellipse at top right,rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 70%,rgba(0, 0, 0, 0) 100%);
+    background-position-x: 0%;
+    background-position-y: 0%;
+background-position: 50% -50%;
+}
+
+/* JAWBONE MENU */
+
+.jaw-bone-container .menu {
+  position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+width: 100%;
+font-size: 1vw;
+z-index: 100;
+padding: 0;
+margin: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+list-style: none;
+pointer-events: none;
+}
+
+.jaw-bone-container .menu li {
+  padding: 1em 1.5em 0;
+display: flex;
+flex-direction: column;
+cursor: pointer;
+color: #ccc;
+min-width: 5%;
+pointer-events: auto;
+}
+
+.jaw-bone-container .menu a {
+  margin: 0;
+padding: 0;
+letter-spacing: 1px;
+color: inherit;
+font-weight: bold;
+text-align: center;
+pointer-events: auto;
+text-decoration: none;
+cursor: pointer;
+}
+
+.jaw-bone-container .menu li span {
+  height: .33em;
+  display: block;
+  width: 100%;
+  margin-top: .66em;
+}
+
+.jaw-bone-container .menu li.current span {
+  transform: translateY(0);
+background-color:
+#E50914;
 }
