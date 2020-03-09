@@ -17,3 +17,51 @@ line-height: 1.2;
 }
 
 
+/* Header */
+
+header {
+  font-size: 14px;
+  padding: 0 4%;
+  display: flex;
+  align-items: center;
+  height: 68px;
+  font-size: 1.2rem;
+  background-color: black;
+}
+
+.logo {
+  margin-right: 5px;
+}
+
+.logo img {
+  object-fit: contain;
+  height: 26px;
+}
+
+.header-menu {
+}
+
+.header-menu ul {
+  margin:0;
+  padding:0;
+  list-style-type: none;
+  display:flex;
+  align-items: center;
+}
+
+.header-menu ul li {
+  margin-left: 18px;
+}
+
+.header-menu ul li a {
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.header-menu ul li a.active {
+  font-weight: bold;
+}
+
+.header-options {
+  display:flex;
+}
