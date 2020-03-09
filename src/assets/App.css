@@ -39,6 +39,7 @@ line-height: 1.2;
   top: 0;
   left: 0;
  position: relative;
+ transition: background-color 400ms;
 }
 
 .header.pin-header {
