@@ -1,10 +1,13 @@
 import React from 'react';
+import HeroImage from "../HeroImage"
 
 
 function Home() {
     return (
         <main style={{ height: "1500px" }}>
-            <h2>Home</h2>
+
+            <HeroImage />
+
         </main>
     );
 }
