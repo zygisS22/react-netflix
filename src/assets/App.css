@@ -147,8 +147,12 @@ main {
   width: 100%;
   height: 56.25vw;
   z-index: 0;
-  position: absolute;
+  /* position: absolute; */
   top: 0;
+
+
+  /* padding-bottom: 40%;
+  margin-bottom: 20px; */
 }
 
 .hero-image-wrapper {
@@ -307,4 +311,102 @@ rgba(0, 0, 0, 0) 85%);
 
 .play-link-secondary span {
   color:#fff;
+}
+
+
+/* SLIDER */
+
+
+.sliderBox {
+  z-index: 1;
+  margin: 3vw 0;
+  padding: 0;
+  position: relative;
+}
+
+.slider-header {
+  line-height: 1.3;
+  margin: 0;
+}
+
+.slider-header a {
+  font-size: 1.4vw;
+  color:#e5e5e5;
+  font-weight: bold;
+  margin: 0 4% 0.5em 4%;
+  text-decoration: none;
+  display: inline-block;
+  min-width: 6em;
+  cursor:pointer;
+}
+
+.slider-container {
+  position: relative;
+  z-index: 0;
+}
+
+
+.slider { 
+  z-index: 2;
+  position: relative;
+  margin: 0;
+  padding: 0 4%;
+}
+
+.slider .sliderMask.showPeek {
+  overflow-x: visible;
+}
+
+
+.slider .sliderMask {
+  overflow-x: hidden;
+  padding-bottom: 1px;
+}
+
+
+.slider .sliderMask .slider-content {
+  white-space: nowrap;
+}
+
+/* SLIDER ITEM */
+
+
+.slider .sliderMask .slider-content .slider-item:first-child {
+  padding-left: 0;
+}
+
+
+
+.slider .slider-content .slider-item {
+  width: 20%;
+  box-sizing: border-box;
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+  white-space: normal;
+  vertical-align: top;
+  padding: 0 2px;
+}
+
+.slider-item a {
+  text-decoration: none;
+  cursor: pointer;
+  color:#fff;
+}
+
+.boxart {
+  width: 100%;
+  height: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 28.125% 0;
+}
+
+.boxart img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }

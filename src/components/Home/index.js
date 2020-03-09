@@ -1,12 +1,15 @@
 import React from 'react';
 import HeroImage from "../HeroImage"
+import Slider from "../Slider"
 
 
 function Home() {
     return (
-        <main style={{ height: "1500px" }}>
+        <main>
 
             <HeroImage />
+
+            <Slider />
 
         </main>
     );
