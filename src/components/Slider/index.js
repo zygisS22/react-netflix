@@ -1,6 +1,8 @@
 import React from 'react';
-
 import SliderItem from "../SliderItem"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 function Slider() {
 
@@ -23,13 +25,21 @@ function Slider() {
                         <div className="slider-content">
 
                             <SliderItem />
+                            <SliderItem />
+                            <SliderItem />
+                            <SliderItem />
+                            <SliderItem />
+                            <SliderItem />
+                            <SliderItem />
+                            <SliderItem />
 
                         </div>
 
                     </div>
 
-                    {/* HANDLE PREVIOUS AND NEXT */}
-
+                    <span className="handle handleNext">
+                        <strong><FontAwesomeIcon icon={faChevronRight} /></strong>
+                    </span>
                 </div>
             </div>
 

@@ -410,3 +410,32 @@ rgba(0, 0, 0, 0) 85%);
   right: 0;
   width: 100%;
 }
+
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  width: 4%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  color:#fff;
+  background: rgba(20, 20, 20, 0.5);
+  align-items: center;
+}
+
+.handle strong {
+  display: none;
+  height: auto;
+  font-size: 2.5vw;
+  transition: transform 100ms ease-out 0s, -webkit-transform 100ms ease-out 0s, -moz-transform 100ms ease-out 0s, -o-transform 100ms ease-out 0s;
+}
+
+.handle.handleNext {
+  right: 0;
+}
+
+.handle:hover strong{
+  display: block;
+  }
