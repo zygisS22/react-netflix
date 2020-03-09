@@ -322,6 +322,9 @@ rgba(0, 0, 0, 0) 85%);
   margin: 3vw 0;
   padding: 0;
   position: relative;
+
+
+  /* transition: transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, -webkit-transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, -moz-transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, -o-transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s; */
 }
 
 .slider-header {
@@ -343,6 +346,10 @@ rgba(0, 0, 0, 0) 85%);
 .slider-container {
   position: relative;
   z-index: 0;
+
+  transition: transform 300ms ease 100ms;
+
+  /* transition: transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, -webkit-transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, -moz-transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, -o-transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s; */
 }
 
 
@@ -438,4 +445,193 @@ rgba(0, 0, 0, 0) 85%);
 
 .handle:hover strong{
   display: block;
-  }
+}
+
+/* .slider-item:hover {
+  z-index:4;
+
+  transform: scale(1.5);
+  transition-duration: 500ms;
+  transition-delay:0ms;
+
+} */
+
+.slider-item:hover ~ .slider-item {
+  transform: translateX(25%);
+}
+
+.slider-item:hover {
+  transform: scale(1.5);
+}
+
+
+.slider-content:hover {
+  transform: translateX(-25%);
+
+}
+
+/* SHOW CONTENT ON CLICK */
+
+/* .content {
+  margin-top: 40px;
+  height: 300px;
+  position: relative;
+}
+
+.background {
+  display: flex;
+  height: 100%;
+}
+
+.left {
+  background: black;
+  width: 30%;
+  position: relative;
+}
+
+.left:before {
+  content: '';
+  position: absolute;
+  background-image: linear-gradient(to right,#000,transparent);
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 275px;
+}
+
+.right {
+  background: green;
+  width: 70%;
+}
+
+.content-container {
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px
+} */
+
+.jaw-bone-content {
+  background-color:
+#141414;
+position: absolute;
+left: 0;
+right: 0;
+margin-top: 2px;
+padding: 0;
+}
+
+.jaw-bone-open-container {
+  transition: transform 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s, opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1), -webkit-transform 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s, -moz-transform 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s, -o-transform 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s;
+opacity: 1;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+}
+
+.jaw-bone-container {
+  background-color:
+#000;
+position: relative;
+overflow: hidden;
+outline: none;
+height: 42vw;
+transition: height 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1) 0.1s;
+}
+
+.jaw-bone-container .background {
+  position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 1;
+overflow: hidden;
+-webkit-transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+-o-transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+-moz-transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+}
+
+.jaw-bone-container .jaw-bone {
+  padding: 18px 0 12px 4%;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 10;
+}
+
+.jaw-bone-container .background .nav-shadow {
+  height: 114px;
+background: url('https://assets.nflxext.com/en_us/akira/jawBone/nav-shadow.png') no-repeat center 100%;
+    background-size: auto;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 20;
+-webkit-background-size: 100% 114px;
+-moz-background-size: 100% 114px;
+background-size: 100% 114px;
+}
+
+.jaw-bone-container .background .vignette::before {
+  content: '';
+position: absolute;
+z-index: 10;
+background-image: linear-gradient(to right,
+#000,
+transparent);
+top: 0;
+bottom: 0;
+left: 100%;
+width: 275px;
+}
+
+.jaw-bone-container .background .vignette {
+  background:
+  #000;
+  z-index: 2;
+  width: 30%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+
+
+
+
+
+.jaw-bone-container .jaw-bone-background {
+  right: 0;
+top: 0;
+bottom: 0;
+position: absolute;
+width: 70%;
+}
+
+.jaw-bone-background .image-rotator {
+  background-image: url("https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZvZegT3jKaEgnNwG4VdYg49ekxnwUYaY1x9tzXP0ilbvMXGb7tcn1gZAv8ETLkDR_AuuIFkrAViSIsPjNK8tpe2uQ0x.jpg?r=ded");
+z-index: 2;
+opacity: 1;
+transition-duration: 750ms;
+transform: translateZ(0);
+background-position: center 10%;
+
+
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+
+background-size: cover;
+
+}
