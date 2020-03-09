@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import logo from "../../assets/netflix-2.svg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,8 +6,37 @@ import { faSearch, faGift, faBell } from '@fortawesome/free-solid-svg-icons'
 
 
 function Header() {
+
+    const [pinHeader, setHeader] = useState(false)
+    const ref = useRef(null)
+
+
+    const handleScroll = () => {
+
+
+
+        if (window.scrollY == 0) {
+            setHeader(false);
+        } else if (ref && ref.current && ref.current.getBoundingClientRect()) {
+            setHeader(ref.current.getBoundingClientRect().top <= 0);
+        }
+
+
+
+    };
+
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', () => handleScroll);
+        };
+    }, []);
+
+
     return (
-        <header>
+        <div className={`header ${pinHeader ? 'pin-header' : ''}`} ref={ref}>
             <div className="logo">
                 <img src={logo} alt={"logo"} />
             </div>
@@ -24,9 +53,9 @@ function Header() {
 
 
             <div className="header-options">
-                <div><FontAwesomeIcon icon={faSearch} /></div>
-                <div><FontAwesomeIcon icon={faGift} /></div>
-                <div><FontAwesomeIcon icon={faBell} /></div>
+                <div><span className="icon"><FontAwesomeIcon icon={faSearch} /></span></div>
+                <div><span className="icon"><FontAwesomeIcon icon={faGift} /></span></div>
+                <div><span className="icon"><FontAwesomeIcon icon={faBell} /></span></div>
                 <div className="account-menu">
                     <div className="account-dropdown-menu">
                         <span className="presentation">
@@ -38,7 +67,7 @@ function Header() {
                 </div>
             </div>
 
-        </header>
+        </div>
     );
 }
 

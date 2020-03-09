@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
+*, *::after, *::before {
+  box-sizing: border-box;
+ }
+
 html, body {
+  font-size: 100%;
+  scroll-behavior: smooth;
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   background: 
@@ -19,22 +26,38 @@ line-height: 1.2;
 
 /* Header */
 
-header {
+
+.header {
+  width: 100%;
   padding: 0 4%;
   display: flex;
   align-items: center;
   height: 68px;
   font-size: 1.2rem;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
+  z-index: 1;
+  top: 0;
+  left: 0;
+ position: relative;
+}
+
+.header.pin-header {
+  position: fixed;
+  top: 0;
   background-color: black;
 }
 
+
+
 .logo {
+  display:flex;
+  align-items: center;
   margin-right: 5px;
 }
 
 .logo img {
   object-fit: contain;
-  height: 26px;
+  height: 25px;
 }
 
 
@@ -45,8 +68,6 @@ header {
   display:flex;
   align-items: center;
 }
-
-
 
 .header-menu ul li {
   margin-left: 18px;
@@ -70,23 +91,20 @@ header {
 
 }
 
+.header-options div {
+  cursor: pointer;
+}
+
+.icon {
+  padding: 5px;
+}
+
 .header-options div:not(:last-child) {
   margin-right: 15px;
 }
 
-.caret {
-  margin-left: 10px;
-width: 0;
-height: 0;
-border-style: solid;
-border-width: 5px 5px 0 5px;
-border-color:
-#fff transparent transparent transparent;
-}
-
-.presentation {
-  display:flex;
-  align-items: center;
+.header-options div svg {
+  font-size: 1.2em;
 }
 
 .account-menu {
@@ -95,8 +113,23 @@ border-color:
 
 .account-dropdown-menu {
   width: 100%;
-cursor: pointer;
-display:flex;
-align-items: center;
+  
+  display:flex;
+  align-items: center;
 }
+
+.caret {
+  margin-left: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color:#fff transparent transparent transparent;
+}
+
+.presentation {
+  display:flex;
+  align-items: center;
+}
+
 

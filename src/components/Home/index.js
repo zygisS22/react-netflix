@@ -3,9 +3,9 @@ import React from 'react';
 
 function Home() {
     return (
-        <div>
+        <main style={{ height: "1500px" }}>
             <h2>Home</h2>
-        </div>
+        </main>
     );
 }
 
