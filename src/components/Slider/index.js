@@ -13,6 +13,8 @@ function Slider() {
         { title: "test4" },
         { title: "test5" },
         { title: "test6" },
+        { title: "test8" },
+        { title: "test9" },
         { title: "test7" }]
     )
 
