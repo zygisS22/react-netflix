@@ -862,6 +862,11 @@ background-color:
 
 }
 
-.billboard-base .billboard-information-wrapper {
-
+.billboard-content-limits {
+  padding-bottom: 40%;
+  margin-bottom: 20px;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
 }

@@ -27,9 +27,9 @@ function Slider() {
                 </a>
             </h2>
 
-            {/* <div className="slider-container">
+            <div className="slider-container">
                 <div className="slider">
-                   
+
                     <div className="sliderMask showPeek">
 
                         <div className="slider-content">
@@ -46,7 +46,7 @@ function Slider() {
                         <strong><FontAwesomeIcon icon={faChevronRight} /></strong>
                     </span>
                 </div>
-            </div> */}
+            </div>
 
 
             {/* <span className="jaw-bone-content">
