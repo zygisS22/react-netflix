@@ -5,13 +5,14 @@ import Slider from "../Slider"
 
 function Home() {
     return (
-        <main>
 
-            <HeroImage />
 
-            <Slider />
+        <HeroImage />
 
-        </main>
+
+
+
+
     );
 }
 
