@@ -5,9 +5,12 @@ import Slider from "../Slider"
 
 function Home() {
     return (
-        <div>
+
+        <div className="testing">
 
             <HeroImage />
+
+
             <Slider />
         </div>
 

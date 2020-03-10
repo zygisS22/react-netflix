@@ -18,6 +18,9 @@ function Slider() {
         { title: "test7" }]
     )
 
+
+
+
     return (
         <div className="sliderBox">
             <h2 className="slider-header">
@@ -37,7 +40,7 @@ function Slider() {
                         <div className="slider-content">
 
                             {content.map(item => {
-                                return <SliderItem />
+                                return <SliderItem key={item.title} />
                             })}
 
                         </div>
