@@ -481,10 +481,16 @@ rgba(0, 0, 0, 0) 85%);
   transform: translateX(25%);
 }
 */
+/* 
+.slider-item:hover {
+  transform: scale(1.5) !important;
+}  */
+
 
 .slider-item:hover {
   transform: scale(1.5) !important;
 } 
+
 
 
 /* JAWBONE */

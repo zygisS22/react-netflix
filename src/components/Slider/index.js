@@ -12,37 +12,44 @@ function Slider() {
         "id": "slide1",
         "title": "test1",
         "index": 0,
-        "transform": "0"
+        "transform": "0",
+        "origin": "center",
     }, {
         "id": "slide2",
         "title": "test2",
         "index": 1,
-        "transform": "0"
+        "transform": "0",
+        "origin": "center",
     }, {
         "id": "slide3",
         "title": "test3",
         "index": 2,
-        "transform": "0"
+        "transform": "0",
+        "origin": "center",
     }, {
         "id": "slide4",
         "title": "test4",
         "index": 3,
-        "transform": "0"
+        "transform": "0",
+        "origin": "center",
     }, {
         "id": "slide5",
         "title": "test5",
         "index": 4,
-        "transform": "0"
+        "transform": "0",
+        "origin": "center",
     }, {
         "id": "slide6",
         "title": "test6",
         "index": 5,
-        "transform": "0"
+        "transform": "0",
+        "origin": "center",
     }, {
         "id": "slide7",
         "title": "test7",
         "index": 6,
-        "transform": "0"
+        "transform": "0",
+        "origin": "center",
     }]
 
 
@@ -97,15 +104,15 @@ function Slider() {
 
         if (prevItem && nextItem) {
 
-            //TRANSFORM X LA MITAD A LEFT Y LA OTRA MITAD RIGHT
-            console.log("AMBOS")
-
             setContent(prevState => {
 
                 let newState = prevState.map((item, index) => {
 
+                    item.origin = "center center"
+
                     if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
                         item.transform = "25%"
+
                         return item
                     } else if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
                         item.transform = "-25%"
@@ -123,17 +130,17 @@ function Slider() {
 
         } else if (!prevItem) {
 
-            //TRANSFORM X TO RIGHT EL DOBLE
-            console.log("DERECHA")
-
             setContent(prevState => {
 
                 let newState = prevState.map((item, index) => {
                     if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
-                        item.transform = "25%"
+                        item.transform = "50%"
+                        item.origin = "center center"
                         return item
                     } else {
                         item.transform = "0px"
+                        item.origin = "left center"
+
                         return item
                     }
                 })
@@ -144,17 +151,16 @@ function Slider() {
 
         } else if (!nextItem) {
 
-            //TRANSFORM X TO LEFT EL DOBLE
-            console.log("IZQUIERDA")
-
             setContent(prevState => {
 
                 let newState = prevState.map((item, index) => {
                     if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
-                        item.transform = "-25%"
+                        item.transform = "-50%"
+                        item.origin = "center center"
                         return item
                     } else {
                         item.transform = "0px"
+                        item.origin = "center right "
                         return item
                     }
                 })
@@ -209,7 +215,7 @@ function Slider() {
                         <div className="slider-content" ref={ref} >
 
                             {content.map(item => {
-                                return <SliderItem key={item.id} title={item.id} hover={scaleTitle} reset={resetSize} transform={item.transform} />
+                                return <SliderItem key={item.id} title={item.id} hover={scaleTitle} reset={resetSize} transform={item.transform} origin={item.origin} />
                             })}
 
 

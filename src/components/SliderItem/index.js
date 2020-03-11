@@ -27,7 +27,9 @@ function SliderItem(props) {
 
     const translate = `translateX(${props.transform})`
 
-    let test = { transform: translate }
+    let test = {
+        transform: translate, "transformOrigin": props.origin
+    }
 
 
     return (
