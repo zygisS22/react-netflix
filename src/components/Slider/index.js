@@ -62,14 +62,26 @@ function Slider() {
     const [content, setContent] = useState(pruebing)
 
 
+    // &:not(&--open) .item:hover .show-details-button {
+    //     opacity: 1;
+    //   }
+
+    //   &:not(&--open) .item:hover {
+    //     transform: scale(1.5) !important;
+    //   }
+
+    //   &:not(&--open):hover .item {
+    //     transform: translateX(-25%);
+    //   }
+
+    //   &:not(&--open) .item:hover ~ .item {
+    //     transform: translateX(25%);
+    //   }
+    // }
 
 
 
-    //SLIDING TO NEXT SECTION
 
-
-
-    // const reduxData = useContext(SliderContext);
     const [viewed, setViewed] = useState(0);
     const [distance, setDistance] = useState(0);
     const [containerWidth, setContainerWidth] = useState(0);
@@ -146,6 +158,8 @@ function Slider() {
 
 
     const resetSize = (e) => {
+
+        console.log("reseting")
 
         setContent(prevState => {
 

@@ -417,7 +417,17 @@ rgba(0, 0, 0, 0) 85%);
   vertical-align: top;
   padding: 0 2px;
   transition: transform 300ms ease 100ms;
+  cursor: pointer;
+  
 }
+
+
+.slider-item * {
+ 
+  pointer-events: none;
+
+}
+
 
 .slider-item a {
   text-decoration: none;
@@ -480,6 +490,11 @@ rgba(0, 0, 0, 0) 85%);
 .slider-content {
   transition: transform 400ms ease 200ms;
 }
+
+.slider-content:hover .slider-item:hover .show-details {
+  opacity: 1;
+}
+
 
 /* .slider-content:hover .slider-item {
   transform: translateX(-25%);
@@ -801,4 +816,64 @@ background-color:
   margin-top: 4px;
     border-color: #fff transparent transparent transparent;
 }
+
+/* details button */
+
+.show-details {
+
+  position: absolute;
+  left: 50%;
+  bottom: 0.1vw;
+  opacity: 0;
+  border:0;
+  background: transparent;
+  outline:none;
+
+
+
+
+
+
+
+  transform: translate(-50%, -10px);
+  transition: transform 0.4s, opacity 0.4s, -webkit-transform 0.4s, -moz-transform 0.4s, -o-transform 0.4s;
+  transition-delay: 0.2s;
+}
+
+
+
+
+.show-details span {
+    display: block;
+    margin: 0 auto;
+    color: white;
+
+
+    animation-delay: 200ms;
+    animation-name: chevronSlideDown;
+    animation-duration: 400ms;
+    text-align: center;
+    cursor: pointer;
+}
+
+.show-details span svg {
+  font-size:2.5rem;
+  
+}
+
+@keyframes chevronSlideDown {
+  0% {
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
 

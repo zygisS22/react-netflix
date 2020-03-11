@@ -3,6 +3,10 @@ import useVisibility from "../../hooks/useVisibility"
 import SliderContext from "../Slider/context"
 
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+
+
 function SliderItem(props) {
 
 
@@ -42,7 +46,6 @@ function SliderItem(props) {
             ref={ref}
             onMouseOut={(e) => props.reset(e)}
             onMouseEnter={(e) => props.hover(e)}
-            onClick={() => props.onSelectSlide(props.title)}
         >
             <a>
                 <div className="boxart">
@@ -50,6 +53,11 @@ function SliderItem(props) {
 
                 </div>
             </a>
+
+
+            <button onClick={() => props.onSelectSlide(props.title)} className="show-details">
+                <span><FontAwesomeIcon icon={faAngleDown} /></span>
+            </button>
 
             {isActive && (<div className="mark" />)}
 
