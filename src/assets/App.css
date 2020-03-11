@@ -493,6 +493,7 @@ rgba(0, 0, 0, 0) 85%);
 
 .slider-content:hover .slider-item:hover .show-details {
   opacity: 1;
+  animation: chevronSlideDown 0.5s;
 }
 
 
@@ -835,7 +836,7 @@ background-color:
 
 
 
-  transform: translate(-50%, -10px);
+  transform: translateY(0);
   transition: transform 0.4s, opacity 0.4s, -webkit-transform 0.4s, -moz-transform 0.4s, -o-transform 0.4s;
   transition-delay: 0.2s;
 }
@@ -857,18 +858,16 @@ background-color:
 }
 
 .show-details span svg {
-  font-size:2.5rem;
+  font-size:2rem;
   
 }
 
 @keyframes chevronSlideDown {
   0% {
-    -webkit-transform: translateY(-50px);
-    transform: translateY(-50px);
+    transform: translateY(-20px);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateY(0);
     transform: translateY(0);
     opacity: 1;
   }
