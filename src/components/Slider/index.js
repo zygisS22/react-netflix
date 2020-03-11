@@ -1,24 +1,193 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import SliderItem from "../SliderItem"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faPlay, faPlus, faOtter } from '@fortawesome/free-solid-svg-icons'
 
 function Slider() {
 
-    const [content, setContent] = useState(
-        [{ title: "test1" },
-        { title: "test2" },
-        { title: "test3" },
-        { title: "test4" },
-        { title: "test5" },
-        { title: "test6" },
-        { title: "test8" },
-        { title: "test9" },
-        { title: "test7" }]
-    )
 
 
+    const pruebing = [{
+        "id": "slide1",
+        "title": "test1",
+        "index": 0,
+        "transform": "0"
+    }, {
+        "id": "slide2",
+        "title": "test2",
+        "index": 1,
+        "transform": "0"
+    }, {
+        "id": "slide3",
+        "title": "test3",
+        "index": 2,
+        "transform": "0"
+    }, {
+        "id": "slide4",
+        "title": "test4",
+        "index": 3,
+        "transform": "0"
+    }, {
+        "id": "slide5",
+        "title": "test5",
+        "index": 4,
+        "transform": "0"
+    }, {
+        "id": "slide6",
+        "title": "test6",
+        "index": 5,
+        "transform": "0"
+    }, {
+        "id": "slide7",
+        "title": "test7",
+        "index": 6,
+        "transform": "0"
+    }]
+
+
+
+
+
+    const [slider, setSlider] = useState(null)
+    const ref = useRef(null)
+    const [content, setContent] = useState(pruebing)
+
+
+    useEffect(() => {
+
+
+        if (ref.current) {
+            setSlider(ref.current.children)
+        }
+
+    }, [])
+
+    const resetSize = (e) => {
+
+        console.log("RESETING")
+
+        setContent(prevState => {
+
+            let newState = prevState.map((item, index) => {
+
+                item.transform = "0px"
+                return item
+
+
+            })
+
+            return newState
+        })
+    }
+
+    const scaleTitle = (e) => {
+
+        e.preventDefault()
+
+        const slideItemIndex = Object.entries(slider).findIndex(item => item[1] == e.currentTarget)
+        const itemId = slider[slideItemIndex].dataset.id
+        const hoveredSlide = content.filter(item => item.id === itemId)[0]
+
+
+        let nextItem = isOnScreen(slider[slideItemIndex + 1])
+        let prevItem = isOnScreen(slider[slideItemIndex - 1])
+
+        //EDGE CASE : CHECK IF LEFT FIRST OR LAST RIGHT ELEMENT
+
+        if (prevItem && nextItem) {
+
+            //TRANSFORM X LA MITAD A LEFT Y LA OTRA MITAD RIGHT
+            console.log("AMBOS")
+
+            setContent(prevState => {
+
+                let newState = prevState.map((item, index) => {
+
+                    if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
+                        item.transform = "25%"
+                        return item
+                    } else if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
+                        item.transform = "-25%"
+                        return item
+                    } else {
+                        item.transform = "0px"
+                        return item
+                    }
+
+                })
+
+                return newState
+            })
+
+
+        } else if (!prevItem) {
+
+            //TRANSFORM X TO RIGHT EL DOBLE
+            console.log("DERECHA")
+
+            setContent(prevState => {
+
+                let newState = prevState.map((item, index) => {
+                    if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
+                        item.transform = "25%"
+                        return item
+                    } else {
+                        item.transform = "0px"
+                        return item
+                    }
+                })
+
+                return newState
+            })
+
+
+        } else if (!nextItem) {
+
+            //TRANSFORM X TO LEFT EL DOBLE
+            console.log("IZQUIERDA")
+
+            setContent(prevState => {
+
+                let newState = prevState.map((item, index) => {
+                    if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
+                        item.transform = "-25%"
+                        return item
+                    } else {
+                        item.transform = "0px"
+                        return item
+                    }
+                })
+
+                return newState
+            })
+        }
+
+
+    }
+
+
+    const isOnScreen = (slide) => {
+
+        if (slide && slide.className.split(" ").includes("onScreen")) {
+            return true
+        }
+
+        return false
+
+    }
+
+    const transformSlide = (value, type) => {
+
+        //types: left, right or both
+
+        // console.log(value)
+        // console.log(type)
+
+        return "translateX(50%)"
+
+
+    }
 
 
     return (
@@ -37,11 +206,13 @@ function Slider() {
 
                     <div className="sliderMask showPeek">
 
-                        <div className="slider-content">
+                        <div className="slider-content" ref={ref} >
 
                             {content.map(item => {
-                                return <SliderItem key={item.title} />
+                                return <SliderItem key={item.id} title={item.id} hover={scaleTitle} reset={resetSize} transform={item.transform} />
                             })}
+
+
 
                         </div>
 
