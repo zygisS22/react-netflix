@@ -159,8 +159,6 @@ function Slider() {
 
     const resetSize = (e) => {
 
-        console.log("reseting")
-
         setContent(prevState => {
 
             let newState = prevState.map((item, index) => {

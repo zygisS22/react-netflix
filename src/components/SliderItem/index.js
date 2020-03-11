@@ -49,7 +49,7 @@ function SliderItem(props) {
         >
             <a>
                 <div className="boxart">
-                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABTXnl2DtLEd4DBJ3JvTGk7QCJUuYESNwnnDHPx1RTM0eOn_xkcyVfp_jyrBc4_CRyNpAOPOYb7Xvjdv6kVL9s3nd5gU.jpg?r=31d"} alt="boxart" />
+                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABbYGPa7zJQbEsyXeZPepSwRd3BNqrqyOS7VK_xXkAs5d31NIpoL3NQyFQeyIYjINIwtsw_Z6wjzhmZFXMnmiBWV8ecLIymc11ceqxH0m7fy1XTMjuTKkm2r7UJ37VA4V2yZmBNZupEhOM9ThxcHFkvi0osjHN2P95oNH74lTzULEqu9JNAuMb5qXIUVzQsZTCvj2lQd4reHhn_9irqyDzcNs.jpg?r=31b"} alt="boxart" />
 
                 </div>
             </a>
