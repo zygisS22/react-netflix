@@ -5,6 +5,8 @@ export default function useVisibility(ref, callbackOnScreen, callbackOffScreen) 
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
 
+            console.log(entry)
+
             if (!entry.isIntersecting || entry.intersectionRatio < 0.8) {
                 callbackOffScreen()
             } else {
@@ -17,6 +19,7 @@ export default function useVisibility(ref, callbackOnScreen, callbackOffScreen) 
         })
 
         if (ref.current) {
+            console.log("observar")
             observer.observe(ref.current)
         }
     }, [])

@@ -466,12 +466,20 @@ rgba(0, 0, 0, 0) 85%);
   right: 0;
 }
 
+.handle.handlePrev {
+  left: 0;
+}
+
+
 .handle:hover strong{
   display: block;
 }
 
 /* ZOOM */
 
+.slider-content {
+  transition: transform 400ms ease 200ms;
+}
 
 /* .slider-content:hover .slider-item {
   transform: translateX(-25%);

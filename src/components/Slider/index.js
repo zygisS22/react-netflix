@@ -2,11 +2,14 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import SliderItem from "../SliderItem"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faPlay, faPlus, faOtter } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faPlay, faPlus, faOtter } from '@fortawesome/free-solid-svg-icons'
+
+import SliderContext from "./context"
+import useSlide from "../../hooks/useSlide"
+import useSizeElement from "../../hooks/useSizeElement"
+
 
 function Slider() {
-
-
 
     const pruebing = [{
         "id": "slide1",
@@ -54,25 +57,92 @@ function Slider() {
 
 
 
-
-
     const [slider, setSlider] = useState(null)
     const ref = useRef(null)
     const [content, setContent] = useState(pruebing)
 
 
+
+
+
+    //SLIDING TO NEXT SECTION
+
+
+
+    // const reduxData = useContext(SliderContext);
+    const [viewed, setViewed] = useState(0);
+    const [distance, setDistance] = useState(0);
+    const [containerWidth, setContainerWidth] = useState(0);
+    const [totalInViewport, setTotalInViewport] = useState(0)
+    const [currentSlide, setCurrentSlide] = useState(null);
+
+
+    // const { width, elementRef } = useSizeElement();
+    const PADDINGS = 110;
+
+    // const {
+    //     handlePrev,
+    //     handleNext,
+    //     slideProps,
+    //     containerRef,
+    //     hasNext,
+    //     hasPrev
+    // } = useSlide(ref, 7);
+
+    let slideProps = {
+        style: { transform: `translate3d(${distance}px, 0, 0)` }
+    };
+
+
+    const contextValue = {
+        // onSelectSlide: handleSelect,
+        // onCloseSlide: handleClose,
+        //elementRef,
+        currentSlide,
+    };
+
+
+
+
+    const moveSection = (type) => {
+        console.log("MOVER")
+
+        if (type == "right") {
+            setViewed(viewed + totalInViewport);
+            setDistance(distance - containerWidth)
+        } else if (type == "left") {
+            setViewed(viewed - totalInViewport);
+            setDistance(distance + containerWidth);
+        }
+
+
+    }
+
+
     useEffect(() => {
 
 
+
         if (ref.current) {
+
+
+            const containerWidth = ref.current.clientWidth - PADDINGS;
+
             setSlider(ref.current.children)
+
+
+
+            setContainerWidth(containerWidth);
+            setTotalInViewport(Math.floor(containerWidth / 190));
+
         }
 
-    }, [])
+    }, [ref.current])
+
+
+
 
     const resetSize = (e) => {
-
-        console.log("RESETING")
 
         setContent(prevState => {
 
@@ -80,7 +150,6 @@ function Slider() {
 
                 item.transform = "0px"
                 return item
-
 
             })
 
@@ -99,6 +168,9 @@ function Slider() {
 
         let nextItem = isOnScreen(slider[slideItemIndex + 1])
         let prevItem = isOnScreen(slider[slideItemIndex - 1])
+
+        console.log(nextItem)
+        console.log(prevItem)
 
         //EDGE CASE : CHECK IF LEFT FIRST OR LAST RIGHT ELEMENT
 
@@ -183,55 +255,50 @@ function Slider() {
 
     }
 
-    const transformSlide = (value, type) => {
 
-        //types: left, right or both
-
-        // console.log(value)
-        // console.log(type)
-
-        return "translateX(50%)"
-
-
-    }
 
 
     return (
-        <div className="sliderBox">
-            <h2 className="slider-header">
-                <a href={"/"}>
-                    <div>Mi lista</div>
-                    {/* <div>Explorar más</div> */}
+        <SliderContext.Provider value={contextValue}>
+            <div className="sliderBox">
+                <h2 className="slider-header">
+                    <a href={"/"}>
+                        <div>Mi lista</div>
+                        {/* <div>Explorar más</div> */}
 
 
-                </a>
-            </h2>
+                    </a>
+                </h2>
 
-            <div className="slider-container">
-                <div className="slider">
+                <div className="slider-container">
+                    <div className="slider">
 
-                    <div className="sliderMask showPeek">
+                        <div className="sliderMask showPeek">
 
-                        <div className="slider-content" ref={ref} >
+                            <div className="slider-content" ref={ref} {...slideProps} >
 
-                            {content.map(item => {
-                                return <SliderItem key={item.id} title={item.id} hover={scaleTitle} reset={resetSize} transform={item.transform} origin={item.origin} />
-                            })}
+                                {content.map(item => {
+                                    return <SliderItem key={item.id} title={item.id} hover={scaleTitle} reset={resetSize} transform={item.transform} origin={item.origin} />
+                                })}
 
 
+
+                            </div>
 
                         </div>
 
+                        <span className="handle handleNext" onClick={() => moveSection("right")}>
+                            <strong><FontAwesomeIcon icon={faChevronRight} /></strong>
+                        </span>
+
+                        <span className="handle handlePrev" onClick={() => moveSection("left")}>
+                            <strong><FontAwesomeIcon icon={faChevronLeft} /></strong>
+                        </span>
                     </div>
-
-                    <span className="handle handleNext">
-                        <strong><FontAwesomeIcon icon={faChevronRight} /></strong>
-                    </span>
                 </div>
-            </div>
 
 
-            {/* <span className="jaw-bone-content">
+                {/* <span className="jaw-bone-content">
                 <span className="jaw-bone-open-container">
                     <div className="jaw-bone-container">
                         <div className="background">
@@ -313,7 +380,8 @@ function Slider() {
                 </span>
             </span> */}
 
-        </div>
+            </div>
+        </SliderContext.Provider>
     );
 }
 
