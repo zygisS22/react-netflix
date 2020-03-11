@@ -75,10 +75,8 @@ function Slider() {
     const [containerWidth, setContainerWidth] = useState(0);
     const [totalInViewport, setTotalInViewport] = useState(0)
     const [currentSlide, setCurrentSlide] = useState(null);
+    const [itemWidth, setItemWidth] = useState(0)
 
-
-    // const { width, elementRef } = useSizeElement();
-    const PADDINGS = 110;
 
     // const {
     //     handlePrev,
@@ -102,7 +100,14 @@ function Slider() {
     };
 
 
+    const selectSlide = (id) => {
 
+        const selected = content.filter(item => item.id === id)[0]
+
+
+
+        setCurrentSlide(selected)
+    }
 
     const moveSection = (type) => {
         console.log("MOVER")
@@ -126,14 +131,12 @@ function Slider() {
         if (ref.current) {
 
 
-            const containerWidth = ref.current.clientWidth - PADDINGS;
-
+            const containerWidth = ref.current.clientWidth;
+            const itemWidth = ref.current.firstChild.clientWidth
             setSlider(ref.current.children)
-
-
-
+            setItemWidth(itemWidth)
             setContainerWidth(containerWidth);
-            setTotalInViewport(Math.floor(containerWidth / 190));
+            setTotalInViewport(Math.floor(containerWidth / itemWidth));
 
         }
 
@@ -168,9 +171,6 @@ function Slider() {
 
         let nextItem = isOnScreen(slider[slideItemIndex + 1])
         let prevItem = isOnScreen(slider[slideItemIndex - 1])
-
-        console.log(nextItem)
-        console.log(prevItem)
 
         //EDGE CASE : CHECK IF LEFT FIRST OR LAST RIGHT ELEMENT
 
@@ -278,7 +278,15 @@ function Slider() {
                             <div className="slider-content" ref={ref} {...slideProps} >
 
                                 {content.map(item => {
-                                    return <SliderItem key={item.id} title={item.id} hover={scaleTitle} reset={resetSize} transform={item.transform} origin={item.origin} />
+                                    return <SliderItem
+                                        key={item.id}
+                                        title={item.id}
+                                        hover={scaleTitle}
+                                        reset={resetSize}
+                                        transform={item.transform}
+                                        origin={item.origin}
+                                        onSelectSlide={selectSlide}
+                                    />
                                 })}
 
 

@@ -347,7 +347,7 @@ rgba(0, 0, 0, 0) 85%);
 
 .sliderBox {
   z-index: 1;
-  margin: 3vw 0;
+  margin: 3vw 0; 
   padding: 0;
   position: relative;
 
@@ -764,5 +764,41 @@ background-color:
 .testing { 
   overflow: hidden;
   z-index: 0;
+}
+
+
+/* ITEM MARK */
+
+.mark {
+  border: solid 4px #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.mark:before, .mark:after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: '';
+    top: 100%;
+    left: 50%;
+    margin-left: -13px;
+    border-style: solid;
+    border-width: 7px 13px 0 13px;
+}
+
+.mark:before {
+  border-color: rgba(0, 0, 0, 0.15) transparent transparent transparent;
+    margin-top: 5px;
+}
+
+.mark:after {
+  margin-top: 4px;
+    border-color: #fff transparent transparent transparent;
 }
 
