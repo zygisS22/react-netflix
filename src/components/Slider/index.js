@@ -6,6 +6,9 @@ import { faChevronRight, faChevronLeft, faTimes, faPlus, faPlay } from '@fortawe
 
 import SliderContext from "./context"
 import useSlide from "../../hooks/useSlide"
+
+import useWindowWidth from "../../hooks/useWindowWidth"
+
 import useSizeElement from "../../hooks/useSizeElement"
 
 
@@ -141,6 +144,7 @@ function Slider() {
     ]
 
 
+    const width = useWindowWidth()
 
     const [slider, setSlider] = useState(null)
     const ref = useRef(null)
@@ -256,7 +260,6 @@ function Slider() {
     useEffect(() => {
 
 
-
         if (ref.current) {
 
 
@@ -272,7 +275,7 @@ function Slider() {
 
         }
 
-    }, [])
+    }, [width])
 
 
 
@@ -417,7 +420,7 @@ function Slider() {
             <div className="sliderBox">
                 <h2 className="slider-header">
                     <a href={"/"}>
-                        <div>Mi lista</div>
+                        <div>Mi lista {width}</div>
                         {/* <div>Explorar más</div> */}
 
 
