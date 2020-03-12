@@ -178,6 +178,8 @@ function Slider() {
 
         e.preventDefault()
 
+        if (currentSlide) return
+
         const slideItemIndex = Object.entries(slider).findIndex(item => item[1] == e.currentTarget)
         const itemId = slider[slideItemIndex].dataset.id
         const hoveredSlide = content.filter(item => item.id === itemId)[0]
@@ -289,7 +291,7 @@ function Slider() {
 
                         <div className="sliderMask showPeek">
 
-                            <div className="slider-content" ref={ref} {...slideProps} >
+                            <div className={`slider-content ${currentSlide && "open"}`} ref={ref} {...slideProps} >
 
                                 {content.map(item => {
                                     return <SliderItem
