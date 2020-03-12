@@ -513,6 +513,9 @@ rgba(0, 0, 0, 0) 85%);
 
 .slider-content:not(.open) .slider-item:hover {
   transform: scale(1.5) !important;
+  transition: all 0.5s ease-in-out;
+  transition-delay:500ms;
+  
 } 
 
 
@@ -1009,4 +1012,33 @@ background-color:
 .ai-content-area-container h3 div img {
   height: 7vw;
   transform-origin: 0 0;
+}
+
+
+/* PAGINATION INDICATOR DE UN SLIDER */
+
+.pagination-indicator {
+  margin: -24px 0 12px 0;
+  padding: 0;
+  list-style-type: none;
+  position: absolute;
+  top: 0;
+  right: 4%;
+  display: none;
+}
+
+.pagination-indicator .active {
+  background-color: #aaa;
+}
+
+.pagination-indicator li {
+  display: inline-block;
+  width: 12px;
+  height: 2px;
+  background-color: #4d4d4d;
+  margin-left: 1px;
+}
+
+.slider:hover .pagination-indicator {
+  display: block;
 }

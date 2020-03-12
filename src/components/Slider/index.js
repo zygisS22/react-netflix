@@ -149,7 +149,6 @@ function Slider() {
 
 
 
-
     const [viewed, setViewed] = useState(0);
     const [distance, setDistance] = useState(0);
     const [containerWidth, setContainerWidth] = useState(0);
@@ -197,14 +196,20 @@ function Slider() {
 
     const moveSection = (type) => {
 
-
         if (type == "right") {
+
             setViewed(viewed + totalInViewport);
             setDistance(distance - containerWidth)
+
+
         } else if (type == "left") {
+
             setViewed(viewed - totalInViewport);
             setDistance(distance + containerWidth);
+
         }
+
+
 
         if (currentSlide) {
 
@@ -250,14 +255,15 @@ function Slider() {
 
             const containerWidth = ref.current.clientWidth;
             const itemWidth = ref.current.firstChild.clientWidth
+
             setSlider(ref.current.children)
             setItemWidth(itemWidth)
             setContainerWidth(containerWidth);
-            setTotalInViewport(Math.floor(containerWidth / itemWidth));
+            setTotalInViewport(Math.ceil(containerWidth / itemWidth));
 
         }
 
-    }, [ref.current])
+    }, [])
 
 
 
@@ -393,6 +399,13 @@ function Slider() {
 
                 <div className="slider-container">
                     <div className="slider">
+
+                        <ul className="pagination-indicator">
+                            <li className="active"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
 
                         <div className="sliderMask showPeek">
 

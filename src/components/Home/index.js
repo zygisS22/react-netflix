@@ -12,6 +12,10 @@ function Home() {
 
 
             <Slider />
+
+            <Slider />
+
+            <Slider />
         </div>
 
 
