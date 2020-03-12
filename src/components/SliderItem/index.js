@@ -35,7 +35,7 @@ function SliderItem(props) {
     }, [inViewport, setInViewport])
 
     const translate = `translateX(${props.transform})`
-    const styled = { transform: translate, "transformOrigin": props.origin, transition: "all 0.5s ease-in-out", transitionDelay: "1ms" }
+    const styled = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out" }
 
 
     return (

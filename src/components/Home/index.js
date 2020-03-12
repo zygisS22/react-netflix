@@ -16,6 +16,14 @@ function Home() {
             <Slider />
 
             <Slider />
+
+            <Slider />
+
+            <Slider />
+
+            <Slider />
+
+            <Slider />
         </div>
 
 
