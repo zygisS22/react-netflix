@@ -147,6 +147,9 @@ function Slider() {
     const [content, setContent] = useState(pruebing)
 
 
+    const [sliderIndex, setSliderIndex] = useState(0)
+    const [sliderPages, setSliderPages] = useState(0)
+    const totalItems = 20
 
 
     const [viewed, setViewed] = useState(0);
@@ -157,8 +160,10 @@ function Slider() {
     const [itemWidth, setItemWidth] = useState(0)
 
 
+
+
     const hasPrev = distance < 0;
-    const hasNext = (viewed + totalInViewport) < 20; // nº elements
+    const hasNext = (viewed + totalInViewport) < totalItems; // nº elements
 
 
     // const {
@@ -200,12 +205,14 @@ function Slider() {
 
             setViewed(viewed + totalInViewport);
             setDistance(distance - containerWidth)
+            setSliderIndex(prevState => prevState + 1)
 
 
         } else if (type == "left") {
 
             setViewed(viewed - totalInViewport);
             setDistance(distance + containerWidth);
+            setSliderIndex(prevState => prevState - 1)
 
         }
 
@@ -255,11 +262,13 @@ function Slider() {
 
             const containerWidth = ref.current.clientWidth;
             const itemWidth = ref.current.firstChild.clientWidth
+            const totalInViewport = Math.ceil(containerWidth / itemWidth)
 
             setSlider(ref.current.children)
             setItemWidth(itemWidth)
             setContainerWidth(containerWidth);
-            setTotalInViewport(Math.ceil(containerWidth / itemWidth));
+            setTotalInViewport(totalInViewport);
+            setSliderPages(totalItems / totalInViewport)
 
         }
 
@@ -383,6 +392,24 @@ function Slider() {
     }
 
 
+    const paginationIndicator = (nPages) => {
+
+        let paginationList = []
+
+        for (let i = 0; i < nPages; i++) {
+
+            if (sliderIndex == i) {
+                paginationList.push(<li className="active" key={i}></li>)
+            } else {
+                paginationList.push(<li key={i}></li>)
+            }
+
+
+        }
+
+        return paginationList
+
+    }
 
 
     return (
@@ -401,10 +428,11 @@ function Slider() {
                     <div className="slider">
 
                         <ul className="pagination-indicator">
-                            <li className="active"></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+
+
+                            {sliderPages > 0 ? (paginationIndicator(sliderPages)) : ""}
+
+
                         </ul>
 
                         <div className="sliderMask showPeek">
@@ -528,89 +556,6 @@ function Slider() {
                 </div>)}
 
 
-
-
-                {/* <span className="jaw-bone-content open">
-                    <span className="jaw-bone-open-container">
-                        <div className="jaw-bone-container">
-                            <div className="background">
-
-                                <div className="jaw-bone-background">
-                                    <div className="image-rotator"></div>
-                                </div>
-
-                                <div className="vignette"></div>
-                                <div className="nav-shadow"></div>
-                            </div>
-                            <div className="jaw-bone">
-                                <h3>
-                                    <div>
-                                        <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/AwfSa8TtJlDHJjLcbE--NI7p5gU/AAAABWnNRebcIUa6-YC6iaxEOvMGv0JSO3ILfKOREmlmp0or8V914Ss9TJtgwGWJaOPTJMPKfaCNLbVOjdHKiMVZk8G5bbyBe88Bug.png?r=4c5"} alt={"test"} />
-
-                                    </div>
-                                </h3>
-
-                                <div className="jaw-bone-common">
-                                    <div className="metadata">
-                                        <span className="score">98% de coincidencia</span>
-                                        <span className="year">1997</span>
-                                        <span className="maturity-rating">+13</span>
-                                        <span className="duration">2h 14m</span>
-                                    </div>
-
-                                    <div className="synopsis">
-                                        Un príncipe que sufre una maldición letal se propone buscar una cura, y queda atrapado en una batalla entre un pueblo minero y los animales del bosque.
-                                </div>
-
-                                    <div className="actions">
-                                        <a className="play-link" href={"/"} >
-                                            <button className="hasLabel">
-                                                <span className="play-icon"><FontAwesomeIcon icon={faPlay} /></span>
-                                                <span>Reproducir</span>
-                                            </button>
-                                        </a>
-
-                                        <button className="hasLabel play-link-secondary">
-                                            <span className="play-icon"><FontAwesomeIcon icon={faPlus} /></span>
-                                            <span>Mi lista</span>
-                                        </button>
-                                    </div>
-
-                                    <div className="meta-lists">
-                                        <p className="inline-list">
-                                            <span>Protagonizada por:</span>
-                                            Yoji Matsuda,Yuriko Ishida,Yuko Tanaka
-
-                                    </p>
-                                        <p className="inline-list">
-                                            <span>Géneros:</span>
-                                            Animes de acción,Animes de ciencia ficción y fantásticos,Largometrajes de anime
-                                    </p>
-                                    </div>
-
-                                    <ul className="menu">
-                                        <li className="current">
-                                            <a href={"/"}>INFROMACION GENERAL</a>
-                                            <span></span>
-                                        </li>
-                                        <li>
-                                            <a href={"/"}>SIMILARES</a>
-                                            <span></span>
-                                        </li>
-                                        <li>
-                                            <a href={"/"}>DETALLES</a>
-                                            <span></span>
-                                        </li>
-                                    </ul>
-
-                                </div>
-
-
-                            </div>
-                            <button className="close-button"><span>X</span></button>
-                        </div>
-                    </span>
-                </span> */}
 
             </div>
         </SliderContext.Provider>
