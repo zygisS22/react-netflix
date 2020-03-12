@@ -44,7 +44,7 @@ function SliderItem(props) {
             data-id={props.title}
             className={`slider-item ${inViewport ? "onScreen" : ""}`}
             ref={ref}
-            onMouseOut={(e) => props.reset(e)}
+            onMouseLeave={(e) => props.reset(e)}
             onMouseEnter={(e) => props.hover(e)}
         >
             <a>

@@ -371,7 +371,7 @@ rgba(0, 0, 0, 0) 85%);
 
 .slider-container {
   position: relative;
-  z-index: 0;
+  z-index: 3;
   transition: transform 300ms ease 100ms;
 
 }
@@ -422,11 +422,11 @@ rgba(0, 0, 0, 0) 85%);
 }
 
 
-.slider-item * {
+/* .slider-item * {
  
   pointer-events: none;
 
-}
+} */
 
 
 .slider-item a {
@@ -493,7 +493,7 @@ rgba(0, 0, 0, 0) 85%);
 
 .slider-content:hover .slider-item:hover .show-details {
   opacity: 1;
-  animation: chevronSlideDown 0.5s;
+  animation: chevronSlideDown 0.8s;
 }
 
 
@@ -647,6 +647,11 @@ font-size: 1.1vw;
 height: 1.1vw;
 min-height: 1.1vw;
 line-height: 1.1vw;
+
+}
+
+.jaw-bone-common {
+  margin-top: .3em;
 }
 
 
@@ -691,15 +696,13 @@ white-space: nowrap;
 }
 
 .meta-lists .inline-list {
-  font-size: .9em;
-color:
-#828282;
+font-size: 1.2em;
+color:#828282;
 margin: 2px 0 0 0;
 }
 
 .meta-lists .inline-list span {
-  color:
-#828282;
+color:#828282;
 font-weight: bold;
 margin-right: 5px;
 }
@@ -725,7 +728,7 @@ background-position: 50% -50%;
 
 /* JAWBONE MENU */
 
-.jaw-bone-container .menu {
+.ai-content-area-container .menu {
   position: absolute;
 bottom: 0;
 left: 0;
@@ -742,7 +745,7 @@ list-style: none;
 pointer-events: none;
 }
 
-.jaw-bone-container .menu li {
+.ai-content-area-container .menu li {
   padding: 1em 1.5em 0;
 display: flex;
 flex-direction: column;
@@ -752,7 +755,7 @@ min-width: 5%;
 pointer-events: auto;
 }
 
-.jaw-bone-container .menu a {
+.ai-content-area-container .menu a {
   margin: 0;
 padding: 0;
 letter-spacing: 1px;
@@ -764,20 +767,20 @@ text-decoration: none;
 cursor: pointer;
 }
 
-.jaw-bone-container .menu li span {
+.ai-content-area-container .menu li span {
   height: .33em;
   display: block;
   width: 100%;
   margin-top: .66em;
 }
 
-.jaw-bone-container .menu li.current span {
+.ai-content-area-container .menu li.current span {
   transform: translateY(0);
 background-color:
 #E50914;
 }
 
-.testing { 
+.background-app { 
   overflow: hidden;
   z-index: 0;
 }
@@ -793,7 +796,7 @@ background-color:
   right: 0;
   bottom: -4px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  z-index: 20;
+  z-index: 4;
 }
 
 .mark:before, .mark:after {
@@ -806,6 +809,7 @@ background-color:
     margin-left: -13px;
     border-style: solid;
     border-width: 7px 13px 0 13px;
+    z-index: 4;
 }
 
 .mark:before {
@@ -823,19 +827,12 @@ background-color:
 .show-details {
 
   position: absolute;
-  left: 50%;
   bottom: 0.1vw;
   opacity: 0;
   border:0;
   background: transparent;
   outline:none;
-
-
-
-
-
-
-
+  width:100%;
   transform: translateY(0);
   transition: transform 0.4s, opacity 0.4s, -webkit-transform 0.4s, -moz-transform 0.4s, -o-transform 0.4s;
   transition-delay: 0.2s;
@@ -857,6 +854,10 @@ background-color:
     cursor: pointer;
 }
 
+.show-details span svg:hover {
+  color: #E50914;
+}
+
 .show-details span svg {
   font-size:2rem;
   
@@ -874,5 +875,138 @@ background-color:
 }
 
 
+.jaw-bone-content.open .jaw-bone-open-container {
+  opacity: 1;
+}
 
 
+
+
+/* jawbone reworked */
+
+
+.additional-information {
+  position: relative;
+  height: 37vw;
+  margin-top: -40px;
+  margin-top: 2px;
+  padding: 0;
+  background-color:#141414;
+}
+
+.ai-background, .ai-background-shadow, .ai-background-image, .ai-content-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.ai-background {
+  left: 0;
+  right: 0;
+}
+
+.ai-background-shadow {
+  left: 0;
+  background:#000;
+  width: 30%;
+  z-index: 2;
+}
+
+.ai-background-shadow:before {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  background-image: linear-gradient(to right,#000,transparent);
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 275px;
+}
+
+.ai-background-image {
+  right: 0;
+  width: 70%;
+  height: 100%;
+  background-position: center 10%;
+  background-size: cover;
+  z-index: 1;
+}
+
+.ai-background-area {
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 3;
+}
+
+
+.ai-background-nav-shadow {
+  height: 114px;
+  background: url('https://assets.nflxext.com/en_us/akira/jawBone/nav-shadow.png') no-repeat center 100%;
+  background-size: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-size: 100% 114px;
+}
+
+.ai-close-button {
+  color: #fff;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    outline: none;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 2vw;
+    z-index: 12;
+
+
+}
+
+
+.ai-content-area {
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 3;
+}
+
+.ai-content-area-container {
+  padding: 18px 0 12px 4%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.ai-content-area-container h3 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.ai-content-area-container h3 div {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  line-height: 1.3;
+  margin: 0 0 .2em 0;
+  font-weight: bold;
+  color:#fff;
+  height: 7vw;
+  font-size: 3vw;
+  width: 50vw;
+}
+
+.ai-content-area-container h3 div img {
+  height: 7vw;
+  transform-origin: 0 0;
+}

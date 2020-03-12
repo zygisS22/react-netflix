@@ -10,7 +10,7 @@ function HeroImage() {
         <div className="billboard-content-limits">
             <div className="billboard-base">
                 <div className="billboard-image-wrapper">
-                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABbyMI1viIF260mlddPdiway0G3SmZ7Lu_th_Wn-N2Kp-mdCBWXUHwDVsE5C-1SCLULX1p_waKZyl_bz2YbolHnaUFnEM.jpg?r=185"} alt={"hero"} />
+                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABfa-QSMvnLx0U1cfYX7Yo9mZrmI2M1VeIcNMthA7AmC-EKG2sOh1fx7tkNOU0Eof6aKRF56p-5WZOd66NtatC4fWkCkN.jpg?r=6da"} alt={"hero"} />
 
                     <div className="billboard-vignette"></div>
                     <div className="billboard-vignette-bottom"></div>
@@ -22,7 +22,7 @@ function HeroImage() {
                     <div className="logo-and-text">
 
                         <div className="billboard-title">
-                            <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/TsSRXvDuraoJ7apdkH6tsHhf-ZQ/AAAABXP2zOcD52bnvBOLBUCnm202cwYUc4TTQUvl5BW4RP8O41Vro-1WHG2l8JigrvhlC-eN7p9ISqXYpvJglgagy_h18tz1oo_QaTMU.png?r=7e1"} alt="title" />
+                            <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/TsSRXvDuraoJ7apdkH6tsHhf-ZQ/AAAABe8TY2uebJ4BFANuTXLz5IhBxCLwg8EV7ZOw4K6pCX6KBw0ifxFHAiVVXLqo0p47hX9OOhCDSplQuMfsAUCNEIZ4pDMEcDnpmBpI.png?r=d80"} alt="title" />
                         </div>
 
                         <div className="billboard-description">

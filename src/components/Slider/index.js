@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import SliderItem from "../SliderItem"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft, faPlay, faPlus, faOtter } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faTimes, faPlus, faPlay } from '@fortawesome/free-solid-svg-icons'
 
 import SliderContext from "./context"
 import useSlide from "../../hooks/useSlide"
@@ -116,9 +116,11 @@ function Slider() {
 
         const selected = content.filter(item => item.id === id)[0]
 
-
-
         setCurrentSlide(selected)
+    }
+
+    const closeInformationWindow = () => {
+        setCurrentSlide(null)
     }
 
     const moveSection = (type) => {
@@ -317,23 +319,22 @@ function Slider() {
                     </div>
                 </div>
 
+                {currentSlide && (<div className="additional-information">
+                    <div className="ai-background">
+                        <div className="ai-background-shadow" />
+                        <div
+                            className="ai-background-image"
+                            style={{ 'backgroundImage': `url(https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbjjL2qGJzMOn4ll2z_7FUhCpubFddwRSN6LWNoJaRPmP0MQOWOkHy93CT7F8XRvWkBzU9LeQtDmholuBEABQTWJPc5k.jpg?r=1dc)` }}
+                        />
 
-                {/* <span className="jaw-bone-content">
-                <span className="jaw-bone-open-container">
-                    <div className="jaw-bone-container">
-                        <div className="background">
+                        <div className="ai-background-nav-shadow"></div>
+                    </div>
 
-                            <div className="jaw-bone-background">
-                                <div className="image-rotator"></div>
-                            </div>
-
-                            <div className="vignette"></div>
-                            <div className="nav-shadow"></div>
-                        </div>
-                        <div className="jaw-bone">
+                    <div className="ai-content-area">
+                        <div className="ai-content-area-container">
                             <h3>
                                 <div>
-                                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/AwfSa8TtJlDHJjLcbE--NI7p5gU/AAAABWnNRebcIUa6-YC6iaxEOvMGv0JSO3ILfKOREmlmp0or8V914Ss9TJtgwGWJaOPTJMPKfaCNLbVOjdHKiMVZk8G5bbyBe88Bug.png?r=4c5"} alt={"test"} />
+                                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/AwfSa8TtJlDHJjLcbE--NI7p5gU/AAAABehBFm6NZXsNkUPYc66khsJG2gZkV6OmCqyRLiVtZfG2eQpR1fAxYIlb_DMOA_M0nhB07WKuNIU3wpJEXvjlwZBU7R_g5NXDO2jQ7QpvkHl_3wG_VKkFFTNFbyNPjrxr1krJEaaTWFs0qjTjE5IuxPP5Rc0oMKoVV-coAO-8bMM.png?r=c9b"} alt={"test"} />
 
                                 </div>
                             </h3>
@@ -347,7 +348,7 @@ function Slider() {
                                 </div>
 
                                 <div className="synopsis">
-                                    Un príncipe que sufre una maldición letal se propone buscar una cura, y queda atrapado en una batalla entre un pueblo minero y los animales del bosque.
+                                    El plan de Belmont y Sypha para dejar Lindenfeld sufre un imprevisto. Isaac y el capitán reflexionan sobre los valores de la humanidad. Hector intenta entender a Lenore.
                                 </div>
 
                                 <div className="actions">
@@ -395,10 +396,98 @@ function Slider() {
 
 
                         </div>
-                        <button className="close-button"><span>X</span></button>
+
+                        <button className="ai-close-button" onClick={() => closeInformationWindow()}><span><FontAwesomeIcon icon={faTimes} /></span></button>
+
+
                     </div>
-                </span>
-            </span> */}
+
+                </div>)}
+
+
+
+
+                {/* <span className="jaw-bone-content open">
+                    <span className="jaw-bone-open-container">
+                        <div className="jaw-bone-container">
+                            <div className="background">
+
+                                <div className="jaw-bone-background">
+                                    <div className="image-rotator"></div>
+                                </div>
+
+                                <div className="vignette"></div>
+                                <div className="nav-shadow"></div>
+                            </div>
+                            <div className="jaw-bone">
+                                <h3>
+                                    <div>
+                                        <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/AwfSa8TtJlDHJjLcbE--NI7p5gU/AAAABWnNRebcIUa6-YC6iaxEOvMGv0JSO3ILfKOREmlmp0or8V914Ss9TJtgwGWJaOPTJMPKfaCNLbVOjdHKiMVZk8G5bbyBe88Bug.png?r=4c5"} alt={"test"} />
+
+                                    </div>
+                                </h3>
+
+                                <div className="jaw-bone-common">
+                                    <div className="metadata">
+                                        <span className="score">98% de coincidencia</span>
+                                        <span className="year">1997</span>
+                                        <span className="maturity-rating">+13</span>
+                                        <span className="duration">2h 14m</span>
+                                    </div>
+
+                                    <div className="synopsis">
+                                        Un príncipe que sufre una maldición letal se propone buscar una cura, y queda atrapado en una batalla entre un pueblo minero y los animales del bosque.
+                                </div>
+
+                                    <div className="actions">
+                                        <a className="play-link" href={"/"} >
+                                            <button className="hasLabel">
+                                                <span className="play-icon"><FontAwesomeIcon icon={faPlay} /></span>
+                                                <span>Reproducir</span>
+                                            </button>
+                                        </a>
+
+                                        <button className="hasLabel play-link-secondary">
+                                            <span className="play-icon"><FontAwesomeIcon icon={faPlus} /></span>
+                                            <span>Mi lista</span>
+                                        </button>
+                                    </div>
+
+                                    <div className="meta-lists">
+                                        <p className="inline-list">
+                                            <span>Protagonizada por:</span>
+                                            Yoji Matsuda,Yuriko Ishida,Yuko Tanaka
+
+                                    </p>
+                                        <p className="inline-list">
+                                            <span>Géneros:</span>
+                                            Animes de acción,Animes de ciencia ficción y fantásticos,Largometrajes de anime
+                                    </p>
+                                    </div>
+
+                                    <ul className="menu">
+                                        <li className="current">
+                                            <a href={"/"}>INFROMACION GENERAL</a>
+                                            <span></span>
+                                        </li>
+                                        <li>
+                                            <a href={"/"}>SIMILARES</a>
+                                            <span></span>
+                                        </li>
+                                        <li>
+                                            <a href={"/"}>DETALLES</a>
+                                            <span></span>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+                            <button className="close-button"><span>X</span></button>
+                        </div>
+                    </span>
+                </span> */}
 
             </div>
         </SliderContext.Provider>

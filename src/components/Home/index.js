@@ -6,7 +6,7 @@ import Slider from "../Slider"
 function Home() {
     return (
 
-        <div className="testing">
+        <div>
 
             <HeroImage />
 

@@ -12,13 +12,13 @@ const Routes = () => {
 
 
     return (
-        <React.Fragment>
+        <div className="background-app">
             <Header />
             <Switch>
                 <Route component={Home} exact path="/" />
             </Switch>
-            <Footer />
-        </React.Fragment>
+
+        </div>
     )
 }
 
