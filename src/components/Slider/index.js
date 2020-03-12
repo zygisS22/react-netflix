@@ -53,7 +53,92 @@ function Slider() {
         "index": 6,
         "transform": "0",
         "origin": "center",
-    }]
+    },
+    {
+        "id": "slide8",
+        "title": "test8",
+        "index": 7,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide9",
+        "title": "test9",
+        "index": 8,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide10",
+        "title": "test10",
+        "index": 9,
+        "transform": "0",
+        "origin": "center",
+    },
+    {
+        "id": "slide11",
+        "title": "test11",
+        "index": 10,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide12",
+        "title": "test12",
+        "index": 11,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide13",
+        "title": "test13",
+        "index": 12,
+        "transform": "0",
+        "origin": "center",
+    },
+    {
+        "id": "slide14",
+        "title": "test14",
+        "index": 13,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide15",
+        "title": "test15",
+        "index": 14,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide16",
+        "title": "test16",
+        "index": 15,
+        "transform": "0",
+        "origin": "center",
+    },
+    {
+        "id": "slide17",
+        "title": "test17",
+        "index": 16,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide18",
+        "title": "test18",
+        "index": 17,
+        "transform": "0",
+        "origin": "center",
+    }, {
+        "id": "slide19",
+        "title": "test19",
+        "index": 18,
+        "transform": "0",
+        "origin": "center",
+    },
+    {
+        "id": "slide20",
+        "title": "test20",
+        "index": 19,
+        "transform": "0",
+        "origin": "center",
+    }
+
+    ]
 
 
 
@@ -61,23 +146,6 @@ function Slider() {
     const ref = useRef(null)
     const [content, setContent] = useState(pruebing)
 
-
-    // &:not(&--open) .item:hover .show-details-button {
-    //     opacity: 1;
-    //   }
-
-    //   &:not(&--open) .item:hover {
-    //     transform: scale(1.5) !important;
-    //   }
-
-    //   &:not(&--open):hover .item {
-    //     transform: translateX(-25%);
-    //   }
-
-    //   &:not(&--open) .item:hover ~ .item {
-    //     transform: translateX(25%);
-    //   }
-    // }
 
 
 
@@ -88,6 +156,10 @@ function Slider() {
     const [totalInViewport, setTotalInViewport] = useState(0)
     const [currentSlide, setCurrentSlide] = useState(null);
     const [itemWidth, setItemWidth] = useState(0)
+
+
+    const hasPrev = distance < 0;
+    const hasNext = (viewed + totalInViewport) < 20; // nº elements
 
 
     // const {
@@ -124,7 +196,7 @@ function Slider() {
     }
 
     const moveSection = (type) => {
-        console.log("MOVER")
+
 
         if (type == "right") {
             setViewed(viewed + totalInViewport);
@@ -132,6 +204,37 @@ function Slider() {
         } else if (type == "left") {
             setViewed(viewed - totalInViewport);
             setDistance(distance + containerWidth);
+        }
+
+        if (currentSlide) {
+
+            let elementsWithClass = Object.entries(slider).filter(item => {
+
+                if (item[1].className.includes("onScreen")) return true
+            })
+
+            let selectedItem = null
+
+
+            if (type == "right") {
+
+
+                elementsWithClass = elementsWithClass.slice(-1)[0]
+                elementsWithClass = elementsWithClass[1].dataset.id
+                selectedItem = content.filter(item => item.id === elementsWithClass)[0]
+                selectedItem = content[selectedItem.index + 1]
+
+            } else if (type == "left") {
+
+                elementsWithClass = elementsWithClass[0]
+                elementsWithClass = elementsWithClass[1].dataset.id
+                selectedItem = content.filter(item => item.id === elementsWithClass)[0]
+                selectedItem = content[selectedItem.index - 1]
+
+            }
+
+            setCurrentSlide(selectedItem)
+
         }
 
 
@@ -179,6 +282,8 @@ function Slider() {
         e.preventDefault()
 
         if (currentSlide) return
+
+        if (!slider) return
 
         const slideItemIndex = Object.entries(slider).findIndex(item => item[1] == e.currentTarget)
         const itemId = slider[slideItemIndex].dataset.id
@@ -311,13 +416,16 @@ function Slider() {
 
                         </div>
 
-                        <span className="handle handleNext" onClick={() => moveSection("right")}>
+                        {hasNext && (<span className="handle handleNext" onClick={() => moveSection("right")}>
                             <strong><FontAwesomeIcon icon={faChevronRight} /></strong>
-                        </span>
+                        </span>)}
 
-                        <span className="handle handlePrev" onClick={() => moveSection("left")}>
+
+                        {hasPrev && (<span className="handle handlePrev" onClick={() => moveSection("left")}>
                             <strong><FontAwesomeIcon icon={faChevronLeft} /></strong>
-                        </span>
+                        </span>)}
+
+
                     </div>
                 </div>
 
