@@ -420,7 +420,7 @@ function Slider() {
             <div className="sliderBox">
                 <h2 className="slider-header">
                     <a href={"/"}>
-                        <div>Mi lista {width}</div>
+                        <div>Mi lista</div>
                         {/* <div>Explorar más</div> */}
 
 

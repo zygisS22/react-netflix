@@ -12,6 +12,7 @@ function SliderItem(props) {
 
     const ref = useRef(null)
     const [inViewport, setInViewport] = useState(false)
+    const [showOverlay, setShowOverlay] = useState(false)
 
     const itemVisible = () => {
         setInViewport(true)
@@ -19,6 +20,19 @@ function SliderItem(props) {
 
     const itemNotVisible = () => {
         setInViewport(false)
+    }
+
+    const onHover = (e) => {
+        props.hover(e)
+
+        setShowOverlay(true)
+    }
+
+    const onHoverLeave = (e) => {
+
+        props.reset(e)
+
+        setShowOverlay(false)
     }
 
     const test = useContext(SliderContext);
@@ -44,8 +58,8 @@ function SliderItem(props) {
             data-id={props.title}
             className={`slider-item ${inViewport ? "onScreen" : ""}`}
             ref={ref}
-            onMouseLeave={(e) => props.reset(e)}
-            onMouseEnter={(e) => props.hover(e)}
+            onMouseLeave={(e) => onHoverLeave(e)}
+            onMouseEnter={(e) => onHover(e)}
         >
             <a>
                 <div className="boxart">
@@ -58,6 +72,26 @@ function SliderItem(props) {
             <button onClick={() => props.onSelectSlide(props.title)} className="show-details">
                 <span><FontAwesomeIcon icon={faAngleDown} /></span>
             </button>
+
+            <div className={`item-overlay ${showOverlay ? "open" : ""}`}>
+                <div className="item-wrapper">
+                    <div className="item-overview">
+                        <div className="item-overview-play">Play</div>
+                        <div className="item-overview-title">The witcher</div>
+                        <div className="item-overview-metadata">98% coincidencia 16+</div>
+                        <div className="item-overview-tags">
+                            <ul>
+                                <li>Intima</li>
+                                <li>Emotiva</li>
+                                <li>Juvenil</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="item-actions"></div>
+                    <div className="item-chevron"></div>
+                </div>
+
+            </div>
 
             {isActive && (<div className="mark" />)}
 
