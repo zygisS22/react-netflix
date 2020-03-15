@@ -4,7 +4,7 @@ import SliderContext from "../Slider/context"
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 
 
 function SliderItem(props) {
@@ -76,18 +76,22 @@ function SliderItem(props) {
             <div className={`item-overlay ${showOverlay ? "open" : ""}`}>
                 <div className="item-wrapper">
                     <div className="item-overview">
-                        <div className="item-overview-play">Play</div>
+                        <div className="item-overview-play">
+                            <span><FontAwesomeIcon icon={faPlayCircle} /></span>
+                        </div>
                         <div className="item-overview-title">The witcher</div>
-                        <div className="item-overview-metadata">98% coincidencia 16+</div>
-                        <div className="item-overview-tags">
-                            <ul>
-                                <li>Intima</li>
-                                <li>Emotiva</li>
-                                <li>Juvenil</li>
-                            </ul>
+                        <div className="item-overview-metadata">98% coincidencia 16+ 1h 13m</div>
+                        <div className="item-overview-synopsis">
+                            Los demonios y sus malvados secuaces destruyen al antiguo mentor y a los aliados de este valiente mercenario.
                         </div>
                     </div>
-                    <div className="item-actions"></div>
+                    <div className="item-actions">
+                        <div className="item-action-buttons">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                    </div>
                     <div className="item-chevron"></div>
                 </div>
 
