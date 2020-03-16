@@ -80,7 +80,11 @@ function SliderItem(props) {
                             <span><FontAwesomeIcon icon={faPlayCircle} /></span>
                         </div>
                         <div className="item-overview-title">The witcher</div>
-                        <div className="item-overview-metadata">98% coincidencia 16+ 1h 13m</div>
+                        <div className="item-overview-metadata">
+                            <span className="metadata-rating">Novedad</span>
+                            <span className="metadata-maturity">16+</span>
+                            <span>1h 13m</span>
+                        </div>
                         <div className="item-overview-synopsis">
                             Los demonios y sus malvados secuaces destruyen al antiguo mentor y a los aliados de este valiente mercenario.
                         </div>
