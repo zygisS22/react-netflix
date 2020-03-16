@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroImage from "../HeroImage"
 import Slider from "../Slider"
+import MediumBillboard from '../MediumBillboard';
 
 
 function Home() {
@@ -18,6 +19,8 @@ function Home() {
             <Slider />
 
             <Slider />
+
+            <MediumBillboard />
 
             <Slider />
 
