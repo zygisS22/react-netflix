@@ -14,6 +14,8 @@ function SliderItem(props) {
     const [inViewport, setInViewport] = useState(false)
     const [showOverlay, setShowOverlay] = useState(false)
 
+    const sliderWrapper = useContext(SliderContext);
+
     const itemVisible = () => {
         setInViewport(true)
     }
@@ -23,9 +25,12 @@ function SliderItem(props) {
     }
 
     const onHover = (e) => {
-        props.hover(e)
 
-        setShowOverlay(true)
+        if (!sliderWrapper.currentSlide) {
+            props.hover(e)
+            setShowOverlay(true)
+        }
+
     }
 
     const onHoverLeave = (e) => {
@@ -35,9 +40,9 @@ function SliderItem(props) {
         setShowOverlay(false)
     }
 
-    const test = useContext(SliderContext);
 
-    const isActive = test.currentSlide && test.currentSlide.id === props.title;
+
+    const isActive = sliderWrapper.currentSlide && sliderWrapper.currentSlide.id === props.title;
 
 
     useVisibility(ref, itemVisible, itemNotVisible);

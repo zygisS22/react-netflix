@@ -1,15 +1,13 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useRef, useEffect } from 'react';
 import SliderItem from "../SliderItem"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faTimes, faPlus, faPlay } from '@fortawesome/free-solid-svg-icons'
 
 import SliderContext from "./context"
-import useSlide from "../../hooks/useSlide"
+import useSlider from "../../hooks/useSlide"
 
 import useWindowWidth from "../../hooks/useWindowWidth"
-
-import useSizeElement from "../../hooks/useSizeElement"
 
 
 function Slider() {
@@ -145,254 +143,33 @@ function Slider() {
 
 
     const width = useWindowWidth()
-
-    const [slider, setSlider] = useState(null)
     const ref = useRef(null)
-    const [content, setContent] = useState(pruebing)
 
-
-    const [sliderIndex, setSliderIndex] = useState(0)
-    const [sliderPages, setSliderPages] = useState(0)
-    const totalItems = 20
-
-
-    const [viewed, setViewed] = useState(0);
-    const [distance, setDistance] = useState(0);
-    const [containerWidth, setContainerWidth] = useState(0);
-    const [totalInViewport, setTotalInViewport] = useState(0)
-    const [currentSlide, setCurrentSlide] = useState(null);
-    const [itemWidth, setItemWidth] = useState(0)
-
-
-
-
-    const hasPrev = distance < 0;
-    const hasNext = (viewed + totalInViewport) < totalItems; // nº elements
-
-
-    // const {
-    //     handlePrev,
-    //     handleNext,
-    //     slideProps,
-    //     containerRef,
-    //     hasNext,
-    //     hasPrev
-    // } = useSlide(ref, 7);
-
-    let slideProps = {
-        style: { transform: `translate3d(${distance}px, 0, 0)` }
-    };
+    const {
+        moveSection,
+        selectSlide,
+        closeInformationWindow,
+        scaleTiles,
+        resetSize,
+        sliderIndex,
+        sliderPages,
+        slideProps,
+        hasPrev,
+        hasNext,
+        content,
+        currentSlide
+    } = useSlider(width, ref, 20, pruebing);
 
 
     const contextValue = {
-        // onSelectSlide: handleSelect,
-        // onCloseSlide: handleClose,
-        //elementRef,
-        currentSlide,
+        currentSlide
     };
-
-
-    const selectSlide = (id) => {
-
-        const selected = content.filter(item => item.id === id)[0]
-
-        setCurrentSlide(selected)
-    }
-
-    const closeInformationWindow = () => {
-        setCurrentSlide(null)
-    }
-
-    const moveSection = (type) => {
-
-        if (type == "right") {
-
-            setViewed(viewed + totalInViewport);
-            setDistance(distance - containerWidth)
-            setSliderIndex(prevState => prevState + 1)
-
-
-        } else if (type == "left") {
-
-            setViewed(viewed - totalInViewport);
-            setDistance(distance + containerWidth);
-            setSliderIndex(prevState => prevState - 1)
-
-        }
-
-
-
-        if (currentSlide) {
-
-            let elementsWithClass = Object.entries(slider).filter(item => {
-
-                if (item[1].className.includes("onScreen")) return true
-            })
-
-            let selectedItem = null
-
-
-            if (type == "right") {
-
-
-                elementsWithClass = elementsWithClass.slice(-1)[0]
-                elementsWithClass = elementsWithClass[1].dataset.id
-                selectedItem = content.filter(item => item.id === elementsWithClass)[0]
-                selectedItem = content[selectedItem.index + 1]
-
-            } else if (type == "left") {
-
-                elementsWithClass = elementsWithClass[0]
-                elementsWithClass = elementsWithClass[1].dataset.id
-                selectedItem = content.filter(item => item.id === elementsWithClass)[0]
-                selectedItem = content[selectedItem.index - 1]
-
-            }
-
-            setCurrentSlide(selectedItem)
-
-        }
-
-
-    }
 
 
     useEffect(() => {
 
 
-        if (ref.current) {
-
-
-            const containerWidth = ref.current.clientWidth;
-            const itemWidth = ref.current.firstChild.clientWidth
-            const totalInViewport = Math.ceil(containerWidth / itemWidth)
-
-            setSlider(ref.current.children)
-            setItemWidth(itemWidth)
-            setContainerWidth(containerWidth);
-            setTotalInViewport(totalInViewport);
-            setSliderPages(totalItems / totalInViewport)
-
-        }
-
     }, [width])
-
-
-
-
-    const resetSize = (e) => {
-
-        setContent(prevState => {
-
-            let newState = prevState.map((item, index) => {
-
-                item.transform = "0px"
-                return item
-
-            })
-
-            return newState
-        })
-    }
-
-    const scaleTitle = (e) => {
-
-        e.preventDefault()
-
-        if (currentSlide) return
-
-        if (!slider) return
-
-        const slideItemIndex = Object.entries(slider).findIndex(item => item[1] == e.currentTarget)
-        const itemId = slider[slideItemIndex].dataset.id
-        const hoveredSlide = content.filter(item => item.id === itemId)[0]
-
-
-        let nextItem = isOnScreen(slider[slideItemIndex + 1])
-        let prevItem = isOnScreen(slider[slideItemIndex - 1])
-
-        //EDGE CASE : CHECK IF LEFT FIRST OR LAST RIGHT ELEMENT
-
-        if (prevItem && nextItem) {
-
-            setContent(prevState => {
-
-                let newState = prevState.map((item, index) => {
-
-                    item.origin = "center center"
-
-                    if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
-                        item.transform = "25%"
-
-                        return item
-                    } else if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
-                        item.transform = "-25%"
-                        return item
-                    } else {
-                        item.transform = "0px"
-                        return item
-                    }
-
-                })
-
-                return newState
-            })
-
-
-        } else if (!prevItem) {
-
-            setContent(prevState => {
-
-                let newState = prevState.map((item, index) => {
-                    if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
-                        item.transform = "50%"
-                        item.origin = "center center"
-                        return item
-                    } else {
-                        item.transform = "0px"
-                        item.origin = "left center"
-
-                        return item
-                    }
-                })
-
-                return newState
-            })
-
-
-        } else if (!nextItem) {
-
-            setContent(prevState => {
-
-                let newState = prevState.map((item, index) => {
-                    if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
-                        item.transform = "-50%"
-                        item.origin = "center center"
-                        return item
-                    } else {
-                        item.transform = "0px"
-                        item.origin = "center right "
-                        return item
-                    }
-                })
-
-                return newState
-            })
-        }
-
-
-    }
-
-
-    const isOnScreen = (slide) => {
-
-        if (slide && slide.className.split(" ").includes("onScreen")) {
-            return true
-        }
-
-        return false
-
-    }
 
 
     const paginationIndicator = (nPages) => {
@@ -446,7 +223,7 @@ function Slider() {
                                     return <SliderItem
                                         key={item.id}
                                         title={item.id}
-                                        hover={scaleTitle}
+                                        hover={scaleTiles}
                                         reset={resetSize}
                                         transform={item.transform}
                                         origin={item.origin}

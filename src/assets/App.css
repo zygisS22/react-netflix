@@ -844,7 +844,7 @@ background-color:
   transform: translateY(0);
   transition: transform 0.4s, opacity 0.4s, -webkit-transform 0.4s, -moz-transform 0.4s, -o-transform 0.4s;
   transition-delay: 0.2s;
-  z-index: 2;
+  z-index: 3;
 }
 
 
