@@ -4,7 +4,7 @@ import SliderContext from "../Slider/context"
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faPlayCircle, faVolumeMute, faThumbsUp, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 function SliderItem(props) {
@@ -87,9 +87,9 @@ function SliderItem(props) {
                     </div>
                     <div className="item-actions">
                         <div className="item-action-buttons">
-                            <div>1</div>
-                            <div>2</div>
-                            <div>3</div>
+                            <div><span><FontAwesomeIcon icon={faVolumeMute} /></span></div>
+                            <div><span><FontAwesomeIcon icon={faThumbsUp} /></span></div>
+                            <div><span><FontAwesomeIcon icon={faPlus} /></span></div>
                         </div>
                     </div>
                     <div className="item-chevron"></div>
