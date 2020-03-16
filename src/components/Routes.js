@@ -18,6 +18,7 @@ const Routes = () => {
                 <Route component={Home} exact path="/" />
             </Switch>
 
+            <Footer />
         </div>
     )
 }

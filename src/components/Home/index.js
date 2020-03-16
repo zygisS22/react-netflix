@@ -11,9 +11,6 @@ function Home() {
 
             <HeroImage />
 
-
-            <Slider />
-
             <Slider />
 
             <Slider />
@@ -24,9 +21,7 @@ function Home() {
 
             <Slider />
 
-            <Slider />
 
-            <Slider />
         </div>
 
 
