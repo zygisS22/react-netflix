@@ -198,7 +198,8 @@ function Slider() {
                 <h2 className="slider-header">
                     <a href={"/"}>
                         <div>Mi lista</div>
-                        {/* <div>Explorar más</div> */}
+                        <div className="see-more">Explorar más</div>
+                        <div className="see-more-chevron"><FontAwesomeIcon icon={faChevronRight} /></div>
 
 
                     </a>

@@ -369,9 +369,43 @@ rgba(0, 0, 0, 0) 85%);
   font-weight: bold;
   margin: 0 4% 0.5em 4%;
   text-decoration: none;
-  display: inline-block;
+  display: flex;
+  align-items: first baseline;
+
   min-width: 6em;
   cursor:pointer;
+}
+
+.slider-header a .see-more {
+  margin-left: 1%;
+  max-width: 0;
+  line-height: 0.8vw;
+  opacity: 0;
+  font-size: .9vw;
+  transition: max-width 1s, opacity 1s, transform 750ms;
+  white-space: nowrap;
+}
+
+.slider-header a:hover .see-more {
+  max-width: 200px;
+  transform: translate(1vw, 0);
+  opacity: 1;
+}
+
+.slider-header a .see-more-chevron {
+  display: none;
+  transition: transform 750ms;
+  margin-left: 4px;
+  font-weight: bold;
+  font-size: 1vw;
+}
+
+.slider-header a:hover .see-more-chevron {
+  /* content:'\e658' */
+  display: block;
+  transform: translate(1vw, 0);
+  font-size: .8vw;
+  line-height: .8vw;
 }
 
 .slider-container {

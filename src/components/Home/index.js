@@ -15,9 +15,9 @@ function Home() {
 
             <Slider />
 
-            <Slider />
-
             <MediumBillboard />
+
+            <Slider />
 
             <Slider />
 
