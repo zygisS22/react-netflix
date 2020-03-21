@@ -74,6 +74,7 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
             })
 
             let selectedItem = null
+            let selectedItemIndex = null
 
 
             if (type == "right") {
@@ -82,15 +83,30 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
                 elementsWithClass = elementsWithClass.slice(-1)[0]
                 elementsWithClass = elementsWithClass[1].dataset.id
 
-                selectedItem = content.filter(item => item.id === elementsWithClass)[0]
-                selectedItem = content[selectedItem.index + 1]
+                selectedItem = content.filter((item, index) => {
+                    if (item.id === parseInt(elementsWithClass)) {
+                        selectedItemIndex = index
+                        return true
+                    }
+
+                })[0]
+
+                selectedItem = content[selectedItemIndex + 1]
 
             } else if (type == "left") {
 
                 elementsWithClass = elementsWithClass[0]
                 elementsWithClass = elementsWithClass[1].dataset.id
-                selectedItem = content.filter(item => item.id === elementsWithClass)[0]
-                selectedItem = content[selectedItem.index - 1]
+
+                selectedItem = content.filter((item, index) => {
+                    if (item.id === parseInt(elementsWithClass)) {
+                        selectedItemIndex = index
+                        return true
+                    }
+
+                })[0]
+
+                selectedItem = content[selectedItemIndex - 1]
 
             }
 

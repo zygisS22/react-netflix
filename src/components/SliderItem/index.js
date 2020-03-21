@@ -52,7 +52,6 @@ function SliderItem(props) {
 
     useEffect(() => {
 
-        console.log(props.data)
 
     }, [inViewport, setInViewport])
 
