@@ -53,6 +53,8 @@ function SliderItem(props) {
 
     useEffect(() => {
 
+        console.log(props.data)
+
     }, [inViewport, setInViewport])
 
     const translate = `translateX(${props.transform})`
@@ -89,8 +91,8 @@ function SliderItem(props) {
                         <div className="item-overview-title">{props.data.title}</div>
                         <div className="item-overview-metadata">
                             <span className="metadata-rating">Novedad</span>
-                            <span className="metadata-maturity">16+</span>
-                            <span>1h 13m</span>
+                            <span className="metadata-maturity">{props.data.adult == true ? "+18" : "+13"}</span>
+                            <span>{props.data.vote_average}</span>
                         </div>
                         <div className="item-overview-synopsis">
                             {props.data.genre_ids.map((item, index) => {

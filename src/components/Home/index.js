@@ -42,7 +42,7 @@ function Home() {
 
             {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} />}
 
-            {bestMovies && <Slider mainTitle={"Mejores peliculas de 2015"} data={bestMovies} />}
+            {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} />}
 
 
         </div>

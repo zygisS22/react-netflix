@@ -63,9 +63,6 @@ export async function getMoviesBy(type) {
     }
 
 
-    console.log(discover)
-
-
     return await axios.get(discover)
         .then(function (response) {
 
