@@ -7,10 +7,13 @@ import { faChevronRight, faChevronLeft, faTimes, faPlus, faPlay } from '@fortawe
 import SliderContext from "./context"
 import useSlider from "../../hooks/useSlide"
 
+
+import { IMAGE_BASE } from "../../api"
+
 import useWindowWidth from "../../hooks/useWindowWidth"
 
 
-function Slider() {
+function Slider({ mainTitle, data }) {
 
     const pruebing = [{
         "id": "slide1",
@@ -142,6 +145,9 @@ function Slider() {
     ]
 
 
+
+
+
     const width = useWindowWidth()
     const ref = useRef(null)
 
@@ -158,7 +164,7 @@ function Slider() {
         hasNext,
         content,
         currentSlide
-    } = useSlider(width, ref, 20, pruebing);
+    } = useSlider(width, ref, 20, data);
 
 
     const contextValue = {
@@ -197,7 +203,7 @@ function Slider() {
             <div className="sliderBox">
                 <h2 className="slider-header">
                     <a href={"/"}>
-                        <div>Mi lista</div>
+                        <div>{mainTitle}</div>
                         <div className="see-more">Explorar más</div>
                         <div className="see-more-chevron"><FontAwesomeIcon icon={faChevronRight} /></div>
 
@@ -224,6 +230,7 @@ function Slider() {
                                     return <SliderItem
                                         key={item.id}
                                         title={item.id}
+                                        data={item}
                                         hover={scaleTiles}
                                         reset={resetSize}
                                         transform={item.transform}
@@ -256,7 +263,7 @@ function Slider() {
                         <div className="ai-background-shadow" />
                         <div
                             className="ai-background-image"
-                            style={{ 'backgroundImage': `url(https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbjjL2qGJzMOn4ll2z_7FUhCpubFddwRSN6LWNoJaRPmP0MQOWOkHy93CT7F8XRvWkBzU9LeQtDmholuBEABQTWJPc5k.jpg?r=1dc)` }}
+                            style={{ 'backgroundImage': `url(${IMAGE_BASE}original/${currentSlide.backdrop_path})` }}
                         />
 
                         <div className="ai-background-nav-shadow"></div>
@@ -266,21 +273,20 @@ function Slider() {
                         <div className="ai-content-area-container">
                             <h3>
                                 <div>
-                                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/AwfSa8TtJlDHJjLcbE--NI7p5gU/AAAABehBFm6NZXsNkUPYc66khsJG2gZkV6OmCqyRLiVtZfG2eQpR1fAxYIlb_DMOA_M0nhB07WKuNIU3wpJEXvjlwZBU7R_g5NXDO2jQ7QpvkHl_3wG_VKkFFTNFbyNPjrxr1krJEaaTWFs0qjTjE5IuxPP5Rc0oMKoVV-coAO-8bMM.png?r=c9b"} alt={"test"} />
-
+                                    {currentSlide.title}
                                 </div>
                             </h3>
 
                             <div className="jaw-bone-common">
                                 <div className="metadata">
                                     <span className="score">98% de coincidencia</span>
-                                    <span className="year">1997</span>
+                                    <span className="year">{currentSlide.release_date}</span>
                                     <span className="maturity-rating">+13</span>
                                     <span className="duration">2h 14m</span>
                                 </div>
 
                                 <div className="synopsis">
-                                    El plan de Belmont y Sypha para dejar Lindenfeld sufre un imprevisto. Isaac y el capitán reflexionan sobre los valores de la humanidad. Hector intenta entender a Lenore.
+                                    {currentSlide.overview}
                                 </div>
 
                                 <div className="actions">

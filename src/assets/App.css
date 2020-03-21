@@ -722,8 +722,17 @@ white-space: nowrap;
 .jaw-bone-common .synopsis {
   margin: .8em 0 0 0;
   width: 45rem;
+  max-height: calc(2rem * 4);
   color:#999;
-  line-height: 1.3;
+  overflow: hidden;
+  line-height: 2rem;
+}
+
+.jaw-bone-common .synopsis::after {
+  content: "...";
+  position: relative;
+  bottom: 0;
+  right: 0;
 }
 
 .jaw-bone-common .actions {
@@ -1044,10 +1053,11 @@ background-color:
   margin: 0 0 .2em 0;
   font-weight: bold;
   color:#fff;
-  height: 7vw;
+  height: 4vw;
   font-size: 3vw;
   width: 50vw;
 }
+
 
 .ai-content-area-container h3 div img {
   height: 7vw;
@@ -1186,6 +1196,8 @@ background-color:
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
   font-size: 0.6vw;
 }
+
+
 
 
 .item-actions {
@@ -1358,8 +1370,9 @@ background-color:
   left: 60.9375vw;
 }
 
-.md-billboard-title img {
+.md-billboard-title {
   width: 27.03125vw;
+  font-size: 4vw;
   letter-spacing: -1px;
 }
 

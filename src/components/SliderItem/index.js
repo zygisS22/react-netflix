@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useContext } from 'react';
 import useVisibility from "../../hooks/useVisibility"
 import SliderContext from "../Slider/context"
 
+import { IMAGE_BASE } from "../../api"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faPlayCircle, faVolumeMute, faThumbsUp, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -51,6 +52,8 @@ function SliderItem(props) {
 
     useEffect(() => {
 
+        console.log(props.data)
+
     }, [inViewport, setInViewport])
 
     const translate = `translateX(${props.transform})`
@@ -68,7 +71,7 @@ function SliderItem(props) {
         >
             <a>
                 <div className="boxart">
-                    <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABbYGPa7zJQbEsyXeZPepSwRd3BNqrqyOS7VK_xXkAs5d31NIpoL3NQyFQeyIYjINIwtsw_Z6wjzhmZFXMnmiBWV8ecLIymc11ceqxH0m7fy1XTMjuTKkm2r7UJ37VA4V2yZmBNZupEhOM9ThxcHFkvi0osjHN2P95oNH74lTzULEqu9JNAuMb5qXIUVzQsZTCvj2lQd4reHhn_9irqyDzcNs.jpg?r=31b"} alt="boxart" />
+                    <img src={`${IMAGE_BASE}original/${props.data.backdrop_path}`} alt="boxart" />
 
                 </div>
             </a>
@@ -84,7 +87,7 @@ function SliderItem(props) {
                         <div className="item-overview-play">
                             <span><FontAwesomeIcon icon={faPlayCircle} /></span>
                         </div>
-                        <div className="item-overview-title">The witcher</div>
+                        <div className="item-overview-title">{props.data.title}</div>
                         <div className="item-overview-metadata">
                             <span className="metadata-rating">Novedad</span>
                             <span className="metadata-maturity">16+</span>

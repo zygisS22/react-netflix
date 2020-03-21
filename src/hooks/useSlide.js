@@ -11,7 +11,6 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
     const [itemWidth, setItemWidth] = useState(0)
 
 
-
     const [slider, setSlider] = useState(null)
     const [currentSlide, setCurrentSlide] = useState(null);
     const [content, setContent] = useState(data)
@@ -82,6 +81,7 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
                 elementsWithClass = elementsWithClass.slice(-1)[0]
                 elementsWithClass = elementsWithClass[1].dataset.id
+
                 selectedItem = content.filter(item => item.id === elementsWithClass)[0]
                 selectedItem = content[selectedItem.index + 1]
 
@@ -93,6 +93,7 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
                 selectedItem = content[selectedItem.index - 1]
 
             }
+
 
             setCurrentSlide(selectedItem)
 
@@ -121,8 +122,10 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
         if (!slider) return
 
         const slideItemIndex = Object.entries(slider).findIndex(item => item[1] == e.currentTarget)
+
         const itemId = slider[slideItemIndex].dataset.id
-        const hoveredSlide = content.filter(item => item.id === itemId)[0]
+
+        const hoveredSlide = content.filter(item => item.id === parseInt(itemId))[0]
 
 
         let nextItem = isOnScreen(slider[slideItemIndex + 1])
@@ -138,11 +141,11 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
                     item.origin = "center center"
 
-                    if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
+                    if (hoveredSlide.id != item.id && index > slideItemIndex) {
                         item.transform = "25%"
 
                         return item
-                    } else if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
+                    } else if (hoveredSlide.id != item.id && index < slideItemIndex) {
                         item.transform = "-25%"
                         return item
                     } else {
@@ -161,7 +164,8 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
             setContent(prevState => {
 
                 let newState = prevState.map((item, index) => {
-                    if (hoveredSlide.id != item.id && index > hoveredSlide.index) {
+
+                    if (hoveredSlide.id != item.id && index > slideItemIndex) {
                         item.transform = "50%"
                         item.origin = "center center"
                         return item
@@ -182,7 +186,7 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
             setContent(prevState => {
 
                 let newState = prevState.map((item, index) => {
-                    if (hoveredSlide.id != item.id && index < hoveredSlide.index) {
+                    if (hoveredSlide.id != item.id && index < slideItemIndex) {
                         item.transform = "-50%"
                         item.origin = "center center"
                         return item
