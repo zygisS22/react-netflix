@@ -3,6 +3,7 @@ import useVisibility from "../../hooks/useVisibility"
 import SliderContext from "../Slider/context"
 
 import { IMAGE_BASE } from "../../api"
+import genresList from "../../genres"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faPlayCircle, faVolumeMute, faThumbsUp, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -52,7 +53,6 @@ function SliderItem(props) {
 
     useEffect(() => {
 
-
     }, [inViewport, setInViewport])
 
     const translate = `translateX(${props.transform})`
@@ -93,12 +93,19 @@ function SliderItem(props) {
                             <span>1h 13m</span>
                         </div>
                         <div className="item-overview-synopsis">
-                            Los demonios y sus malvados secuaces destruyen al antiguo mentor y a los aliados de este valiente mercenario.
+                            {props.data.genre_ids.map((item, index) => {
+                                if (index < 3) {
+                                    let genreName = genresList.find(genre => genre.id == item)
+
+                                    return <span>{genreName.name}</span>
+
+                                }
+                            })}
                         </div>
                     </div>
                     <div className="item-actions">
                         <div className="item-action-buttons">
-                            <div><span><FontAwesomeIcon icon={faVolumeMute} /></span></div>
+                            {/* <div><span><FontAwesomeIcon icon={faVolumeMute} /></span></div> */}
                             <div><span><FontAwesomeIcon icon={faThumbsUp} /></span></div>
                             <div><span><FontAwesomeIcon icon={faPlus} /></span></div>
                         </div>

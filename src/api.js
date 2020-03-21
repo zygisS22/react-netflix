@@ -46,7 +46,6 @@ export async function getMovieInformation(id) {
 
 export async function getMoviesBy() {
 
-
     return await axios.get(`${URL}discover/movie?sort_by=popularity.desc&${API}`)
         .then(function (response) {
 
