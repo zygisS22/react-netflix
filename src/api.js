@@ -44,9 +44,29 @@ export async function getMovieInformation(id) {
 }
 
 
-export async function getMoviesBy() {
+export async function getMoviesBy(type) {
 
-    return await axios.get(`${URL}discover/movie?sort_by=popularity.desc&${API}`)
+    let discover = null
+
+
+    switch (type) {
+        case "best":
+            discover = `${URL}discover/movie?primary_release_year=2015&sort_by=popularity.desc&${API}`
+            break;
+        case "populares":
+            discover = `${URL}discover/movie?sort_by=popularity.desc&${API}`
+            break;
+        case "kids":
+            discover = `${URL}discover/movie?certification_country=US&certification=G&sort_by=popularity.desc&${API}`
+            break;
+
+    }
+
+
+    console.log(discover)
+
+
+    return await axios.get(discover)
         .then(function (response) {
 
             return response.data

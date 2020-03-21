@@ -21,7 +21,6 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
     const hasPrev = distance < 0;
     const hasNext = (viewed + totalInViewport) < countElements;
 
-
     useEffect(() => {
 
         if (containerRef.current) {
