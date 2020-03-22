@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IMAGE_BASE } from "../../api"
 import { faTimes, faPlus, faPlay } from '@fortawesome/free-solid-svg-icons'
@@ -7,6 +7,12 @@ import { faImdb } from '@fortawesome/free-brands-svg-icons'
 
 const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindow }) => {
 
+    const [menuOption, setMenuOption] = useState("general-info")
+
+    useEffect(() => {
+
+
+    }, [])
 
     return (
         <div className="additional-information">
@@ -80,16 +86,16 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                                 </div>
 
                                 <ul className="menu">
-                                    <li className="current">
-                                        <a href={"/"}>INFROMACION GENERAL</a>
+                                    <li className={`${menuOption == "general-info" && "current"}`} onClick={() => setMenuOption("general-info")}>
+                                        <a >INFROMACION GENERAL</a>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <a href={"/"}>SIMILARES</a>
+                                    <li className={`${menuOption == "similar" && "current"}`} onClick={() => setMenuOption("similar")}>
+                                        <a >SIMILARES</a>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <a href={"/"}>DETALLES</a>
+                                    <li className={`${menuOption == "details" && "current"}`} onClick={() => setMenuOption("details")}>
+                                        <a >DETALLES</a>
                                         <span></span>
                                     </li>
                                 </ul>
