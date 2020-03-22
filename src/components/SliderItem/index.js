@@ -99,7 +99,12 @@ function SliderItem(props) {
                                 if (index < 3) {
                                     let genreName = genresList.find(genre => genre.id == item)
 
-                                    return <span>{genreName.name}</span>
+                                    if (index > 0) {
+                                        return (<React.Fragment><span className="separator"></span><span>{genreName.name}</span></React.Fragment>)
+                                    } else {
+                                        return <span>{genreName.name}</span>
+                                    }
+
 
                                 }
                             })}

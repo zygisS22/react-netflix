@@ -43,7 +43,7 @@ function MediumBillboard() {
 
 
                         <div className="md-billboard-video-button">
-                            <button> o</button>
+                            {/* <button> o</button> */}
                             <span className="md-billboard-maturity">
                                 +13
                             </span>
