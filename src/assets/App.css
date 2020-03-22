@@ -731,11 +731,11 @@ white-space: nowrap;
 
 .jaw-bone-common .synopsis {
   margin: .8em 0 0 0;
-  width: 45rem;
-  /* max-height: calc(2rem * 4); */
+  width: 50rem;
+  max-height: calc(5.5rem * 4);
   color:#999;
   overflow: hidden;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .jaw-bone-common .synopsis::after {
@@ -1073,7 +1073,7 @@ background-color:
   margin: 0 0 .2em 0;
   font-weight: bold;
   color:#fff;
-  height: 4vw;
+  height: 5vw;
   font-size: 3vw;
   width: 50vw;
 }

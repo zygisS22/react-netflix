@@ -14,6 +14,26 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
 
     }, [])
 
+
+
+
+
+    const findOnebyType = (name, type, data) => {
+
+        let first = data.find((item, index) => item.department == type)
+
+        if (first) {
+            return (
+                <div className="menu-details-item">
+                    <span className="details-item-title">{name}</span>
+                    <span>{first.name}</span>
+                </div>
+            )
+        }
+
+
+    }
+
     return (
         <div className="additional-information">
 
@@ -36,7 +56,7 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                                 <div>
                                     {currentSlide.title}
 
-                                    {additionalMovieInfo && console.log(additionalMovieInfo)}
+
                                 </div>
                             </h3>
 
@@ -125,27 +145,11 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                                             })}
                                         </div>
 
-                                        {additionalMovieInfo.credits.crew.map((item, index) => {
+                                        {findOnebyType("Direccion", "Directing", additionalMovieInfo.credits.crew)}
 
+                                        {findOnebyType("Edicion", "Editing", additionalMovieInfo.credits.crew)}
 
-
-                                            if (item.department == "Directing") {
-                                                return (
-                                                    <div className="menu-details-item">
-                                                        <span className="details-item-title">Direccion</span>
-                                                        <span>{item.name}</span>
-                                                    </div>
-                                                )
-                                            } else if (item.department == "Editing") {
-                                                return (
-                                                    <div className="menu-details-item">
-                                                        <span className="details-item-title">Edicion</span>
-                                                        <span>{item.name}</span>
-                                                    </div>
-                                                )
-                                            }
-                                        })}
-
+                                        {findOnebyType("Sonido", "Sound", additionalMovieInfo.credits.crew)}
 
 
                                         <div className="menu-details-item">
