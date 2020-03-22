@@ -953,7 +953,11 @@ background-color:
   margin-top: -40px;
   margin-top: 2px;
   padding: 0;
-  background-color:#141414;
+  background-color: #000;
+
+  transition: height 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1) 0.1s;
+
+
 }
 
 .ai-background, .ai-background-shadow, .ai-background-image, .ai-content-area {
@@ -965,6 +969,8 @@ background-color:
 .ai-background {
   left: 0;
   right: 0;
+  
+  transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
 }
 
 .ai-background-shadow {
@@ -972,6 +978,10 @@ background-color:
   background:#000;
   width: 30%;
   z-index: 2;
+}
+
+.ai-background.dim {
+  opacity: 0.2;
 }
 
 .ai-background-shadow:before {

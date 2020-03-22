@@ -18,8 +18,8 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
         <div className="additional-information">
 
 
-            <div className="ai-background">
-                <div className="ai-background-shadow" />
+            <div className={`ai-background ${menuOption != "general-info" ? "dim" : null}`}>
+                <div className={`ai-background-shadow`} />
                 <div
                     className="ai-background-image"
                     style={{ 'backgroundImage': `url(${IMAGE_BASE}original/${currentSlide.backdrop_path})` }}
