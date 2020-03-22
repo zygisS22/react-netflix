@@ -113,7 +113,66 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                                         })}
                                     </div>
                                 </div>
-                            ) : menuOption == "details" ? (<h2>details</h2>) : null}
+                            ) : menuOption == "details" ? (
+                                <div className="menu-details">
+                                    <div className="menu-details-content">
+                                        <div className="menu-details-item">
+                                            <span className="details-item-title">Reparto</span>
+                                            {additionalMovieInfo.credits.cast.map((item, index) => {
+                                                if (index < 10) {
+                                                    return <span>{item.name}</span>
+                                                }
+                                            })}
+                                        </div>
+
+                                        {additionalMovieInfo.credits.crew.map((item, index) => {
+
+
+
+                                            if (item.department == "Directing") {
+                                                return (
+                                                    <div className="menu-details-item">
+                                                        <span className="details-item-title">Direccion</span>
+                                                        <span>{item.name}</span>
+                                                    </div>
+                                                )
+                                            } else if (item.department == "Editing") {
+                                                return (
+                                                    <div className="menu-details-item">
+                                                        <span className="details-item-title">Edicion</span>
+                                                        <span>{item.name}</span>
+                                                    </div>
+                                                )
+                                            }
+                                        })}
+
+
+
+                                        <div className="menu-details-item">
+                                            <span className="details-item-title">Generos</span>
+                                            {additionalMovieInfo.genres.map((item, index) => {
+                                                return (
+                                                    <span>{item.name}</span>
+                                                )
+
+                                            })}
+                                        </div>
+
+                                        {additionalMovieInfo.production_companies[0] && (
+                                            <div className="menu-details-item">
+                                                <span className="details-item-title">Produccion</span>
+                                                <span>{additionalMovieInfo.production_companies[0].name}</span>
+
+                                            </div>
+                                        )}
+
+
+
+
+
+                                    </div>
+                                </div>
+                            ) : null}
 
 
 

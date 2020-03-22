@@ -1558,3 +1558,39 @@ background-color:
 .similar-item .similar-item-image img {
   width: 100%;
 }
+
+
+/* menu details */
+
+
+.menu-details {
+  position: relative;
+  padding: 3%;
+  height: 85%;
+}
+
+.menu-details-content {
+  display:flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  /* align-items: center; */
+  height:85%;
+
+}
+
+.menu-details-item {
+  display:flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  font-size: 1vw;
+  line-height: 1.5;
+  margin-right: 2vw;
+}
+
+.details-item-title {
+  font-size: 1.2vw;
+  color: #999;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
