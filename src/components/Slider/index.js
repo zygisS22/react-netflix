@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import SliderItem from "../SliderItem"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faTimes, faPlus, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faImdb } from '@fortawesome/free-brands-svg-icons'
 
 import SliderContext from "./context"
 import useSlider from "../../hooks/useSlide"
@@ -14,139 +15,6 @@ import useWindowWidth from "../../hooks/useWindowWidth"
 
 
 function Slider({ mainTitle, data }) {
-
-    const pruebing = [{
-        "id": "slide1",
-        "title": "test1",
-        "index": 0,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide2",
-        "title": "test2",
-        "index": 1,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide3",
-        "title": "test3",
-        "index": 2,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide4",
-        "title": "test4",
-        "index": 3,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide5",
-        "title": "test5",
-        "index": 4,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide6",
-        "title": "test6",
-        "index": 5,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide7",
-        "title": "test7",
-        "index": 6,
-        "transform": "0",
-        "origin": "center",
-    },
-    {
-        "id": "slide8",
-        "title": "test8",
-        "index": 7,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide9",
-        "title": "test9",
-        "index": 8,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide10",
-        "title": "test10",
-        "index": 9,
-        "transform": "0",
-        "origin": "center",
-    },
-    {
-        "id": "slide11",
-        "title": "test11",
-        "index": 10,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide12",
-        "title": "test12",
-        "index": 11,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide13",
-        "title": "test13",
-        "index": 12,
-        "transform": "0",
-        "origin": "center",
-    },
-    {
-        "id": "slide14",
-        "title": "test14",
-        "index": 13,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide15",
-        "title": "test15",
-        "index": 14,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide16",
-        "title": "test16",
-        "index": 15,
-        "transform": "0",
-        "origin": "center",
-    },
-    {
-        "id": "slide17",
-        "title": "test17",
-        "index": 16,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide18",
-        "title": "test18",
-        "index": 17,
-        "transform": "0",
-        "origin": "center",
-    }, {
-        "id": "slide19",
-        "title": "test19",
-        "index": 18,
-        "transform": "0",
-        "origin": "center",
-    },
-    {
-        "id": "slide20",
-        "title": "test20",
-        "index": 19,
-        "transform": "0",
-        "origin": "center",
-    }
-
-    ]
-
-
-
-
 
     const width = useWindowWidth()
     const ref = useRef(null)
@@ -163,7 +31,8 @@ function Slider({ mainTitle, data }) {
         hasPrev,
         hasNext,
         content,
-        currentSlide
+        currentSlide,
+        additionalMovieInfo
     } = useSlider(width, ref, 20, data);
 
 
@@ -259,6 +128,8 @@ function Slider({ mainTitle, data }) {
                 </div>
 
                 {currentSlide && (<div className="additional-information">
+
+
                     <div className="ai-background">
                         <div className="ai-background-shadow" />
                         <div
@@ -269,76 +140,93 @@ function Slider({ mainTitle, data }) {
                         <div className="ai-background-nav-shadow"></div>
                     </div>
 
-                    <div className="ai-content-area">
-                        <div className="ai-content-area-container">
-                            <h3>
-                                <div>
-                                    {currentSlide.title}
+                    {additionalMovieInfo ? (
+                        <React.Fragment>
+                            <div className="ai-content-area">
+                                <div className="ai-content-area-container">
+                                    <h3>
+                                        <div>
+                                            {currentSlide.title}
+
+                                            {additionalMovieInfo && console.log(additionalMovieInfo)}
+                                        </div>
+                                    </h3>
+
+                                    <div className="jaw-bone-common">
+                                        <div className="metadata">
+                                            <span className="imdb"><a href={"/"}><FontAwesomeIcon icon={faImdb} /></a></span>
+                                            <span className="score">{additionalMovieInfo.vote_average}</span>
+                                            <span className="year">{currentSlide.release_date}</span>
+                                            {/* <span className="maturity-rating">+13</span> */}
+                                            <span className="duration">{additionalMovieInfo.runtime}m</span>
+
+                                        </div>
+
+                                        <div className="synopsis">
+                                            {currentSlide.overview}
+                                        </div>
+
+                                        <div className="actions">
+                                            <a className="play-link" href={"/"} >
+                                                <button className="hasLabel">
+                                                    <span className="play-icon"><FontAwesomeIcon icon={faPlay} /></span>
+                                                    <span>Reproducir</span>
+                                                </button>
+                                            </a>
+
+                                            <button className="hasLabel play-link-secondary">
+                                                <span className="play-icon"><FontAwesomeIcon icon={faPlus} /></span>
+                                                <span>Mi lista</span>
+                                            </button>
+                                        </div>
+
+                                        <div className="meta-lists">
+                                            <p className="inline-list">
+                                                <span>Protagonizada por:</span>
+                                                {additionalMovieInfo.credits.cast.map((person, index) => {
+                                                    if (index < 6) return person.name + " "
+
+                                                })}
+                                            </p>
+                                            <p className="inline-list">
+                                                <span>Géneros:</span>
+                                                {additionalMovieInfo.genres.map((genre, index) => {
+                                                    if (index < 6) return genre.name + " "
+
+                                                })}
+                                            </p>
+                                        </div>
+
+                                        <ul className="menu">
+                                            <li className="current">
+                                                <a href={"/"}>INFROMACION GENERAL</a>
+                                                <span></span>
+                                            </li>
+                                            <li>
+                                                <a href={"/"}>SIMILARES</a>
+                                                <span></span>
+                                            </li>
+                                            <li>
+                                                <a href={"/"}>DETALLES</a>
+                                                <span></span>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+
+
                                 </div>
-                            </h3>
 
-                            <div className="jaw-bone-common">
-                                <div className="metadata">
-                                    <span className="score">98% de coincidencia</span>
-                                    <span className="year">{currentSlide.release_date}</span>
-                                    <span className="maturity-rating">+13</span>
-                                    <span className="duration">2h 14m</span>
-                                </div>
+                                <button className="ai-close-button" onClick={() => closeInformationWindow()}><span><FontAwesomeIcon icon={faTimes} /></span></button>
 
-                                <div className="synopsis">
-                                    {currentSlide.overview}
-                                </div>
-
-                                <div className="actions">
-                                    <a className="play-link" href={"/"} >
-                                        <button className="hasLabel">
-                                            <span className="play-icon"><FontAwesomeIcon icon={faPlay} /></span>
-                                            <span>Reproducir</span>
-                                        </button>
-                                    </a>
-
-                                    <button className="hasLabel play-link-secondary">
-                                        <span className="play-icon"><FontAwesomeIcon icon={faPlus} /></span>
-                                        <span>Mi lista</span>
-                                    </button>
-                                </div>
-
-                                <div className="meta-lists">
-                                    <p className="inline-list">
-                                        <span>Protagonizada por:</span>
-                                        Yoji Matsuda,Yuriko Ishida,Yuko Tanaka
-
-                                    </p>
-                                    <p className="inline-list">
-                                        <span>Géneros:</span>
-                                        Animes de acción,Animes de ciencia ficción y fantásticos,Largometrajes de anime
-                                    </p>
-                                </div>
-
-                                <ul className="menu">
-                                    <li className="current">
-                                        <a href={"/"}>INFROMACION GENERAL</a>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <a href={"/"}>SIMILARES</a>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <a href={"/"}>DETALLES</a>
-                                        <span></span>
-                                    </li>
-                                </ul>
 
                             </div>
+                        </React.Fragment>
+                    ) : (<div className="ai-content-area"><h2>Cargando...</h2></div>)}
 
 
-                        </div>
-
-                        <button className="ai-close-button" onClick={() => closeInformationWindow()}><span><FontAwesomeIcon icon={faTimes} /></span></button>
 
 
-                    </div>
 
                 </div>)}
 

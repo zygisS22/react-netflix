@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { getMovieInformation } from "../api"
 
 
 const useSlider = (elementWidth, containerRef, countElements, data) => {
@@ -20,6 +21,8 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
     const hasPrev = distance < 0;
     const hasNext = (viewed + totalInViewport) < countElements;
+
+    const [additionalMovieInfo, setAdditionalMovieInfo] = useState(null)
 
     useEffect(() => {
 
@@ -117,15 +120,20 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
     }
 
-    const selectSlide = (id) => {
 
-        const selected = content.filter(item => item.id === id)[0]
+    const selectSlide = async (id) => {
 
+        const selected = await content.filter(item => item.id === id)[0]
         setCurrentSlide(selected)
+
+        let details = await getMovieInformation(id).then(response => response.data)
+        setAdditionalMovieInfo(details)
+
     }
 
     const closeInformationWindow = () => {
         setCurrentSlide(null)
+        setAdditionalMovieInfo(null)
     }
 
     const scaleTiles = (e) => {
@@ -249,7 +257,7 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
 
 
-    return { moveSection, selectSlide, closeInformationWindow, hasPrev, hasNext, scaleTiles, resetSize, sliderIndex, sliderPages, slideProps, content, currentSlide }
+    return { moveSection, selectSlide, closeInformationWindow, hasPrev, hasNext, scaleTiles, resetSize, sliderIndex, sliderPages, slideProps, content, currentSlide, additionalMovieInfo }
 
 }
 

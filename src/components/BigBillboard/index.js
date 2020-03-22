@@ -13,7 +13,7 @@ function BigBillboard() {
 
     useEffect(async () => {
 
-        let movie = await getMovieInformation(128)
+        let movie = await getMovieInformation(128).then(response => response.data)
 
         setMovie(movie)
 

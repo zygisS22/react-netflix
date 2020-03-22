@@ -7,35 +7,52 @@ export const IMAGE_BASE = process.env.REACT_APP_BASE_IMAGE_URL
 
 export async function getMovieInformation(id) {
 
-    let data = {
-        poster_path: null,
-        backdrop_path: null,
-        overview: null,
-        original_title: null,
-        secondarybackdrop_path: null,
+    // let data = {
+    //     poster_path: null,
+    //     backdrop_path: null,
+    //     overview: null,
+    //     original_title: null,
+    //     secondarybackdrop_path: null,
+    //     additional: null
 
-    }
-
-    await axios.get(`${URL}movie/${id}?${API}&append_to_response=images`)
-        .then(function (response) {
+    // }
 
 
-            let { poster_path, backdrop_path, overview, title } = response.data
-
-            data.poster_path = `${IMAGE_BASE}original/${poster_path}`
-            data.backdrop_path = `${IMAGE_BASE}original/${backdrop_path}`
-            data.overview = overview
-            data.original_title = title
-
-            if (response.data.images.backdrops.length > 1) data.secondarybackdrop_path = `${IMAGE_BASE}original/${response.data.images.backdrops[1].file_path}`
-
-        })
+    return await axios.get(`${URL}movie/${id}?${API}&append_to_response=images,credits`)
+    // .then(function (response) {
 
 
 
-    return data
+
+    //     return response.data
+
+    // })
 
 }
+
+
+// export const getMovieDetails = (id) => {
+
+//     await axios.get(`${URL}movie/${id}?${API}&append_to_response=images`)
+//         .then(function (response) {
+
+
+//             let { poster_path, backdrop_path, overview, title } = response.data
+
+//             data.poster_path = `${IMAGE_BASE}original/${poster_path}`
+//             data.backdrop_path = `${IMAGE_BASE}original/${backdrop_path}`
+//             data.overview = overview
+//             data.original_title = title
+//             data.additional = response.data
+
+//             if (response.data.images.backdrops.length > 1) data.secondarybackdrop_path = `${IMAGE_BASE}original/${response.data.images.backdrops[1].file_path}`
+
+//         })
+
+
+
+//     return data
+// }
 
 
 export async function getMoviesBy(type) {

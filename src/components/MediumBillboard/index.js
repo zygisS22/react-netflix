@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMovieInformation } from "../../api"
+import { getMovieInformation, IMAGE_BASE } from "../../api"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
@@ -18,14 +18,15 @@ function MediumBillboard() {
 
     useEffect(async () => {
 
-        let movie = await getMovieInformation("530915")
+        let movie = await getMovieInformation("530915").then(response => response.data)
 
-        setPoster(movie.poster_path)
-        setBackground(movie.backdrop_path)
+        setPoster(`${IMAGE_BASE}original/${movie.poster_path}`)
+        setBackground(`${IMAGE_BASE}original/${movie.backdrop_path}`)
+        setSecondaryBackground(`${IMAGE_BASE}original/${movie.backdrop_path}`)
         setSynopsis(movie.overview)
-        setTitle(movie.original_title)
-        setSecondaryBackground(movie.secondarybackdrop_path)
+        setTitle(movie.title)
 
+        if (movie.images.backdrops.length > 1) setSecondaryBackground(`${IMAGE_BASE}original/${movie.images.backdrops[1].file_path}`)
 
 
     }, [])
