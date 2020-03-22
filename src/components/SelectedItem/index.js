@@ -88,7 +88,32 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
 
 
                                 </div>
-                            ) : menuOption == "similar" ? (<h2>similares</h2>) : menuOption == "details" ? (<h2>details</h2>) : null}
+                            ) : menuOption == "similar" ? (
+                                <div className="menu-similar">
+                                    <div className="menu-similar-content">
+
+
+                                        {additionalMovieInfo.similar.results.map((similarMovie, index) => {
+
+                                            if (index < 4) {
+                                                return (
+                                                    <div className="similar-item">
+                                                        <div className="similar-item-image"><img src={`${IMAGE_BASE}original/${similarMovie.backdrop_path}`} alt={"item"} /></div>
+                                                        <div className="similar-item-metada">
+                                                            <span className="similar-item-title">{similarMovie.title}</span><br />
+                                                            <span className="release-date">{similarMovie.release_date}</span>
+                                                            {/* <span className="duration">{similarMovie.runtime}m</span> */}
+                                                        </div>
+                                                        <div className="similar-item-synopsis">{similarMovie.overview}</div>
+                                                    </div>
+                                                )
+                                            }
+
+
+                                        })}
+                                    </div>
+                                </div>
+                            ) : menuOption == "details" ? (<h2>details</h2>) : null}
 
 
 
