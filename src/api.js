@@ -16,27 +16,21 @@ export async function getMovieInformation(id) {
 
     }
 
-    await axios.get(`${URL}movie/${id}?${API}`)
+    await axios.get(`${URL}movie/${id}?${API}&append_to_response=images`)
         .then(function (response) {
 
 
-            let { poster_path, backdrop_path, overview, original_title } = response.data
+            let { poster_path, backdrop_path, overview, title } = response.data
 
             data.poster_path = `${IMAGE_BASE}original/${poster_path}`
             data.backdrop_path = `${IMAGE_BASE}original/${backdrop_path}`
             data.overview = overview
-            data.original_title = original_title
+            data.original_title = title
+
+            if (response.data.images.backdrops.length > 1) data.secondarybackdrop_path = `${IMAGE_BASE}original/${response.data.images.backdrops[1].file_path}`
 
         })
 
-    await axios.get(`${URL}movie/${id}/images?${API}`)
-        .then(function (response) {
-            // handle success
-
-            if (response.data.backdrops.length > 1) data.secondarybackdrop_path = `${IMAGE_BASE}original/${response.data.backdrops[1].file_path}`
-
-
-        })
 
 
     return data

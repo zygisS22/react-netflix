@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import HeroImage from "../HeroImage"
+import BigBillboard from "../BigBillboard"
 import Slider from "../Slider"
 import MediumBillboard from '../MediumBillboard';
 
@@ -31,7 +31,7 @@ function Home() {
 
         <div>
 
-            <HeroImage />
+            <BigBillboard />
 
             {/* <Slider mainTitle={"Mi lista"} /> */}
 

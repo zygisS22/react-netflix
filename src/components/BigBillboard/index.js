@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
 
-function HeroImage() {
+import { getMovieInformation } from "../../api"
+
+
+function BigBillboard() {
+
+    const [movie, setMovie] = useState(null)
+
+    useEffect(async () => {
+
+        let movie = await getMovieInformation(128)
+
+        setMovie(movie)
+
+    }, [])
+
     return (
 
         <div className="billboard-content-limits">
@@ -26,9 +40,9 @@ function HeroImage() {
                         </div>
 
                         <div className="billboard-description">
-                            <div className="suplemental">Ver temporada 2 ahora</div>
+                            {/* <div className="suplemental">Ver temporada 2 ahora</div> */}
                             <div className="episode-title-container"></div>
-                            <div className="synopsis">Una niña muy vivaz se une a un gremio de revoltosos brujos. Son raros, pero ¿dónde encontrarías un gato azul que habla?</div>
+                            <div className="synopsis">{movie && movie.overview}</div>
                         </div>
 
                         <div className="billboard-link">
@@ -58,4 +72,4 @@ function HeroImage() {
     );
 }
 
-export default HeroImage;
+export default BigBillboard;
