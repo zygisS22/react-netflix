@@ -18,7 +18,7 @@ export async function getMovieInformation(id) {
     // }
 
 
-    return await axios.get(`${URL}movie/${id}?${API}&append_to_response=images,credits`)
+    return await axios.get(`${URL}movie/${id}?${API}&append_to_response=images,credits,similar`)
     // .then(function (response) {
 
 
