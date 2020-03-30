@@ -455,7 +455,7 @@ rgba(0, 0, 0, 0) 85%);
   white-space: normal;
   vertical-align: top;
   padding: 0 2px;
-  transition: transform 300ms ease 100ms;
+  transition: transform 300ms ease 100ms, height 300ms ease 100ms;
   cursor: pointer;
   
 }
@@ -474,9 +474,10 @@ rgba(0, 0, 0, 0) 85%);
   color:#fff;
 }
 
+
 .boxart {
   width: 100%;
-  height: 0;
+  height: 100%;
   position: relative;
   overflow: hidden;
   padding: 28.125% 0;
@@ -489,6 +490,7 @@ rgba(0, 0, 0, 0) 85%);
   left: 0;
   right: 0;
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -1292,6 +1294,11 @@ background-color:
   transition-duration: 500ms;
   
 }
+
+.slider-content:not(.open) .slider-item.poster {
+  height: 52rem;
+}
+
 
 
 /* MEDIUM BILLBOARD */
