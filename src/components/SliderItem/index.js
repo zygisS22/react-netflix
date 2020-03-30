@@ -72,7 +72,8 @@ function SliderItem(props) {
         >
             <a>
                 <div className="boxart">
-                    <img src={`${IMAGE_BASE}original/${props.data.backdrop_path}`} alt="boxart" />
+                    {props.data.backdrop_path ? <img src={`${IMAGE_BASE}original/${props.data.backdrop_path}`} alt="boxart" /> : <img style={{ "background": "black" }} alt="boxart" />}
+
 
                 </div>
             </a>

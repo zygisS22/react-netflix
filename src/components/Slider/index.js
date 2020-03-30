@@ -32,7 +32,8 @@ function Slider({ mainTitle, data }) {
         hasNext,
         content,
         currentSlide,
-        additionalMovieInfo
+        additionalMovieInfo,
+        paginationIndicator
     } = useSlider(width, ref, 20, data);
 
 
@@ -45,26 +46,6 @@ function Slider({ mainTitle, data }) {
 
 
     }, [width])
-
-
-    const paginationIndicator = (nPages) => {
-
-        let paginationList = []
-
-        for (let i = 0; i < nPages; i++) {
-
-            if (sliderIndex == i) {
-                paginationList.push(<li className="active" key={i}></li>)
-            } else {
-                paginationList.push(<li key={i}></li>)
-            }
-
-
-        }
-
-        return paginationList
-
-    }
 
 
     return (

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { getMovieInformation } from "../api"
 
 
@@ -26,7 +26,9 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
     useEffect(() => {
 
-        if (containerRef.current) {
+        if (containerRef.current && data) {
+
+
 
 
             const containerWidth = containerRef.current.clientWidth;
@@ -46,6 +48,26 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
     let slideProps = {
         style: { transform: `translate3d(${distance}px, 0, 0)` }
     };
+
+
+    const paginationIndicator = (nPages) => {
+
+        let paginationList = []
+
+        for (let i = 0; i < nPages; i++) {
+
+            if (sliderIndex == i) {
+                paginationList.push(<li className="active" key={i}></li>)
+            } else {
+                paginationList.push(<li key={i}></li>)
+            }
+
+
+        }
+
+        return paginationList
+
+    }
 
 
     const moveSection = (type) => {
@@ -257,7 +279,7 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
 
 
-    return { moveSection, selectSlide, closeInformationWindow, hasPrev, hasNext, scaleTiles, resetSize, sliderIndex, sliderPages, slideProps, content, currentSlide, additionalMovieInfo }
+    return { moveSection, selectSlide, closeInformationWindow, hasPrev, hasNext, scaleTiles, resetSize, sliderIndex, sliderPages, slideProps, content, currentSlide, additionalMovieInfo, paginationIndicator }
 
 }
 

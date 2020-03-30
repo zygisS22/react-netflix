@@ -1594,3 +1594,14 @@ background-color:
   font-weight: bold;
   margin-bottom: 4px;
 }
+
+
+/* GRID */
+
+.grid-container {
+  z-index: 1;
+  margin: 3vw 0; 
+  padding: 0;
+  position: relative;
+
+}
