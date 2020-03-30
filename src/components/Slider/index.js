@@ -14,7 +14,7 @@ import useWindowWidth from "../../hooks/useWindowWidth"
 import SelectedItem from "../SelectedItem"
 
 
-function Slider({ mainTitle, data }) {
+function Slider({ mainTitle, data, poster }) {
 
     const width = useWindowWidth()
     const ref = useRef(null)
@@ -34,7 +34,7 @@ function Slider({ mainTitle, data }) {
         currentSlide,
         additionalMovieInfo,
         paginationIndicator
-    } = useSlider(width, ref, 20, data);
+    } = useSlider(width, ref, 20, data, poster);
 
 
     const contextValue = {
@@ -53,7 +53,7 @@ function Slider({ mainTitle, data }) {
             <div className="sliderBox">
                 <h2 className="slider-header">
                     <a href={"/"}>
-                        <div>{mainTitle}</div>
+                        <div>{mainTitle} {poster ? "POSTER" : null}</div>
                         <div className="see-more">Explorar más</div>
                         <div className="see-more-chevron"><FontAwesomeIcon icon={faChevronRight} /></div>
 
@@ -86,6 +86,7 @@ function Slider({ mainTitle, data }) {
                                         transform={item.transform}
                                         origin={item.origin}
                                         onSelectSlide={selectSlide}
+                                        poster={poster}
                                     />
                                 })}
 
@@ -94,10 +95,6 @@ function Slider({ mainTitle, data }) {
                             </div>
 
                         </div>
-
-                        <h2>{console.log(hasNext)}</h2>
-
-
 
                         {hasNext && (<span className="handle handleNext" onClick={() => moveSection("right")}>
                             <strong><FontAwesomeIcon icon={faChevronRight} /></strong>

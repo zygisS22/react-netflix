@@ -36,13 +36,13 @@ function Home() {
             {/* <Slider mainTitle={"Mi lista"} /> */}
 
 
-            {popularMovies && <Slider mainTitle={"Populares"} data={popularMovies} />}
+            {popularMovies && <Slider mainTitle={"Populares"} data={popularMovies} poster={false} />}
 
-            <MediumBillboard />
+            {/* <MediumBillboard /> */}
 
-            {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} />}
+            {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} poster={true} />}
 
-            {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} />}
+            {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} poster={false} />}
 
 
         </div>

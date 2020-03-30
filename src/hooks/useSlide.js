@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { getMovieInformation } from "../api"
 
 
-const useSlider = (elementWidth, containerRef, countElements, data) => {
+const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
 
     const [viewed, setViewed] = useState(0);
@@ -10,6 +10,7 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
     const [containerWidth, setContainerWidth] = useState(0);
     const [totalInViewport, setTotalInViewport] = useState(0)
     const [itemWidth, setItemWidth] = useState(0)
+    const [posterStyle, setPosterStyle] = useState(poster)
 
 
     const [slider, setSlider] = useState(null)

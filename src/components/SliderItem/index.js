@@ -58,12 +58,15 @@ function SliderItem(props) {
     }, [inViewport, setInViewport])
 
     const translate = `translateX(${props.transform})`
+
+
+    const styledPoster = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out", height: "42rem" }
     const styled = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out" }
 
 
     return (
         <div
-            style={styled}
+            style={props.poster ? styledPoster : styled}
             data-id={props.title}
             className={`slider-item ${inViewport ? "onScreen" : ""}`}
             ref={ref}
@@ -71,8 +74,8 @@ function SliderItem(props) {
             onMouseEnter={(e) => onHover(e)}
         >
             <a>
-                <div className="boxart">
-                    {props.data.backdrop_path ? <img src={`${IMAGE_BASE}original/${props.data.backdrop_path}`} alt="boxart" /> : <img style={{ "background": "black" }} alt="boxart" />}
+                <div className="boxart" style={{ height: props.poster ? "100%" : null }}>
+                    {props.data.backdrop_path ? <img src={`${IMAGE_BASE}original/${props.data.backdrop_path}`} style={{ height: props.poster ? "100%" : null }} alt="boxart" /> : <img style={{ "background": "black" }} alt="boxart" />}
 
 
                 </div>
