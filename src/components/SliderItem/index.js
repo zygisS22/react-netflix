@@ -60,7 +60,7 @@ function SliderItem(props) {
     const translate = `translateX(${props.transform})`
 
 
-    const styledPoster = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out", height: "42rem" }
+    const styledPoster = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out", height: "62rem" }
     const styled = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out" }
 
 
@@ -68,7 +68,7 @@ function SliderItem(props) {
         <div
             style={props.poster ? styledPoster : styled}
             data-id={props.title}
-            className={`slider-item ${inViewport ? "onScreen" : ""}`}
+            className={`slider-item ${inViewport ? "onScreen" : ""} ${props.poster === true ? "poster" : "card"}`}
             ref={ref}
             onMouseLeave={(e) => onHoverLeave(e)}
             onMouseEnter={(e) => onHover(e)}

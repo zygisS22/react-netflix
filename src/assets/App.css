@@ -550,13 +550,14 @@ rgba(0, 0, 0, 0) 85%);
   transform: scale(1.5) !important;
 }  */
 
-
-.slider-content:not(.open) .slider-item:hover {
+/* 
+.slider-content:not(.open) .card:hover {
   transform: scale(1.5) !important;
   transition: all 0.3s ease-in-out;
   transition-duration: 500ms;
   
 } 
+ */
 
 
 
@@ -1276,13 +1277,21 @@ background-color:
 
 /* rework this */
 
-.slider-content:not(.open) .slider-item:hover {
+.slider-content:not(.open) .card:hover {
   /* transform: scale(1.8,1.7) !important; */
   transform: scale(1.5) !important;
   transition: all 0.3s ease-in-out;
   transition-duration: 500ms;
   
 } 
+
+.slider-content:not(.open) .poster:hover {
+  /* transform: scale(1.8,1.7) !important; */
+  transform: scale(1.1) !important;
+  transition: all 0.3s ease-in-out;
+  transition-duration: 500ms;
+  
+}
 
 
 /* MEDIUM BILLBOARD */

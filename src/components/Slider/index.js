@@ -53,7 +53,7 @@ function Slider({ mainTitle, data, poster }) {
             <div className="sliderBox">
                 <h2 className="slider-header">
                     <a href={"/"}>
-                        <div>{mainTitle} {poster ? "POSTER" : null}</div>
+                        <div>{mainTitle}</div>
                         <div className="see-more">Explorar más</div>
                         <div className="see-more-chevron"><FontAwesomeIcon icon={faChevronRight} /></div>
 
@@ -74,7 +74,7 @@ function Slider({ mainTitle, data, poster }) {
 
                         <div className="sliderMask showPeek">
 
-                            <div className={`slider-content ${currentSlide && "open"}`} ref={ref} {...slideProps} >
+                            <div className={`slider-content ${currentSlide ? "open" : ""}`} ref={ref} {...slideProps} >
 
                                 {content.map(item => {
                                     return <SliderItem

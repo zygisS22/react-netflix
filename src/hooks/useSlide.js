@@ -50,6 +50,17 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
         style: { transform: `translate3d(${distance}px, 0, 0)` }
     };
 
+    let transformProps = {
+        edge: {
+            left: posterStyle ? "-5%" : "-25%",
+            right: posterStyle ? "5%" : "25%"
+        },
+        normal: {
+            left: posterStyle ? "-10%" : "-50%",
+            right: posterStyle ? "10%" : "50%"
+        }
+    }
+
 
     const paginationIndicator = (nPages) => {
 
@@ -194,11 +205,11 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
                     item.origin = "center center"
 
                     if (hoveredSlide.id != item.id && index > slideItemIndex) {
-                        item.transform = "25%"
+                        item.transform = transformProps.edge.right
 
                         return item
                     } else if (hoveredSlide.id != item.id && index < slideItemIndex) {
-                        item.transform = "-25%"
+                        item.transform = transformProps.edge.left
                         return item
                     } else {
                         item.transform = "0px"
@@ -218,7 +229,7 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
                 let newState = prevState.map((item, index) => {
 
                     if (hoveredSlide.id != item.id && index > slideItemIndex) {
-                        item.transform = "50%"
+                        item.transform = transformProps.normal.right
                         item.origin = "center center"
                         return item
                     } else {
@@ -239,7 +250,7 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
                 let newState = prevState.map((item, index) => {
                     if (hoveredSlide.id != item.id && index < slideItemIndex) {
-                        item.transform = "-50%"
+                        item.transform = transformProps.normal.left
                         item.origin = "center center"
                         return item
                     } else {
