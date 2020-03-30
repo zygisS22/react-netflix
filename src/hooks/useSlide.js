@@ -86,6 +86,10 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
             setDistance(distance + containerWidth);
             setSliderIndex(prevState => prevState - 1)
 
+        } else if (type == "reset") {
+            setViewed(0);
+            setDistance(0)
+            setSliderIndex(0)
         }
 
 
@@ -132,6 +136,8 @@ const useSlider = (elementWidth, containerRef, countElements, data) => {
 
                 selectedItem = content[selectedItemIndex - 1]
 
+            } else if (type == "reset") {
+                selectedItem = content[0]
             }
 
 

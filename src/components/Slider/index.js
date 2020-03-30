@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import SliderItem from "../SliderItem"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight, faChevronLeft, faUndo } from '@fortawesome/free-solid-svg-icons'
 
 import SliderContext from "./context"
 import useSlider from "../../hooks/useSlide"
@@ -95,6 +95,10 @@ function Slider({ mainTitle, data }) {
 
                         </div>
 
+                        <h2>{console.log(hasNext)}</h2>
+
+
+
                         {hasNext && (<span className="handle handleNext" onClick={() => moveSection("right")}>
                             <strong><FontAwesomeIcon icon={faChevronRight} /></strong>
                         </span>)}
@@ -103,6 +107,11 @@ function Slider({ mainTitle, data }) {
                         {hasPrev && (<span className="handle handlePrev" onClick={() => moveSection("left")}>
                             <strong><FontAwesomeIcon icon={faChevronLeft} /></strong>
                         </span>)}
+
+                        {/* GO BACK TO ZERO */}
+                        {hasPrev && hasNext === false ? (<span className="handle handleNext" onClick={() => moveSection("reset")}>
+                            <strong><FontAwesomeIcon icon={faUndo} /></strong>
+                        </span>) : null}
 
 
                     </div>
