@@ -10,6 +10,7 @@ function Header() {
     const [pinHeader, setHeader] = useState(false)
     const [searchBox, setSearchBox] = useState(false)
     const ref = useRef(null)
+    const inputRef = useRef(null)
 
 
     const handleScroll = () => {
@@ -25,6 +26,14 @@ function Header() {
 
 
     };
+
+    const toggleSearchBox = () => {
+
+        if (!searchBox && inputRef.current) inputRef.current.focus();
+
+        setSearchBox(prevState => !prevState)
+
+    }
 
 
 
@@ -59,8 +68,9 @@ function Header() {
 
                 <div className="header-options">
                     <div className={`${searchBox ? "searchBox" : "searchIcon"}`}>
-                        <span className="icon" onClick={() => setSearchBox(prevState => !prevState)}><FontAwesomeIcon icon={faSearch} /></span>
+                        <span className="icon" onClick={() => toggleSearchBox()}><FontAwesomeIcon icon={faSearch} /></span>
                         <input className="searchInput"
+                            ref={inputRef}
                             onBlur={() => setSearchBox(false)}
                             type="text" placeholder="Titles, People, Genres..." maxLength="80" />
                     </div>
