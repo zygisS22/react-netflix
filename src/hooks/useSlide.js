@@ -52,12 +52,12 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
     let transformProps = {
         edge: {
-            left: posterStyle ? "-5%" : "-25%",
-            right: posterStyle ? "5%" : "25%"
+            left: posterStyle ? "-5%" : "-35%",
+            right: posterStyle ? "5%" : "35%"
         },
         normal: {
-            left: posterStyle ? "-10%" : "-50%",
-            right: posterStyle ? "10%" : "50%"
+            left: posterStyle ? "-10%" : "-70%",
+            right: posterStyle ? "10%" : "70%"
         }
     }
 
@@ -194,7 +194,7 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
         let nextItem = isOnScreen(slider[slideItemIndex + 1])
         let prevItem = isOnScreen(slider[slideItemIndex - 1])
 
-        //EDGE CASE : CHECK IF LEFT FIRST OR LAST RIGHT ELEMENT
+        //EDGE CASE : CHECK IF FIRST LEFT OR LAST RIGHT ELEMENT
 
         if (prevItem && nextItem) {
 

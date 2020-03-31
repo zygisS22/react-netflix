@@ -1281,7 +1281,7 @@ background-color:
 
 .slider-content:not(.open) .card:hover {
   /* transform: scale(1.8,1.7) !important; */
-  transform: scale(1.5) !important;
+  transform: scale(1.7,1.6) !important;
   transition: all 0.3s ease-in-out;
   transition-duration: 500ms;
   
@@ -1289,7 +1289,7 @@ background-color:
 
 .slider-content:not(.open) .poster:hover {
   /* transform: scale(1.8,1.7) !important; */
-  transform: scale(1.1) !important;
+  transform: scale(1.1,1.2) !important;
   transition: all 0.3s ease-in-out;
   transition-duration: 500ms;
   
