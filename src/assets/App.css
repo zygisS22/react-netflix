@@ -124,7 +124,7 @@ main {
   display: inline-block;
   background: transparent;
   border: none;
-  padding: 7px 14px 7px 7px;
+  padding: 0;
   font-size: 14px;
   width: 0;
   opacity: 0;
@@ -135,6 +135,7 @@ main {
 
 .searchBox .searchInput {
   width: 212px;
+  padding: 7px 14px 7px 7px;
   opacity: 1;
 }
 
