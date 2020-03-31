@@ -8,6 +8,7 @@ import { faSearch, faGift, faBell } from '@fortawesome/free-solid-svg-icons'
 function Header() {
 
     const [pinHeader, setHeader] = useState(false)
+    const [searchBox, setSearchBox] = useState(false)
     const ref = useRef(null)
 
 
@@ -24,6 +25,7 @@ function Header() {
 
 
     };
+
 
 
     useEffect(() => {
@@ -56,7 +58,10 @@ function Header() {
 
 
                 <div className="header-options">
-                    <div><span className="icon"><FontAwesomeIcon icon={faSearch} /></span></div>
+                    <div className={`${searchBox ? "searchBox" : "searchIcon"}`}>
+                        <span className="icon" onClick={() => setSearchBox(prevState => !prevState)}><FontAwesomeIcon icon={faSearch} /></span>
+                        <input className="searchInput" type="text" placeholder="Titles, People, Genres..." maxLength="80" />
+                    </div>
                     <div><span className="icon"><FontAwesomeIcon icon={faGift} /></span></div>
                     <div><span className="icon"><FontAwesomeIcon icon={faBell} /></span></div>
                     <div className="account-menu">

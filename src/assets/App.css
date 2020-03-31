@@ -108,6 +108,36 @@ main {
   cursor: pointer;
 }
 
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  border: solid 1px rgba(255, 255, 255, 0.85);
+}
+
+.searchBox span {
+  margin-left: 2px;
+}
+
+.searchInput {
+  color: #fff;
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 7px 14px 7px 7px;
+  font-size: 14px;
+  width: 0;
+  opacity: 0;
+  outline: none;
+  transition: width .5s;
+}
+
+
+.searchBox .searchInput {
+  width: 212px;
+  opacity: 1;
+}
+
 .icon {
   padding: 5px;
   font-size: 1.3rem;
@@ -232,11 +262,7 @@ margin-bottom: 1.2vw;
 
 .billboard-title img {
   width: 90%;
--webkit-transform-origin: bottom left;
--moz-transform-origin: bottom left;
--ms-transform-origin: bottom left;
--o-transform-origin: bottom left;
-transform-origin: bottom left;
+  transform-origin: bottom left;
 }
 
 .billboard-information {
