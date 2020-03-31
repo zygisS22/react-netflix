@@ -60,7 +60,9 @@ function Header() {
                 <div className="header-options">
                     <div className={`${searchBox ? "searchBox" : "searchIcon"}`}>
                         <span className="icon" onClick={() => setSearchBox(prevState => !prevState)}><FontAwesomeIcon icon={faSearch} /></span>
-                        <input className="searchInput" type="text" placeholder="Titles, People, Genres..." maxLength="80" />
+                        <input className="searchInput"
+                            onBlur={() => setSearchBox(false)}
+                            type="text" placeholder="Titles, People, Genres..." maxLength="80" />
                     </div>
                     <div><span className="icon"><FontAwesomeIcon icon={faGift} /></span></div>
                     <div><span className="icon"><FontAwesomeIcon icon={faBell} /></span></div>
