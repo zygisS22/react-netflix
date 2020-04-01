@@ -51,13 +51,9 @@ function Home() {
 
 
 
-
     return (
 
         <div>
-
-
-
 
             {searchContext.searchInput.length > 0 ? (<Search />) : (
                 <div>
@@ -73,14 +69,7 @@ function Home() {
                 </div>
             )}
 
-
-
-
         </div>
-
-
-
-
 
 
     );

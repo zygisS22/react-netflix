@@ -13,15 +13,12 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: 
-#141414;
-color:
-#fff;
-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-font-size: 10px;
-line-height: 1.2;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+  background: #141414;
+  color:#fff;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.2;
+
 
 }
 
@@ -1653,6 +1650,21 @@ background-color:
 /* search */
 
 .search-background {
-  background: grey;
+  background: #141414;
   height: 700px;
+}
+
+.search-container {
+  padding: 0 4%;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  grid-template-rows: auto;
+  grid-row-gap: 40px; 
+}
+
+
+.search-container div {
+  background: indianred;
+  margin: 0 4px;
+  height: 200px;
 }
