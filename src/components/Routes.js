@@ -5,18 +5,29 @@ import Home from "./Home"
 import Header from "./Header"
 import Footer from "./Footer"
 
+import SearchContext from "./Search/context"
+
+import { useSearch } from "../hooks/useSearch"
+
+
+
 
 
 
 const Routes = () => {
 
+    const searchText = useSearch()
+
 
     return (
         <div className="background-app">
-            <Header />
-            <Switch>
-                <Route component={Home} exact path="/" />
-            </Switch>
+            <SearchContext.Provider value={searchText}>
+                <Header />
+                <Switch>
+                    <Route component={Home} exact path="/" />
+                </Switch>
+            </SearchContext.Provider>
+
 
             <Footer />
         </div>

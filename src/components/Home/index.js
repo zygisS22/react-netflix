@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import BigBillboard from "../BigBillboard"
 import Slider from "../Slider"
 import MediumBillboard from '../MediumBillboard';
 
 
 import { getMoviesBy } from "../../api"
+import Search from '../Search';
+import SearchContext from "../Search/context"
+
 
 function Home() {
 
@@ -12,6 +15,8 @@ function Home() {
     const [popularMovies, setPopularMovies] = useState(null)
     const [bestMovies, setBestMovies] = useState(null)
     const [kidsMovies, setKidsMovies] = useState(null)
+
+    const searchContext = useContext(SearchContext)
 
     useEffect(async () => {
 
@@ -27,22 +32,28 @@ function Home() {
     }, [])
 
 
+
+
+
+
     return (
 
         <div>
 
-            <BigBillboard />
 
-            {/* <Slider mainTitle={"Mi lista"} /> */}
+            <Search />
 
+            <div style={{ display: searchContext.searchInput.length > 0 ? "none" : "block" }}>
 
-            {popularMovies && <Slider mainTitle={"Populares"} data={popularMovies} poster={false} />}
+                <BigBillboard />
 
-            {/* <MediumBillboard /> */}
+                {popularMovies && <Slider mainTitle={"Populares"} data={popularMovies} poster={false} />}
 
-            {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} poster={true} />}
+                {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} poster={true} />}
 
-            {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} poster={false} />}
+                {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} poster={false} />}
+
+            </div>
 
 
         </div>

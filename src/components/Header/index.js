@@ -1,21 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 
 import logo from "../../assets/netflix-2.svg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faGift, faBell } from '@fortawesome/free-solid-svg-icons'
 
+import SearchContext from "../Search/context"
 
 function Header() {
 
     const [pinHeader, setHeader] = useState(false)
     const [searchBox, setSearchBox] = useState(false)
+    //const [searchInput, setSearchInput] = useState("")
     const ref = useRef(null)
     const inputRef = useRef(null)
 
+    const { searchInput, updateSearchInput } = useContext(SearchContext)
+
 
     const handleScroll = () => {
-
-
 
         if (window.scrollY == 0) {
             setHeader(false);
@@ -23,9 +25,14 @@ function Header() {
             setHeader(ref.current.getBoundingClientRect().top <= 0);
         }
 
-
-
     };
+
+    const handleInput = (e) => {
+        //e.preventDefault();
+        //setSearchInput(prevState => e.currentTarget.value)
+
+
+    }
 
     const toggleSearchBox = () => {
 
@@ -71,6 +78,8 @@ function Header() {
                         <span className="icon" onClick={() => toggleSearchBox()}><FontAwesomeIcon icon={faSearch} /></span>
                         <input className="searchInput"
                             ref={inputRef}
+                            value={searchInput}
+                            onChange={(e) => updateSearchInput(e.currentTarget.value)}
                             onBlur={() => setSearchBox(false)}
                             type="text" placeholder="Titles, People, Genres..." maxLength="80" />
                     </div>

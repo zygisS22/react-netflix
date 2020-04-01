@@ -42,7 +42,7 @@ main {
   height: 68px;
   font-size: 1.2rem;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   position: relative;
@@ -1648,4 +1648,11 @@ background-color:
   padding: 0;
   position: relative;
 
+}
+
+/* search */
+
+.search-background {
+  background: grey;
+  height: 700px;
 }
