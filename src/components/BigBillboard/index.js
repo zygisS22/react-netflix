@@ -11,11 +11,22 @@ function BigBillboard() {
 
     const [movie, setMovie] = useState(null)
 
-    useEffect(async () => {
+    const fetchMovie = async () => {
 
-        let movie = await getMovieInformation(128).then(response => response.data)
+        const response = await getMovieInformation(128)
 
-        setMovie(movie)
+        return response
+    }
+
+    useEffect(() => {
+
+
+        fetchMovie().then(response => {
+            setMovie(response.data)
+
+        })
+
+        return () => setMovie(null)
 
     }, [])
 

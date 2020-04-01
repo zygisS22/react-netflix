@@ -18,15 +18,31 @@ function Home() {
 
     const searchContext = useContext(SearchContext)
 
-    useEffect(async () => {
 
+    const fetchMovies = async () => {
         let popularMovies = await getMoviesBy("populares")
         let kidsMovies = await getMoviesBy("kids")
         let bestMovies = await getMoviesBy("best")
 
-        setPopularMovies(popularMovies.results)
-        setKidsMovies(kidsMovies.results)
-        setBestMovies(bestMovies.results)
+        return { popularMovies, kidsMovies, bestMovies }
+    }
+
+    useEffect(() => {
+
+        fetchMovies().then(response => {
+
+            setPopularMovies(response.popularMovies.results)
+            setKidsMovies(response.kidsMovies.results)
+            setBestMovies(response.bestMovies.results)
+
+        })
+
+
+        return () => {
+            setPopularMovies(null)
+            setKidsMovies(null)
+            setBestMovies(null)
+        }
 
 
     }, [])
@@ -41,19 +57,23 @@ function Home() {
         <div>
 
 
-            <Search />
 
-            <div style={{ display: searchContext.searchInput.length > 0 ? "none" : "block" }}>
 
-                <BigBillboard />
+            {searchContext.searchInput.length > 0 ? (<Search />) : (
+                <div>
 
-                {popularMovies && <Slider mainTitle={"Populares"} data={popularMovies} poster={false} />}
+                    <BigBillboard />
 
-                {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} poster={true} />}
+                    {popularMovies && <Slider mainTitle={"Populares"} data={popularMovies} poster={false} />}
 
-                {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} poster={false} />}
+                    {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} poster={true} />}
 
-            </div>
+                    {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} poster={false} />}
+
+                </div>
+            )}
+
+
 
 
         </div>
