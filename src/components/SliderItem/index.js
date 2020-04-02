@@ -75,7 +75,16 @@ function SliderItem(props) {
         >
             <a>
                 <div className="boxart">
-                    {props.data.backdrop_path ? <img src={`${IMAGE_BASE}original/${props.data.backdrop_path}`} alt="boxart" /> : <img style={{ "background": "black" }} alt="boxart" />}
+                    {props.poster === true ? (
+                        <React.Fragment>
+                            {props.data.backdrop_path ? <img src={`${IMAGE_BASE}w500/${props.data.poster_path}`} alt="boxart" /> : <img style={{ "background": "black" }} alt="boxart" />}
+                        </React.Fragment>
+                    ) : (
+                            <React.Fragment>
+                                {props.data.backdrop_path ? <img src={`${IMAGE_BASE}w500/${props.data.backdrop_path}`} alt="boxart" /> : <img style={{ "background": "black" }} alt="boxart" />}
+                            </React.Fragment>
+                        )}
+
 
 
                 </div>
@@ -86,45 +95,49 @@ function SliderItem(props) {
                 <span><FontAwesomeIcon icon={faAngleDown} /></span>
             </button>
 
-            <div className={`item-overlay ${showOverlay ? "open" : ""}`}>
-                <div className="item-wrapper">
-                    <div className="item-overview">
-                        <div className="item-overview-play">
-                            <span><FontAwesomeIcon icon={faPlayCircle} /></span>
-                        </div>
-                        <div className="item-overview-title">{props.data.title}</div>
-                        <div className="item-overview-metadata">
-                            <span className="metadata-rating">Novedad</span>
-                            <span className="metadata-maturity">{props.data.adult == true ? "+18" : "+13"}</span>
-                            <span>{props.data.vote_average}</span>
-                        </div>
-                        <div className="item-overview-synopsis">
-                            {props.data.genre_ids.map((item, index) => {
-                                if (index < 3) {
-                                    let genreName = genresList.find(genre => genre.id == item)
+            {props.poster === false && (
+                <div className={`item-overlay ${showOverlay ? "open" : ""}`}>
+                    <div className="item-wrapper">
+                        <div className="item-overview">
+                            <div className="item-overview-play">
+                                <span><FontAwesomeIcon icon={faPlayCircle} /></span>
+                            </div>
+                            <div className="item-overview-title">{props.data.title}</div>
+                            <div className="item-overview-metadata">
+                                <span className="metadata-rating">Novedad</span>
+                                <span className="metadata-maturity">{props.data.adult == true ? "+18" : "+13"}</span>
+                                <span>{props.data.vote_average}</span>
+                            </div>
+                            <div className="item-overview-synopsis">
+                                {props.data.genre_ids.map((item, index) => {
+                                    if (index < 3) {
+                                        let genreName = genresList.find(genre => genre.id == item)
 
-                                    if (index > 0) {
-                                        return (<React.Fragment><span className="separator"></span><span>{genreName.name}</span></React.Fragment>)
-                                    } else {
-                                        return <span>{genreName.name}</span>
+                                        if (index > 0) {
+                                            return (<React.Fragment><span className="separator"></span><span>{genreName.name}</span></React.Fragment>)
+                                        } else {
+                                            return <span>{genreName.name}</span>
+                                        }
+
+
                                     }
-
-
-                                }
-                            })}
+                                })}
+                            </div>
                         </div>
-                    </div>
-                    <div className="item-actions">
-                        <div className="item-action-buttons">
-                            {/* <div><span><FontAwesomeIcon icon={faVolumeMute} /></span></div> */}
-                            <div><span><FontAwesomeIcon icon={faThumbsUp} /></span></div>
-                            <div><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                        <div className="item-actions">
+                            <div className="item-action-buttons">
+                                {/* <div><span><FontAwesomeIcon icon={faVolumeMute} /></span></div> */}
+                                <div><span><FontAwesomeIcon icon={faThumbsUp} /></span></div>
+                                <div><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                            </div>
                         </div>
+                        <div className="item-chevron"></div>
                     </div>
-                    <div className="item-chevron"></div>
+
                 </div>
+            )}
 
-            </div>
+
 
             {isActive && (<div className="mark" />)}
 

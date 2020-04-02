@@ -519,6 +519,7 @@ rgba(0, 0, 0, 0) 85%);
 }
 
 .handle {
+  opacity: 0;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -530,10 +531,11 @@ rgba(0, 0, 0, 0) 85%);
   color:#fff;
   background: rgba(20, 20, 20, 0.5);
   align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .handle strong {
-  display: none;
+  /* display: none; */
   height: auto;
   font-size: 2.5vw;
 }
@@ -546,10 +548,13 @@ rgba(0, 0, 0, 0) 85%);
   left: 0;
 }
 
-
-.handle:hover strong{
-  display: block;
+.slider:hover .handle {
+  opacity:1;
 }
+
+/* .handle:hover strong{
+  
+} */
 
 /* ZOOM */
 
