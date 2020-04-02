@@ -1651,20 +1651,31 @@ background-color:
 
 .search-background {
   background: #141414;
-  height: 700px;
 }
 
 .search-container {
   padding: 0 4%;
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(133px,1fr));
   grid-template-rows: auto;
   grid-row-gap: 40px; 
 }
 
 
 .search-container div {
-  background: indianred;
-  margin: 0 4px;
+  padding: 0px 2px;
   height: 200px;
+  width: 133px;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.search-container div:hover {
+  transform: scale(1.2);
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+.search-container div img {
+  height: 100%;
+  width: -moz-available;
 }
