@@ -43,32 +43,23 @@ const Search = () => {
 
 
 
-            <div className="search-container">
 
-                {movies ? (renderPosters(movies)) : (<h2 align="center">loading...</h2>)}
 
-                {/* <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-                <div>7</div>
-                <div>8</div>
-                <div>9</div>
-                <div>10</div>
-                <div>11</div>
-                <div>12</div>
-                <div>13</div>
-                <div>14</div>
-                <div>15</div>
-                <div>16</div>
-                <div>17</div>
-                <div>18</div>
-                <div>19</div>
-                <div>20</div> */}
+            {movies ? (
+                <React.Fragment>
+                    {movies.length ? (<div className="search-container">{renderPosters(movies)}</div>) : (<div className="not-found">No results :(</div>)}
+                </React.Fragment>
+            ) : (
+                    <div class="loading-content">
+                        <div class="loading-circle"></div>
+                        <span class="loading-name">LOADING...</span>
+                    </div>
 
-            </div>
+                )}
+
+
+
+
 
         </div>
     )
