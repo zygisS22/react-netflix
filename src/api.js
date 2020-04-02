@@ -15,9 +15,9 @@ export async function getMovieInformation(id) {
 // https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&query=cxvxcvxcv&page=1&include_adult=false
 //https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
 
-export async function searchMoviesBy(text) {
+export async function searchMoviesBy(text, page = 1) {
 
-    return await axios.get(`${URL}search/movie?${API}&language=en-US&query=${text}&page=1&include_adult=true`)
+    return await axios.get(`${URL}search/movie?${API}&language=en-US&query=${text}&page=${page}&include_adult=true`)
 
 }
 

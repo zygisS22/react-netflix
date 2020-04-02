@@ -3,24 +3,54 @@ import searchContext from "../Search/context"
 
 import { searchMoviesBy, IMAGE_BASE } from "../../api"
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+
 const Search = () => {
 
     const context = useContext(searchContext)
     const [movies, setMovies] = useState(null)
+    const [page, setPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(null)
 
 
-    const queryMovies = async (text) => {
-        return await searchMoviesBy(context.searchInput)
+
+    const queryMovies = async (text, page) => {
+        return await searchMoviesBy(text, page).then(response => {
+
+            setMovies(response.data.results)
+            setPage(response.data.page)
+            setTotalPages(response.data.total_pages)
+
+        })
+    }
+
+
+    const loadMoreMovies = (text) => {
+        queryNextBatch(text, page)
+    }
+
+    const queryNextBatch = async (text, page) => {
+
+        let nextPage = page + 1
+
+        return await searchMoviesBy(text, nextPage).then(response => {
+
+            if (movies) {
+
+                let loadedMovies = movies.concat(response.data.results)
+                setMovies(loadedMovies)
+                setPage(response.data.page)
+            }
+
+        })
+
     }
 
     useEffect(() => {
 
-        queryMovies().then(response => {
-
-            console.log(response.data.results)
-            setMovies(response.data.results)
-
-        })
+        queryMovies(context.searchInput, page)
 
         return () => setMovies(null)
     }, [context])
@@ -47,12 +77,30 @@ const Search = () => {
 
             {movies ? (
                 <React.Fragment>
-                    {movies.length ? (<div className="search-container">{renderPosters(movies)}</div>) : (<div className="not-found">No results :(</div>)}
+                    {movies.length ? (
+                        <React.Fragment>
+                            <div className="search-container">{renderPosters(movies)}</div>
+
+                            {page < totalPages ? (
+                                <div className="load-more" onClick={() => loadMoreMovies(context.searchInput)}>
+                                    <span>
+                                        <FontAwesomeIcon icon={faChevronDown} />
+                                    </span>
+
+                                </div>) : null}
+
+                        </React.Fragment>
+
+
+
+
+
+                    ) : (<div className="not-found">No results :(</div>)}
                 </React.Fragment>
             ) : (
-                    <div class="loading-content">
-                        <div class="loading-circle"></div>
-                        <span class="loading-name">LOADING...</span>
+                    <div className="loading-content">
+                        <div className="loading-circle"></div>
+                        <span className="loading-name">LOADING...</span>
                     </div>
 
                 )}

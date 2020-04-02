@@ -1759,3 +1759,27 @@ background-color:
   font-size: 2rem;
 
 }
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  position:relative;
+  cursor: pointer;
+}
+
+.load-more span {
+  border: solid 2px #E50914;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.load-more span svg {
+  font-size: 1.5rem;
+  color:#fff;
+}
+
+.load-more span:hover {
+  border: solid 2px #fff;
+}
