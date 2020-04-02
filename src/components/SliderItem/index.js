@@ -53,8 +53,6 @@ function SliderItem(props) {
 
     useEffect(() => {
 
-
-
     }, [inViewport, setInViewport])
 
     const translate = `translateX(${props.transform})`
