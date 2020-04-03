@@ -12,6 +12,7 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
     useEffect(() => {
 
 
+
     }, [])
 
 
@@ -63,7 +64,7 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                             {menuOption == "general-info" ? (
                                 <div className="jaw-bone-common">
                                     <div className="metadata">
-                                        <span className="imdb"><a href={"/"}><FontAwesomeIcon icon={faImdb} /></a></span>
+                                        <span className="imdb"><a href={`https://www.imdb.com/title/${additionalMovieInfo.imdb_id}`} target="_blank"><FontAwesomeIcon icon={faImdb} /></a></span>
                                         <span className="score">{additionalMovieInfo.vote_average}</span>
                                         <span className="year">{currentSlide.release_date}</span>
                                         <span className="duration">{additionalMovieInfo.runtime}m</span>
