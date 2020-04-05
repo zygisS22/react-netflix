@@ -381,7 +381,7 @@ rgba(0, 0, 0, 0) 85%);
 
 .sliderBox {
   z-index: 1;
-  margin: 3vw 0; 
+  margin: 4.5vw 0; 
   padding: 0;
   position: relative;
 
@@ -1177,9 +1177,9 @@ background-color:
 .item-wrapper {
   position: absolute;
   top: 0;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  left: 2px;
+  right: 2px;
+  bottom: 0px;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-end;
