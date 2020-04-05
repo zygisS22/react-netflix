@@ -312,6 +312,7 @@ margin-top: .1vw;
 .billboard-link {
   display: flex;
   margin-top: 1.5vw;
+  white-space: nowrap;
 }
 
 .play-link {
@@ -1814,6 +1815,26 @@ background-color:
 
   .menu-trigger {
     display: block;
+  }
+}
+
+
+@media screen and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) {
+  html,
+  body {
+    font-size: 1.5vw;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) {
+  html,
+  body {
+    font-size: 1vw;
+  }
+}
+@media screen and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) {
+  html,
+  body {
+    font-size: 0.75vw;
   }
 }
 
