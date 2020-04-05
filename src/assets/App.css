@@ -1814,6 +1814,7 @@ background-color:
 
 .menu-trigger:hover .submenu {
   opacity: 1;
+  visibility: visible;
 }
 
 .navigation-menu:after {
@@ -1827,6 +1828,10 @@ background-color:
 }
 
 .submenu {
+  opacity: 0;
+  cursor: default;
+  visibility: hidden;
+  margin-left: -90px;
   box-sizing: border-box;
   top: 71px;
   position: absolute;
@@ -1835,9 +1840,7 @@ background-color:
   font-size: 13px;
   line-height: 21px;
   border: solid 1px rgba(255, 255, 255, 0.15);
-  cursor: default;
   transition-duration: 150ms;
-  opacity: 0;
 }
 
 .submenu .arrow {
@@ -1865,6 +1868,11 @@ background-color:
   padding: 0;
   list-style-type: none;
   margin: 0;
+}
+
+.submenu ul {
+  cursor: default;
+  height: auto;
 }
 
 .submenu ul li a {
