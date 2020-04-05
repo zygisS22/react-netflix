@@ -79,6 +79,10 @@ main {
   align-items: center;
 }
 
+.menu-trigger {
+  display: none;
+}
+
 .header-menu .header-list .header-list-item {
   margin-left: 18px;
 }
@@ -1798,6 +1802,18 @@ background-color:
 @media screen and (min-width: 1400px) {
   .slider .slider-content .slider-item {
     width: 16.66666667%;
+  }
+}
+
+
+
+@media screen and (max-width: 1099px) {
+  .header-list .header-list-item:not(.menu-trigger) {
+    display:none;
+  }
+
+  .menu-trigger {
+    display: block;
   }
 }
 
