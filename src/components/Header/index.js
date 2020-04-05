@@ -10,7 +10,6 @@ function Header() {
 
     const [pinHeader, setHeader] = useState(false)
     const [searchBox, setSearchBox] = useState(false)
-    //const [searchInput, setSearchInput] = useState("")
     const ref = useRef(null)
     const inputRef = useRef(null)
 
@@ -27,12 +26,6 @@ function Header() {
 
     };
 
-    const handleInput = (e) => {
-        //e.preventDefault();
-        //setSearchInput(prevState => e.currentTarget.value)
-
-
-    }
 
     const toggleSearchBox = () => {
 
@@ -41,7 +34,6 @@ function Header() {
         setSearchBox(prevState => !prevState)
 
     }
-
 
 
     useEffect(() => {
@@ -62,13 +54,31 @@ function Header() {
                     <img src={logo} alt={"logo"} />
                 </div>
 
+
+
+
+
                 <div className="header-menu">
-                    <ul>
-                        <li><a href={"/"} className="active">Inicio</a></li>
-                        <li><a href={"/"}>Series TV</a></li>
-                        <li><a href={"/"}>Peliculas</a></li>
-                        <li><a href={"/"}>Mas recientes</a></li>
-                        <li><a href={"/"}>Mi lista</a></li>
+                    <ul className="header-list">
+                        <li className="header-list-item menu-trigger">
+                            <a href={"/"} className="navigation-menu active">Menu</a>
+                            <div className="submenu">
+                                <div className="arrow"></div>
+                                <div className="topbar"></div>
+                                <ul>
+                                    <li><a href={"/"} className="active">Inicio</a></li>
+                                    <li><a href={"/"}>Series TV</a></li>
+                                    <li><a href={"/"}>Peliculas</a></li>
+                                    <li><a href={"/"}>Mas recientes</a></li>
+                                    <li><a href={"/"}>Mi lista</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li className="header-list-item"><a href={"/"} className="active">Inicio</a></li>
+                        <li className="header-list-item"><a href={"/"}>Series TV</a></li>
+                        <li className="header-list-item"><a href={"/"}>Peliculas</a></li>
+                        <li className="header-list-item"><a href={"/"}>Mas recientes</a></li>
+                        <li className="header-list-item"><a href={"/"}>Mi lista</a></li>
                     </ul>
                 </div>
 
