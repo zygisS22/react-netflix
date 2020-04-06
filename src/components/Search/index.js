@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import searchContext from "../Search/context"
-
 import { searchMoviesBy, IMAGE_BASE } from "../../api"
-
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
@@ -14,8 +11,6 @@ const Search = () => {
     const [page, setPage] = useState(1)
     const [totalPages, setTotalPages] = useState(null)
 
-
-
     const queryMovies = async (text, page) => {
         return await searchMoviesBy(text, page).then(response => {
 
@@ -25,7 +20,6 @@ const Search = () => {
 
         })
     }
-
 
     const loadMoreMovies = (text) => {
         queryNextBatch(text, page)
@@ -70,11 +64,6 @@ const Search = () => {
     return (
         <div className="search-background">
 
-
-
-
-
-
             {movies ? (
                 <React.Fragment>
                     {movies.length ? (
@@ -91,11 +80,7 @@ const Search = () => {
 
                         </React.Fragment>
 
-
-
-
-
-                    ) : (<div className="not-found">No results :(</div>)}
+                    ) : (<div className="not-found">No results :/ </div>)}
                 </React.Fragment>
             ) : (
                     <div className="loading-content">
@@ -104,10 +89,6 @@ const Search = () => {
                     </div>
 
                 )}
-
-
-
-
 
         </div>
     )

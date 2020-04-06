@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 import Similar from "../Similar"
 import Details from "../Details"
@@ -12,8 +12,6 @@ import { faImdb } from '@fortawesome/free-brands-svg-icons'
 const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindow }) => {
 
     const [menuOption, setMenuOption] = useState("general-info")
-
-    useEffect(() => { }, [])
 
     return (
         <div className="additional-information">
@@ -85,9 +83,10 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
 
 
                                 </div>
-                            ) : menuOption == "similar" ? (<Similar additionalMovieInfo={additionalMovieInfo} />) : menuOption == "details" ? (
-                                <Details additionalMovieInfo={additionalMovieInfo} />
-                            ) : null}
+                            ) : menuOption == "similar" ? (
+                                <Similar additionalMovieInfo={additionalMovieInfo} />) : menuOption == "details" ? (
+                                    <Details additionalMovieInfo={additionalMovieInfo} />
+                                ) : null}
 
                             <ul className="menu">
                                 <li className={`${menuOption == "general-info" && "current"}`} onClick={() => setMenuOption("general-info")}>

@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { getMovieInformation, IMAGE_BASE } from "../../api"
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
-
 function MediumBillboard() {
-
 
     const [poster, setPoster] = useState(null)
     const [background, setBackground] = useState(null)
     const [secondaryBackground, setSecondaryBackground] = useState(null)
     const [synopsis, setSynopsis] = useState(null)
     const [title, setTitle] = useState(null)
-
-
 
     useEffect(async () => {
 
@@ -27,7 +22,6 @@ function MediumBillboard() {
         setTitle(movie.title)
 
         if (movie.images.backdrops.length > 1) setSecondaryBackground(`${IMAGE_BASE}original/${movie.images.backdrops[1].file_path}`)
-
 
     }, [])
 
@@ -44,7 +38,6 @@ function MediumBillboard() {
 
 
                         <div className="md-billboard-video-button">
-                            {/* <button> o</button> */}
                             <span className="md-billboard-maturity">
                                 +13
                             </span>
@@ -55,7 +48,6 @@ function MediumBillboard() {
                     <div className="md-billboard-info">
                         <div className="md-billboard-title">
                             {title}
-                            {/* <img src={"https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/TsSRXvDuraoJ7apdkH6tsHhf-ZQ/AAAABUPI5ty-CBWw5AdBNQbmXHhcmeohkP46DKXl-03PBpW08JuafqQZIQDV3npa-TEwx89mhO-eJ39LulelMAgfRuf7Mxgw7DrRl3U8NZXg_eOvq84p9Ajzhxal4x9oYgQ2TfXfkDrxtGT08Lg3Gn-9hqUFXKz0ZXTZa87ySoYn5agwRw.png?r=74b"} alt={"test"} /> */}
                         </div>
 
                         <div className="billboard-link">

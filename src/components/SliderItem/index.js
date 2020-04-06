@@ -88,7 +88,7 @@ function SliderItem(props) {
                             </div>
                             <div className="item-overview-title">{props.data.title}</div>
                             <div className="item-overview-metadata">
-                                <span className="metadata-rating">Novedad</span>
+                                <span className="metadata-rating">New</span>
                                 <span className="metadata-maturity">{props.data.adult == true ? "+18" : "+13"}</span>
                                 <span>{props.data.vote_average}</span>
                             </div>
