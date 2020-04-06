@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 import Similar from "../Similar"
+import Details from "../Details"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IMAGE_BASE } from "../../api"
@@ -13,22 +14,6 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
     const [menuOption, setMenuOption] = useState("general-info")
 
     useEffect(() => { }, [])
-
-    const findOnebyType = (name, type, data) => {
-
-        let first = data.find((item, index) => item.department == type)
-
-        if (first) {
-            return (
-                <div className="menu-details-item">
-                    <span className="details-item-title">{name}</span>
-                    <span>{first.name}</span>
-                </div>
-            )
-        }
-
-
-    }
 
     return (
         <div className="additional-information">
@@ -101,48 +86,7 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
 
                                 </div>
                             ) : menuOption == "similar" ? (<Similar additionalMovieInfo={additionalMovieInfo} />) : menuOption == "details" ? (
-                                <div className="menu-details">
-                                    <div className="menu-details-content">
-                                        <div className="menu-details-item">
-                                            <span className="details-item-title">Reparto</span>
-                                            {additionalMovieInfo.credits.cast.map((item, index) => {
-                                                if (index < 10) {
-                                                    return <span>{item.name}</span>
-                                                }
-                                            })}
-                                        </div>
-
-                                        {findOnebyType("Direccion", "Directing", additionalMovieInfo.credits.crew)}
-
-                                        {findOnebyType("Edicion", "Editing", additionalMovieInfo.credits.crew)}
-
-                                        {findOnebyType("Sonido", "Sound", additionalMovieInfo.credits.crew)}
-
-
-                                        <div className="menu-details-item">
-                                            <span className="details-item-title">Generos</span>
-                                            {additionalMovieInfo.genres.map((item, index) => {
-                                                return (
-                                                    <span>{item.name}</span>
-                                                )
-
-                                            })}
-                                        </div>
-
-                                        {additionalMovieInfo.production_companies[0] && (
-                                            <div className="menu-details-item">
-                                                <span className="details-item-title">Produccion</span>
-                                                <span>{additionalMovieInfo.production_companies[0].name}</span>
-
-                                            </div>
-                                        )}
-
-
-
-
-
-                                    </div>
-                                </div>
+                                <Details additionalMovieInfo={additionalMovieInfo} />
                             ) : null}
 
                             <ul className="menu">
