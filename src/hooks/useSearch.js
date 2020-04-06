@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from "react"
-import SearchContext from "../components/Search/context"
+import { useState, useCallback } from "react"
 
 export const useSearch = () => {
     const [searchInput, setSearchInput] = useState("")
