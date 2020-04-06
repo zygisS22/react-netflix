@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { getMoviesBy } from "../../api"
 import BigBillboard from "../BigBillboard"
 import Slider from "../Slider"
-import MediumBillboard from '../MediumBillboard';
-
-
-import { getMoviesBy } from "../../api"
 import Search from '../Search';
 import SearchContext from "../Search/context"
 
@@ -60,11 +57,11 @@ function Home() {
 
                     <BigBillboard />
 
-                    {popularMovies && <Slider mainTitle={"Populares"} data={popularMovies} poster={false} />}
+                    {popularMovies && <Slider mainTitle={"Trending now"} data={popularMovies} poster={false} />}
 
-                    {kidsMovies && <Slider mainTitle={"Peliculas para niños"} data={kidsMovies} poster={true} />}
+                    {kidsMovies && <Slider mainTitle={"Kids movies"} data={kidsMovies} poster={true} />}
 
-                    {bestMovies && <Slider mainTitle={"Mejores peliculas del 2015"} data={bestMovies} poster={false} />}
+                    {bestMovies && <Slider mainTitle={"Best 2015 movies"} data={bestMovies} poster={false} />}
 
                 </div>
             )}
