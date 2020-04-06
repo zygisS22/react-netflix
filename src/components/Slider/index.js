@@ -1,17 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
+import SelectedItem from "../SelectedItem"
 import SliderItem from "../SliderItem"
-
+import SliderContext from "./context"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faUndo } from '@fortawesome/free-solid-svg-icons'
 
-import SliderContext from "./context"
-import useSlider from "../../hooks/useSlide"
-
-
-
 import useWindowWidth from "../../hooks/useWindowWidth"
-
-import SelectedItem from "../SelectedItem"
+import useSlider from "../../hooks/useSlide"
 
 
 function Slider({ mainTitle, data, poster }) {
@@ -25,7 +20,6 @@ function Slider({ mainTitle, data, poster }) {
         closeInformationWindow,
         scaleTiles,
         resetSize,
-        sliderIndex,
         sliderPages,
         slideProps,
         hasPrev,
@@ -36,17 +30,11 @@ function Slider({ mainTitle, data, poster }) {
         paginationIndicator
     } = useSlider(width, ref, 20, data, poster);
 
-
     const contextValue = {
         currentSlide
     };
 
-
-    useEffect(() => {
-
-
-    }, [width])
-
+    useEffect(() => { }, [width])
 
     return (
         <SliderContext.Provider value={contextValue}>
@@ -54,10 +42,8 @@ function Slider({ mainTitle, data, poster }) {
                 <h2 className="slider-header">
                     <a href={"/"}>
                         <div>{mainTitle}</div>
-                        <div className="see-more">Explorar más</div>
+                        <div className="see-more">Explore more</div>
                         <div className="see-more-chevron"><FontAwesomeIcon icon={faChevronRight} /></div>
-
-
                     </a>
                 </h2>
 
@@ -66,9 +52,7 @@ function Slider({ mainTitle, data, poster }) {
 
                         <ul className="pagination-indicator">
 
-
                             {sliderPages > 0 ? (paginationIndicator(sliderPages)) : ""}
-
 
                         </ul>
 
@@ -90,8 +74,6 @@ function Slider({ mainTitle, data, poster }) {
                                     />
                                 })}
 
-
-
                             </div>
 
                         </div>
@@ -99,7 +81,6 @@ function Slider({ mainTitle, data, poster }) {
                         {hasNext && (<span className="handle handleNext" onClick={() => moveSection("right")}>
                             <strong><FontAwesomeIcon icon={faChevronRight} /></strong>
                         </span>)}
-
 
                         {hasPrev && (<span className="handle handlePrev" onClick={() => moveSection("left")}>
                             <strong><FontAwesomeIcon icon={faChevronLeft} /></strong>
@@ -114,12 +95,7 @@ function Slider({ mainTitle, data, poster }) {
                     </div>
                 </div>
 
-
                 {currentSlide && <SelectedItem currentSlide={currentSlide} additionalMovieInfo={additionalMovieInfo} closeInformationWindow={closeInformationWindow} />}
-
-
-
-
 
             </div>
         </SliderContext.Provider>

@@ -1,12 +1,11 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import useVisibility from "../../hooks/useVisibility"
-import SliderContext from "../Slider/context"
-
 import { IMAGE_BASE } from "../../api"
 import genresList from "../../genres"
-
+import SliderContext from "../Slider/context"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faPlayCircle, faVolumeMute, faThumbsUp, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faPlayCircle, faThumbsUp, faPlus } from '@fortawesome/free-solid-svg-icons'
+
+import useVisibility from "../../hooks/useVisibility"
 
 
 function SliderItem(props) {
@@ -36,20 +35,13 @@ function SliderItem(props) {
     }
 
     const onHoverLeave = (e) => {
-
         props.reset(e)
-
         setShowOverlay(false)
     }
 
-
-
     const isActive = sliderWrapper.currentSlide && sliderWrapper.currentSlide.id === props.title;
 
-
     useVisibility(ref, itemVisible, itemNotVisible);
-
-
 
     useEffect(() => {
 
@@ -57,10 +49,7 @@ function SliderItem(props) {
 
     const translate = `translateX(${props.transform})`
 
-
-    const styledPoster = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out", height: "62rem" }
     const styled = { transform: translate, "transformOrigin": props.origin, transition: "all 0.3s ease-in-out" }
-
 
     return (
         <div
@@ -83,11 +72,8 @@ function SliderItem(props) {
                             </React.Fragment>
                         )}
 
-
-
                 </div>
             </a>
-
 
             <button onClick={() => props.onSelectSlide(props.title)} className="show-details">
                 <span><FontAwesomeIcon icon={faAngleDown} /></span>
@@ -116,15 +102,12 @@ function SliderItem(props) {
                                         } else {
                                             return <span>{genreName.name}</span>
                                         }
-
-
                                     }
                                 })}
                             </div>
                         </div>
                         <div className="item-actions">
                             <div className="item-action-buttons">
-                                {/* <div><span><FontAwesomeIcon icon={faVolumeMute} /></span></div> */}
                                 <div><span><FontAwesomeIcon icon={faThumbsUp} /></span></div>
                                 <div><span><FontAwesomeIcon icon={faPlus} /></span></div>
                             </div>
@@ -134,7 +117,6 @@ function SliderItem(props) {
 
                 </div>
             )}
-
 
 
             {isActive && (<div className="mark" />)}
