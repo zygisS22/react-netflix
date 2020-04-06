@@ -1489,7 +1489,6 @@ background-color:
 
 .social-links {
   display: flex;
-  margin-bottom: 1em;
 }
 
 .social-links a {
@@ -1497,11 +1496,11 @@ background-color:
   text-decoration: none;
   cursor: pointer;
   color: #808080;
-  font-size: 2.5vw;
+  font-size: 3.5vw;
 }
 
 .social-links a:first-child {
-  margin-left: 15px;
+  margin-left: 5px;
  
 }
 
@@ -1509,10 +1508,36 @@ background-color:
   color: #fff;
 }
 
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1vw;
+}
+
 .copyright {
-  font-size: 11px;
+  font-size: 16px;
+  margin-right:10px;
   color: #808080;
-  margin-bottom: 15px;
+}
+
+.react-icon {
+  font-size: 3.5vw;
+  margin: 0 5px;
+  color: #61dafb;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
 
 
