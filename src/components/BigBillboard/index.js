@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
+import { getMovieInformation } from "../../api"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
-
-
-import { getMovieInformation } from "../../api"
 
 
 function BigBillboard() {
@@ -51,7 +48,6 @@ function BigBillboard() {
                         </div>
 
                         <div className="billboard-description">
-                            {/* <div className="suplemental">Ver temporada 2 ahora</div> */}
                             <div className="episode-title-container"></div>
                             <div className="synopsis">{movie && movie.overview}</div>
                         </div>
@@ -60,13 +56,13 @@ function BigBillboard() {
                             <a className="play-link" href={"/"} >
                                 <button className="hasLabel">
                                     <span className="play-icon"><FontAwesomeIcon icon={faPlay} /></span>
-                                    <span>Reproducir</span>
+                                    <span>Play</span>
                                 </button>
                             </a>
 
                             <button className="hasLabel play-link-secondary">
                                 <span className="play-icon"><FontAwesomeIcon icon={faQuestionCircle} /></span>
-                                <span>Más informacion</span>
+                                <span>Information</span>
                             </button>
 
                         </div>
