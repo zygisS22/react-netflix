@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
-
-import logo from "../../assets/netflix-2.svg"
+import SearchContext from "../Search/context"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faGift, faBell } from '@fortawesome/free-solid-svg-icons'
+import logo from "../../assets/netflix-2.svg"
 
-import SearchContext from "../Search/context"
 
 function Header() {
 
@@ -54,10 +53,6 @@ function Header() {
                     <img src={logo} alt={"logo"} />
                 </div>
 
-
-
-
-
                 <div className="header-menu">
                     <ul className="header-list">
                         <li className="header-list-item menu-trigger">
@@ -66,19 +61,19 @@ function Header() {
                                 <div className="arrow"></div>
                                 <div className="topbar"></div>
                                 <ul>
-                                    <li><a href={"/"} className="active">Inicio</a></li>
-                                    <li><a href={"/"}>Series TV</a></li>
-                                    <li><a href={"/"}>Peliculas</a></li>
-                                    <li><a href={"/"}>Mas recientes</a></li>
-                                    <li><a href={"/"}>Mi lista</a></li>
+                                    <li><a href={"/"} className="active">Home</a></li>
+                                    <li><a href={"/"}>TV shows</a></li>
+                                    <li><a href={"/"}>Movies</a></li>
+                                    <li><a href={"/"}>Recently added</a></li>
+                                    <li><a href={"/"}>My list</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li className="header-list-item"><a href={"/"} className="active">Inicio</a></li>
-                        <li className="header-list-item"><a href={"/"}>Series TV</a></li>
-                        <li className="header-list-item"><a href={"/"}>Peliculas</a></li>
-                        <li className="header-list-item"><a href={"/"}>Mas recientes</a></li>
-                        <li className="header-list-item"><a href={"/"}>Mi lista</a></li>
+                        <li className="header-list-item"><a href={"/"} className="active">Home</a></li>
+                        <li className="header-list-item"><a href={"/"}>TV shows</a></li>
+                        <li className="header-list-item"><a href={"/"}>Movies</a></li>
+                        <li className="header-list-item"><a href={"/"}>Recently added</a></li>
+                        <li className="header-list-item"><a href={"/"}>My list</a></li>
                     </ul>
                 </div>
 
