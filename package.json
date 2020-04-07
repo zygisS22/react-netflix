@@ -1,5 +1,6 @@
 {
   "name": "react-flix",
+  "homepage": "https://zygiss22.github.io/react-netflix",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
