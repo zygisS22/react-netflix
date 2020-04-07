@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/react-netflix/static/css/main.04c358bf.chunk.css",
-    "main.js": "/react-netflix/static/js/main.98a52d7a.chunk.js",
-    "main.js.map": "/react-netflix/static/js/main.98a52d7a.chunk.js.map",
-    "runtime-main.js": "/react-netflix/static/js/runtime-main.7826583a.js",
-    "runtime-main.js.map": "/react-netflix/static/js/runtime-main.7826583a.js.map",
-    "static/js/2.0e143184.chunk.js": "/react-netflix/static/js/2.0e143184.chunk.js",
-    "static/js/2.0e143184.chunk.js.map": "/react-netflix/static/js/2.0e143184.chunk.js.map",
-    "index.html": "/react-netflix/index.html",
-    "precache-manifest.4832107b6934810422af7da7be2747f2.js": "/react-netflix/precache-manifest.4832107b6934810422af7da7be2747f2.js",
-    "service-worker.js": "/react-netflix/service-worker.js",
-    "static/css/main.04c358bf.chunk.css.map": "/react-netflix/static/css/main.04c358bf.chunk.css.map",
-    "static/js/2.0e143184.chunk.js.LICENSE.txt": "/react-netflix/static/js/2.0e143184.chunk.js.LICENSE.txt",
-    "static/media/netflix-2.svg": "/react-netflix/static/media/netflix-2.b8ce8f65.svg"
+    "main.css": "/static/css/main.04c358bf.chunk.css",
+    "main.js": "/static/js/main.98a52d7a.chunk.js",
+    "main.js.map": "/static/js/main.98a52d7a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0006634d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0006634d.js.map",
+    "static/js/2.0e143184.chunk.js": "/static/js/2.0e143184.chunk.js",
+    "static/js/2.0e143184.chunk.js.map": "/static/js/2.0e143184.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7e1125646f0a7709556bcbf2b42d54d8.js": "/precache-manifest.7e1125646f0a7709556bcbf2b42d54d8.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.04c358bf.chunk.css.map": "/static/css/main.04c358bf.chunk.css.map",
+    "static/js/2.0e143184.chunk.js.LICENSE.txt": "/static/js/2.0e143184.chunk.js.LICENSE.txt",
+    "static/media/netflix-2.svg": "/static/media/netflix-2.b8ce8f65.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7826583a.js",
+    "static/js/runtime-main.0006634d.js",
     "static/js/2.0e143184.chunk.js",
     "static/css/main.04c358bf.chunk.css",
     "static/js/main.98a52d7a.chunk.js"
