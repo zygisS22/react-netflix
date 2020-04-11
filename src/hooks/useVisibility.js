@@ -1,4 +1,4 @@
-import react, { useEffect } from "react"
+import { useEffect } from "react"
 
 
 export default function useVisibility(ref, callbackOnScreen, callbackOffScreen) {
@@ -19,5 +19,5 @@ export default function useVisibility(ref, callbackOnScreen, callbackOffScreen) 
         if (ref.current) {
             observer.observe(ref.current)
         }
-    }, [])
+    }, [ref, callbackOnScreen, callbackOffScreen])
 }

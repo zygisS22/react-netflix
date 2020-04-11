@@ -11,16 +11,6 @@ const Search = () => {
     const [page, setPage] = useState(1)
     const [totalPages, setTotalPages] = useState(null)
 
-    const queryMovies = async (text, page) => {
-        return await searchMoviesBy(text, page).then(response => {
-
-            setMovies(response.data.results)
-            setPage(response.data.page)
-            setTotalPages(response.data.total_pages)
-
-        })
-    }
-
     const loadMoreMovies = (text) => {
         queryNextBatch(text, page)
     }
@@ -42,12 +32,23 @@ const Search = () => {
 
     }
 
+
     useEffect(() => {
 
-        queryMovies(context.searchInput, page)
+        const fetchData = async () => {
+            return await searchMoviesBy(context.searchInput, page).then(response => {
+
+                setMovies(response.data.results)
+                setPage(response.data.page)
+                setTotalPages(response.data.total_pages)
+
+            })
+        };
+
+        fetchData()
 
         return () => setMovies(null)
-    }, [context])
+    }, [context, page])
 
 
     const renderPosters = (data) => {
@@ -55,6 +56,7 @@ const Search = () => {
         return data.map((item, index) => {
 
             if (item.poster_path) return <div key={index}><img src={`${IMAGE_BASE}w500/${item.poster_path}`} alt={"poster"} /></div>
+            return null
 
 
         })

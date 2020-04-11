@@ -60,7 +60,7 @@ function SliderItem(props) {
             onMouseLeave={(e) => onHoverLeave(e)}
             onMouseEnter={(e) => onHover(e)}
         >
-            <a>
+            <div className="boxart-container">
                 <div className="boxart">
                     {props.poster === true ? (
                         <React.Fragment>
@@ -73,7 +73,7 @@ function SliderItem(props) {
                         )}
 
                 </div>
-            </a>
+            </div>
 
             <button onClick={() => props.onSelectSlide(props.title)} className="show-details">
                 <span><FontAwesomeIcon icon={faAngleDown} /></span>
@@ -89,20 +89,22 @@ function SliderItem(props) {
                             <div className="item-overview-title">{props.data.title}</div>
                             <div className="item-overview-metadata">
                                 <span className="metadata-rating">New</span>
-                                <span className="metadata-maturity">{props.data.adult == true ? "+18" : "+13"}</span>
+                                <span className="metadata-maturity">{props.data.adult === true ? "+18" : "+13"}</span>
                                 <span>{props.data.vote_average}</span>
                             </div>
                             <div className="item-overview-synopsis">
                                 {props.data.genre_ids.map((item, index) => {
                                     if (index < 3) {
-                                        let genreName = genresList.find(genre => genre.id == item)
+                                        let genreName = genresList.find(genre => genre.id === item)
 
                                         if (index > 0) {
-                                            return (<React.Fragment><span className="separator"></span><span>{genreName.name}</span></React.Fragment>)
+                                            return (<React.Fragment key={index}><span className="separator"></span><span>{genreName.name}</span></React.Fragment>)
                                         } else {
-                                            return <span>{genreName.name}</span>
+                                            return <span key={index}>{genreName.name}</span>
                                         }
                                     }
+
+                                    return null
                                 })}
                             </div>
                         </div>

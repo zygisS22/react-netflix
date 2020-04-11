@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getMovieInformation } from "../api"
 
 const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
@@ -7,16 +7,11 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
     const [distance, setDistance] = useState(0);
     const [containerWidth, setContainerWidth] = useState(0);
     const [totalInViewport, setTotalInViewport] = useState(0)
-    const [itemWidth, setItemWidth] = useState(0)
-    const [posterStyle, setPosterStyle] = useState(poster)
-
     const [slider, setSlider] = useState(null)
     const [currentSlide, setCurrentSlide] = useState(null);
     const [content, setContent] = useState(data)
-
     const [sliderIndex, setSliderIndex] = useState(0)
     const [sliderPages, setSliderPages] = useState(0)
-
     const hasPrev = distance < 0;
     const hasNext = (viewed + totalInViewport) < countElements;
 
@@ -31,13 +26,12 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
             const totalInViewport = Math.ceil(containerWidth / itemWidth)
 
             setSlider(containerRef.current.children)
-            setItemWidth(itemWidth)
             setContainerWidth(containerWidth);
             setTotalInViewport(totalInViewport);
             setSliderPages(countElements / totalInViewport)
 
         }
-    }, [elementWidth])
+    }, [containerRef, data, countElements, elementWidth])
 
 
     let slideProps = {
@@ -46,12 +40,12 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
     let transformProps = {
         edge: {
-            left: posterStyle ? "-5%" : "-35%",
-            right: posterStyle ? "5%" : "35%"
+            left: poster ? "-5%" : "-35%",
+            right: poster ? "5%" : "35%"
         },
         normal: {
-            left: posterStyle ? "-10%" : "-70%",
-            right: posterStyle ? "10%" : "70%"
+            left: poster ? "-10%" : "-70%",
+            right: poster ? "10%" : "70%"
         }
     }
 
@@ -62,7 +56,7 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
         for (let i = 0; i < nPages; i++) {
 
-            if (sliderIndex == i) {
+            if (sliderIndex === i) {
                 paginationList.push(<li className="active" key={i}></li>)
             } else {
                 paginationList.push(<li key={i}></li>)
@@ -79,20 +73,20 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
     const moveSection = (type) => {
 
 
-        if (type == "right") {
+        if (type === "right") {
 
             setViewed(viewed + totalInViewport);
             setDistance(distance - containerWidth)
             setSliderIndex(prevState => prevState + 1)
 
 
-        } else if (type == "left") {
+        } else if (type === "left") {
 
             setViewed(viewed - totalInViewport);
             setDistance(distance + containerWidth);
             setSliderIndex(prevState => prevState - 1)
 
-        } else if (type == "reset") {
+        } else if (type === "reset") {
             setViewed(0);
             setDistance(0)
             setSliderIndex(0)
@@ -105,13 +99,14 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
             let elementsWithClass = Object.entries(slider).filter(item => {
 
                 if (item[1].className.includes("onScreen")) return true
+                return false
             })
 
             let selectedItem = null
             let selectedItemIndex = null
 
 
-            if (type == "right") {
+            if (type === "right") {
 
 
                 elementsWithClass = elementsWithClass.slice(-1)[0]
@@ -122,12 +117,13 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
                         selectedItemIndex = index
                         return true
                     }
+                    return false
 
                 })[0]
 
                 selectedItem = content[selectedItemIndex + 1]
 
-            } else if (type == "left") {
+            } else if (type === "left") {
 
                 elementsWithClass = elementsWithClass[0]
                 elementsWithClass = elementsWithClass[1].dataset.id
@@ -137,12 +133,13 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
                         selectedItemIndex = index
                         return true
                     }
+                    return false
 
                 })[0]
 
                 selectedItem = content[selectedItemIndex - 1]
 
-            } else if (type == "reset") {
+            } else if (type === "reset") {
                 selectedItem = content[0]
             }
 
@@ -178,7 +175,7 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
         if (!slider) return
 
-        const slideItemIndex = Object.entries(slider).findIndex(item => item[1] == e.currentTarget)
+        const slideItemIndex = Object.entries(slider).findIndex(item => item[1] === e.currentTarget)
 
         const itemId = slider[slideItemIndex].dataset.id
 
@@ -198,11 +195,11 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
                     item.origin = "center center"
 
-                    if (hoveredSlide.id != item.id && index > slideItemIndex) {
+                    if (hoveredSlide.id !== item.id && index > slideItemIndex) {
                         item.transform = transformProps.edge.right
 
                         return item
-                    } else if (hoveredSlide.id != item.id && index < slideItemIndex) {
+                    } else if (hoveredSlide.id !== item.id && index < slideItemIndex) {
                         item.transform = transformProps.edge.left
                         return item
                     } else {
@@ -222,7 +219,7 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
 
                 let newState = prevState.map((item, index) => {
 
-                    if (hoveredSlide.id != item.id && index > slideItemIndex) {
+                    if (hoveredSlide.id !== item.id && index > slideItemIndex) {
                         item.transform = transformProps.normal.right
                         item.origin = "center center"
                         return item
@@ -243,7 +240,7 @@ const useSlider = (elementWidth, containerRef, countElements, data, poster) => {
             setContent(prevState => {
 
                 let newState = prevState.map((item, index) => {
-                    if (hoveredSlide.id != item.id && index < slideItemIndex) {
+                    if (hoveredSlide.id !== item.id && index < slideItemIndex) {
                         item.transform = transformProps.normal.left
                         item.origin = "center center"
                         return item

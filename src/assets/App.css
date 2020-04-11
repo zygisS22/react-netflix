@@ -490,18 +490,9 @@ rgba(0, 0, 0, 0) 85%);
   
 }
 
-
-/* .slider-item * {
- 
-  pointer-events: none;
-
-} */
-
-
-.slider-item a {
-  text-decoration: none;
-  cursor: pointer;
-  color:#fff;
+.slider-item .boxart-container {
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -573,31 +564,6 @@ rgba(0, 0, 0, 0) 85%);
   opacity: 1;
   animation: chevronSlideDown 0.8s;
 }
-
-
-/* .slider-content:hover .slider-item {
-  transform: translateX(-25%);
-}
-
-.slider-item:hover ~ .slider-item {
-  transform: translateX(25%);
-}
-*/
-/* 
-.slider-item:hover {
-  transform: scale(1.5) !important;
-}  */
-
-/* 
-.slider-content:not(.open) .card:hover {
-  transform: scale(1.5) !important;
-  transition: all 0.3s ease-in-out;
-  transition-duration: 500ms;
-  
-} 
- */
-
-
 
 /* JAWBONE */
 
@@ -831,41 +797,41 @@ background-position: 50% -50%;
 
 .ai-content-area-container .menu {
   position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
-width: 100%;
-font-size: 1vw;
-z-index: 100;
-padding: 0;
-margin: 0;
-display: flex;
-align-items: center;
-justify-content: center;
-list-style: none;
-pointer-events: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  font-size: 1vw;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  pointer-events: none;
 }
 
 .ai-content-area-container .menu li {
   padding: 1em 1.5em 0;
-display: flex;
-flex-direction: column;
-cursor: pointer;
-color: #ccc;
-min-width: 5%;
-pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: #ccc;
+  min-width: 5%;
+  pointer-events: auto;
 }
 
-.ai-content-area-container .menu a {
+.ai-content-area-container .menu .menu-button {
   margin: 0;
-padding: 0;
-letter-spacing: 1px;
-color: inherit;
-font-weight: bold;
-text-align: center;
-pointer-events: auto;
-text-decoration: none;
-cursor: pointer;
+  padding: 0;
+  letter-spacing: 1px;
+  color: inherit;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .ai-content-area-container .menu li span {
@@ -877,8 +843,7 @@ cursor: pointer;
 
 .ai-content-area-container .menu li.current span {
   transform: translateY(0);
-background-color:
-#E50914;
+  background-color:#E50914;
 }
 
 .background-app { 
@@ -904,32 +869,31 @@ background-color:
 }
 
 .mark:before, .mark:after {
-    position: absolute;
-    width: 0;
-    height: 0;
-    content: '';
-    top: 100%;
-    left: 50%;
-    margin-left: -13px;
-    border-style: solid;
-    border-width: 7px 13px 0 13px;
-    z-index: 4;
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: '';
+  top: 100%;
+  left: 50%;
+  margin-left: -13px;
+  border-style: solid;
+  border-width: 7px 13px 0 13px;
+  z-index: 4;
 }
 
 .mark:before {
   border-color: rgba(0, 0, 0, 0.15) transparent transparent transparent;
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .mark:after {
   margin-top: 4px;
-    border-color: #fff transparent transparent transparent;
+  border-color: #fff transparent transparent transparent;
 }
 
 /* details button */
 
 .show-details {
-
   position: absolute;
   bottom: 0.1vw;
   opacity: 0;
@@ -950,8 +914,6 @@ background-color:
     display: block;
     margin: 0 auto;
     color: white;
-
-
     animation-delay: 200ms;
     animation-name: chevronSlideDown;
     animation-duration: 400ms;
@@ -965,7 +927,6 @@ background-color:
 
 .show-details span svg {
   font-size:2rem;
-  
 }
 
 @keyframes chevronSlideDown {
@@ -984,9 +945,6 @@ background-color:
   opacity: 1;
 }
 
-
-
-
 /* jawbone reworked */
 
 
@@ -997,9 +955,7 @@ background-color:
   margin-top: 2px;
   padding: 0;
   background-color: #000;
-
   transition: height 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s, opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1) 0.1s;
-
 
 }
 
@@ -1054,7 +1010,6 @@ background-color:
   z-index: 3;
 }
 
-
 .ai-background-nav-shadow {
   height: 114px;
   background: url('https://assets.nflxext.com/en_us/akira/jawBone/nav-shadow.png') no-repeat center 100%;
@@ -1086,9 +1041,6 @@ background-color:
 .ai-close-button:hover {
   color: #E50914;
 }
-
-
-
 
 .ai-content-area {
   left: 0;
@@ -1193,7 +1145,6 @@ background-color:
   flex-wrap: wrap;
   align-content: flex-end;
   align-items: flex-end;
-  /* border: solid 2px#141414; */
   padding: 0 2% 2% 2.5%;
   background-color:rgba(0, 0, 0, 0);
   background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 33%,rgba(0, 0, 0, 0.85) 100%);
@@ -1324,7 +1275,6 @@ background-color:
 /* rework this */
 
 .slider-content:not(.open) .card:hover {
-  /* transform: scale(1.8,1.7) !important; */
   transform: scale(1.7,1.6) !important;
   transition: all 0.3s ease-in-out;
   transition-duration: 500ms;
@@ -1332,7 +1282,6 @@ background-color:
 } 
 
 .slider-content:not(.open) .poster:hover {
-  /* transform: scale(1.8,1.7) !important; */
   transform: scale(1.1,1.2) !important;
   transition: all 0.3s ease-in-out;
   transition-duration: 500ms;
@@ -1342,7 +1291,6 @@ background-color:
 .slider-content:not(.open) .slider-item.poster {
   height: 52rem;
 }
-
 
 
 /* MEDIUM BILLBOARD */
@@ -1375,10 +1323,9 @@ background-color:
   height: 40.078125vw;
   opacity: 0.1;
   pointer-events: none;
-  
+
   background-image: url("https://occ-0-2692-360.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABSJEkLt3NYvgVYB0hp9WfRMvuHqGqrw2HZn9CDlxZP0CrdmluBhZP5eTcasvQP_WBdja1e_CPEvZhYQACyCAHbYXrAX4.jpg?r=36e");
 }
-
 
 .medium-billboard-background-image:after, .medium-billboard-background-image:before {
   content: '';
@@ -1389,7 +1336,6 @@ background-color:
 } 
 
 .medium-billboard-background-image:after {
-
   bottom: 0;
   background-image: linear-gradient(to bottom, rgba(20, 20, 20, 0) 0%, #141414 100%);
 
@@ -1397,7 +1343,6 @@ background-color:
 
 
 .medium-billboard-background-image:before {
-
   top: 0;
   background-image: linear-gradient(to top, rgba(20, 20, 20, 0) 0%, #141414 100%);
  
@@ -1425,7 +1370,6 @@ background-color:
 
 .md-billboard-video-button {
   position: absolute;
-
   display: flex;
   bottom: 2.734375vw;
   right: 0;
@@ -1435,16 +1379,15 @@ background-color:
 }
 
 .md-billboard-video-button button {
-
   margin-right: 1vw;
 }
 
 .md-billboard-maturity {
   border: solid 3px #dcdcdc;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
   border-style: none none none solid;
   background-color: rgba(51, 51, 51, 0.6);
   font-size: 1.1vw;

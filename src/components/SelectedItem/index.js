@@ -17,7 +17,7 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
         <div className="additional-information">
 
 
-            <div className={`ai-background ${menuOption != "general-info" ? "dim" : null}`}>
+            <div className={`ai-background ${menuOption !== "general-info" ? "dim" : null}`}>
                 <div className={`ai-background-shadow`} />
                 <div
                     className="ai-background-image"
@@ -35,10 +35,10 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                                 <div>{currentSlide.title}</div>
                             </h3>
 
-                            {menuOption == "general-info" ? (
+                            {menuOption === "general-info" ? (
                                 <div className="jaw-bone-common">
                                     <div className="metadata">
-                                        <span className="imdb"><a href={`https://www.imdb.com/title/${additionalMovieInfo.imdb_id}`} target="_blank"><FontAwesomeIcon icon={faImdb} /></a></span>
+                                        <span className="imdb"><a href={`https://www.imdb.com/title/${additionalMovieInfo.imdb_id}`} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faImdb} /></a></span>
                                         <span className="score">{additionalMovieInfo.vote_average}</span>
                                         <span className="year">{currentSlide.release_date}</span>
                                         <span className="duration">{additionalMovieInfo.runtime}m</span>
@@ -50,12 +50,12 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                                     </div>
 
                                     <div className="actions">
-                                        <a className="play-link" href={"/"} >
+                                        <div className="play-link">
                                             <button className="hasLabel">
                                                 <span className="play-icon"><FontAwesomeIcon icon={faPlay} /></span>
                                                 <span>Play</span>
                                             </button>
-                                        </a>
+                                        </div>
 
                                         <button className="hasLabel play-link-secondary">
                                             <span className="play-icon"><FontAwesomeIcon icon={faPlus} /></span>
@@ -68,14 +68,14 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
                                             <span>Featuring:</span>
                                             {additionalMovieInfo.credits.cast.map((person, index) => {
                                                 if (index < 6) return person.name + " "
-
+                                                return null
                                             })}
                                         </p>
                                         <p className="inline-list">
                                             <span>Genres:</span>
                                             {additionalMovieInfo.genres.map((genre, index) => {
                                                 if (index < 6) return genre.name + " "
-
+                                                return null
                                             })}
                                         </p>
                                     </div>
@@ -83,20 +83,20 @@ const SelectedItem = ({ currentSlide, additionalMovieInfo, closeInformationWindo
 
 
                                 </div>
-                            ) : menuOption == "similar" ? (
-                                <Similar additionalMovieInfo={additionalMovieInfo} />) : menuOption == "details" ? (
+                            ) : menuOption === "similar" ? (
+                                <Similar additionalMovieInfo={additionalMovieInfo} />) : menuOption === "details" ? (
                                     <Details additionalMovieInfo={additionalMovieInfo} />
                                 ) : null}
 
                             <ul className="menu">
-                                <li className={`${menuOption == "general-info" && "current"}`} onClick={() => setMenuOption("general-info")}>
-                                    <a >GENERAL INFORMATION</a><span></span>
+                                <li className={`${menuOption === "general-info" && "current"}`} onClick={() => setMenuOption("general-info")}>
+                                    <div className="menu-button" >GENERAL INFORMATION</div><span></span>
                                 </li>
-                                <li className={`${menuOption == "similar" && "current"}`} onClick={() => setMenuOption("similar")}>
-                                    <a >SIMILAR</a><span></span>
+                                <li className={`${menuOption === "similar" && "current"}`} onClick={() => setMenuOption("similar")}>
+                                    <div className="menu-button">SIMILAR</div><span></span>
                                 </li>
-                                <li className={`${menuOption == "details" && "current"}`} onClick={() => setMenuOption("details")}>
-                                    <a >DETAILS</a><span></span>
+                                <li className={`${menuOption === "details" && "current"}`} onClick={() => setMenuOption("details")}>
+                                    <div className="menu-button">DETAILS</div><span></span>
                                 </li>
                             </ul>
 

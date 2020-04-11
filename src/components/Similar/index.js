@@ -12,7 +12,7 @@ const Similar = ({ additionalMovieInfo }) => {
 
                     if (index < 4) {
                         return (
-                            <div className="similar-item">
+                            <div className="similar-item" key={index}>
                                 <div className="similar-item-image"><img src={`${IMAGE_BASE}original/${similarMovie.backdrop_path}`} alt={"item"} /></div>
                                 <div className="similar-item-metada">
                                     <span className="similar-item-title">{similarMovie.title}</span><br />
@@ -22,6 +22,8 @@ const Similar = ({ additionalMovieInfo }) => {
                             </div>
                         )
                     }
+
+                    return null
 
                 })}
             </div>

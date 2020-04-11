@@ -5,7 +5,7 @@ const Details = ({ additionalMovieInfo }) => {
 
     const findOnebyType = (name, type, data) => {
 
-        let first = data.find((item, index) => item.department == type)
+        let first = data.find((item, index) => item.department === type)
 
         if (first) {
             return (
@@ -24,8 +24,9 @@ const Details = ({ additionalMovieInfo }) => {
                     <span className="details-item-title">Crew</span>
                     {additionalMovieInfo.credits.cast.map((item, index) => {
                         if (index < 10) {
-                            return <span>{item.name}</span>
+                            return <span key={index}>{item.name}</span>
                         }
+                        return null
                     })}
                 </div>
 
@@ -39,7 +40,7 @@ const Details = ({ additionalMovieInfo }) => {
                     <span className="details-item-title">Genres</span>
                     {additionalMovieInfo.genres.map((item, index) => {
                         return (
-                            <span>{item.name}</span>
+                            <span key={index}>{item.name}</span>
                         )
 
                     })}

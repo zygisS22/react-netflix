@@ -13,7 +13,7 @@ function Footer() {
             </div>
 
             <div className="social-links">
-                <a href={"https://github.com/zygisS22"} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
+                <a href={"https://github.com/zygisS22"} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
             </div>
         </div>
     );

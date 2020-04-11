@@ -38,6 +38,8 @@ export async function getMoviesBy(type) {
         case "kids":
             discover = `${URL}discover/movie?certification_country=US&certification=G&sort_by=popularity.desc&${API}`
             break;
+        default:
+            discover = `${URL}discover/movie?primary_release_year=2019&sort_by=popularity.desc&${API}`
 
     }
 
