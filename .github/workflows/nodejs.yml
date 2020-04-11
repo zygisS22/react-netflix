@@ -18,7 +18,7 @@ jobs:
         run: |
           npm install
           rm -rf build
-          npm run predeploy
+          npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
