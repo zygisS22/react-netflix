@@ -14,17 +14,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Clean Install dependencies and Build
+      - name: Clean Install dependencies, Build and deploy
         run: |
           npm install
           rm -rf build
-          npm run build
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: 'build'
+          npm run predeploy
+          npm run deploy
+      # - name: Deploy
+      #   uses: JamesIves/github-pages-deploy-action@releases/v3
+      #   with:
+      #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      #     BRANCH: gh-pages
+      #     FOLDER: 'build'
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v1
