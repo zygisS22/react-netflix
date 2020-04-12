@@ -1,8 +1,8 @@
 import axios from "axios"
 
-const API = process.env.REACT_APP_API_KEY
-const URL = process.env.REACT_APP_API_BASE_URL
-export const IMAGE_BASE = process.env.REACT_APP_BASE_IMAGE_URL
+const API = "https://api.themoviedb.org/3/"
+const URL = process.env.REACT_APP_TMDB_API
+export const IMAGE_BASE = "https://image.tmdb.org/t/p/"
 
 export async function getMovieInformation(id) {
 
