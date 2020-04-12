@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const API = "https://api.themoviedb.org/3/"
-const URL = process.env.REACT_APP_TMDB_API
+const API = process.env.REACT_APP_TMDB_API
+const URL = "https://api.themoviedb.org/3/"
 export const IMAGE_BASE = "https://image.tmdb.org/t/p/"
 
 export async function getMovieInformation(id) {
