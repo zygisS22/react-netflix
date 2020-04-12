@@ -19,7 +19,7 @@ jobs:
       run: npm install
     - name: Deploy to GH Pages
       run: |
-        git config --global user.email ${{ secrets.EMAIL }}
-        git config --global user.name ${{ secrets.USERNAME }}
-        git remote set-url origin https://${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USERNAME }}/react-netflix>.git
+        git config --global user.email ${{secrets.EMAIL}}
+        git config --global user.name ${{secrets.USERNAME}}
+        git remote set-url origin https://${{secrets.TOKEN}}@github.com/${{secrets.USERNAME}}/react-netflix>.git
         npm run deploy
