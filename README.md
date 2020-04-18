@@ -12,7 +12,9 @@ Netflix slider and searchbar, recreated using react with hooks, powered by [Movi
  - Small index element with current slide row.
  - On slide item click, show additional information.
  - show genres, cast or similar movies.
+ - Poster style slider
  - Search bar for movies using css grid.
+ - Load more button in search screen
 
 
 
