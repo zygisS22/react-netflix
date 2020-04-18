@@ -13,7 +13,7 @@ export async function getMovieInformation(id) {
 
 export async function searchMoviesBy(text, page = 1) {
 
-    return await axios.get(`${URL}search/movie?${API}&language=en-US&query=${text}&page=${page}&include_adult=true`)
+    return await axios.get(`${URL}search/movie?${API}&language=en-US&query=${text}&page=${page}&include_adult=false`)
 
 }
 

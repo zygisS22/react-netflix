@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useCallback } from "react"
 import searchContext from "../Search/context"
 import { searchMoviesBy, IMAGE_BASE } from "../../api"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,6 +10,18 @@ const Search = () => {
     const [movies, setMovies] = useState(null)
     const [page, setPage] = useState(1)
     const [totalPages, setTotalPages] = useState(null)
+
+
+    const fetchData = useCallback(async () => {
+        return await searchMoviesBy(context.searchInput, null).then(response => {
+
+            setMovies(response.data.results)
+            setPage(response.data.page)
+            setTotalPages(response.data.total_pages)
+
+        })
+
+    }, [context]);
 
     const loadMoreMovies = (text) => {
         queryNextBatch(text, page)
@@ -24,6 +36,7 @@ const Search = () => {
             if (movies) {
 
                 let loadedMovies = movies.concat(response.data.results)
+
                 setMovies(loadedMovies)
                 setPage(response.data.page)
             }
@@ -35,20 +48,10 @@ const Search = () => {
 
     useEffect(() => {
 
-        const fetchData = async () => {
-            return await searchMoviesBy(context.searchInput, page).then(response => {
-
-                setMovies(response.data.results)
-                setPage(response.data.page)
-                setTotalPages(response.data.total_pages)
-
-            })
-        };
-
         fetchData()
 
         return () => setMovies(null)
-    }, [context, page])
+    }, [fetchData])
 
 
     const renderPosters = (data) => {
