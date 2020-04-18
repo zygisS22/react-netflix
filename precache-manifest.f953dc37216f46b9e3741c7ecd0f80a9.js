@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3e4b3933cf07a83e441dc845c5dfd88f",
+    "revision": "96abe6b45af061b7c3983e35a28646fc",
     "url": "/react-netflix/index.html"
   },
   {
